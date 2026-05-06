@@ -1,0 +1,11 @@
+services:
+  - type: static
+    name: smartev
+    env: static
+    buildCommand: npm run build
+    publishPath: dist
+    headers:
+      - path: /*
+        headers:
+          - key: Cache-Control
+            value: no-cache

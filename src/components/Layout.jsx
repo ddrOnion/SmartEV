@@ -27,7 +27,7 @@ export default function Layout({ children }) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#000'
+      backgroundColor: 'var(--color-paper-neutral)'
     }}>
       <div 
         className="stage"
