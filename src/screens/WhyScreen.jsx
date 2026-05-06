@@ -1,69 +1,189 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function WhyScreen({ setActiveTab }) {
+  const [pageIndex, setPageIndex] = useState(0);
+
+  const pages = [
+    {
+      title: "車廠面臨的核心困境",
+      subtitle: "SDV 時代的結構性痛點",
+      image: "car_factory_dilemma_1778048452901.png",
+      content: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {[
+            { t: "技術黑盒", d: "無法掌握核心演算法與模型，被供應商綁定" },
+            { t: "高昂代價", d: "每次更新須重新談判、整合，成本失控" },
+            { t: "量產即過時", d: "車輛出廠後智能功能停止進化，用戶體驗停滯" }
+          ].map((item, i) => (
+            <div key={i} className="animate-slide-up" style={{ 
+              background: 'rgba(26, 24, 20, 0.9)', 
+              padding: '24px 32px', 
+              borderRadius: '8px',
+              borderLeft: '4px solid var(--color-accent)',
+              animationDelay: `${0.2 + i * 0.1}s`
+            }}>
+              <h4 style={{ color: 'var(--color-accent)', fontSize: '20px', marginBottom: '8px', fontWeight: 600 }}>{item.t}</h4>
+              <p style={{ color: '#fff', fontSize: '16px', opacity: 0.9 }}>{item.d}</p>
+            </div>
+          ))}
+        </div>
+      )
+    },
+    {
+      title: "不只是賣軟體",
+      subtitle: "RECLAIMING THE SOUL OF THE VEHICLE",
+      image: "soul_passing_orb_1778048473463.png",
+      content: (
+        <div className="animate-slide-up" style={{ fontSize: '24px', lineHeight: 1.8, color: 'var(--color-secondary)' }}>
+          <p style={{ marginBottom: '40px' }}>
+            我們提供的是一套<span style={{ color: 'var(--color-ink)', fontWeight: 600 }}>「主權級別」</span>的智慧化能力——讓車廠拿回產品的靈魂與進化權。
+          </p>
+          <div style={{ paddingLeft: '24px', borderLeft: '2px solid var(--color-accent)' }}>
+            <h4 style={{ color: 'var(--color-ink)', fontSize: '28px', marginBottom: '16px' }}>賦能者 (Enabler)</h4>
+            <p>助力 OEM 從「硬體組裝者」轉型為「數據驅動的智能營運商」。</p>
+          </div>
+        </div>
+      )
+    }
+  ];
+
+  const currentPage = pages[pageIndex];
+
   return (
-    <div style={{ padding: '80px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       
-
-
-      <div className="animate-slide-up delay-100" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '80px' }}>
-        <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>01</div>
-        <div>
-          <h2 style={{ fontSize: '48px', marginBottom: '16px' }}>為什麼需要智慧電動車平台產品</h2>
-          <div className="mono text-accent" style={{ fontSize: '16px', letterSpacing: '2px', textTransform: 'uppercase' }}>WHY WE NEED SMART EV PLATFORM</div>
+      {/* Page Content */}
+      <div key={pageIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px' }}>
+        
+        {/* Header Section */}
+        <div className="animate-slide-up" style={{ marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '56px', fontWeight: 300, color: 'var(--color-accent)', marginBottom: '8px', opacity: 0.8 }}>
+            {currentPage.title}
+          </h2>
+          <div className="mono" style={{ fontSize: '18px', letterSpacing: '4px', color: 'var(--color-secondary)' }}>
+            {currentPage.subtitle}
+          </div>
         </div>
-      </div>
 
-      <div className="animate-slide-up delay-300" style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingTop: '40px' }}>
+        {/* Main Body */}
         <div style={{ 
-          maxWidth: '1200px', 
-          background: 'var(--color-paper-cool)', 
-          padding: '60px 80px', 
-          borderLeft: '4px solid var(--color-accent)',
-          fontSize: '24px',
-          lineHeight: 1.8,
-          color: 'var(--color-ink)'
+          flex: 1, 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '80px',
+          flexDirection: pageIndex === 0 ? 'row' : 'row-reverse' 
         }}>
-          <div style={{ fontWeight: 600, marginBottom: '24px', fontSize: '28px' }}>
-            車廠的痛點：
+          {/* Image Container */}
+          <div className="animate-slide-up" style={{ 
+            flex: 1.5, 
+            height: '600px', 
+            borderRadius: '12px', 
+            overflow: 'hidden',
+            boxShadow: '0 30px 60px rgba(0,0,0,0.15)',
+            position: 'relative'
+          }}>
+            <img 
+              src={currentPage.image} 
+              alt={currentPage.title} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <div style={{ 
+              position: 'absolute', 
+              top: 0, left: 0, width: '100%', height: '100%',
+              background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.2))'
+            }} />
           </div>
-          <div style={{ color: 'var(--color-secondary)' }}>
-            在 SDV 軟體定義汽車的時代，OEM 無法掌握底層及核心技術，使每次產品的迭代與新開發都付出高昂的代價，造成已交付的產品不再更新。使用智慧電動車平台產品不只是在「買軟體」，而是一種「持續演進的生命週期服務」。
+
+          {/* Text Container */}
+          <div style={{ flex: 1 }}>
+            {currentPage.content}
           </div>
         </div>
       </div>
 
-      {/* Return to Home Button (Bottom) */}
-      <div className="animate-slide-up delay-500" style={{ marginTop: 'auto', display: 'flex', justifyContent: 'center', paddingBottom: '40px' }}>
-        <button 
-          onClick={() => setActiveTab(0)}
-          className="sans"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '12px',
-            background: 'var(--color-ink)',
-            border: 'none',
-            borderRadius: '40px',
-            color: '#fff',
-            cursor: 'pointer',
-            fontSize: '18px',
-            padding: '16px 40px',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}
-        >
-          <span style={{ fontSize: '24px' }}>←</span> 回首頁
-        </button>
-      </div>
+      {/* Navigation Footer */}
+      <div style={{ 
+        height: '120px', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+        padding: '0 80px',
+        borderTop: '1px solid rgba(0,0,0,0.05)'
+      }}>
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <button 
+            onClick={() => setActiveTab(0)}
+            className="sans"
+            style={{
+              padding: '12px 24px',
+              border: '1px solid var(--color-ink)',
+              borderRadius: '30px',
+              background: 'transparent',
+              cursor: 'pointer',
+              fontSize: '14px',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}
+          >
+            ← BACK TO HUB
+          </button>
+        </div>
 
+        {/* Pagination Dots */}
+        <div style={{ display: 'flex', gap: '12px' }}>
+          {pages.map((_, i) => (
+            <div key={i} style={{ 
+              width: i === pageIndex ? '40px' : '10px', 
+              height: '10px', 
+              borderRadius: '5px',
+              background: i === pageIndex ? 'var(--color-accent)' : 'rgba(0,0,0,0.1)',
+              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+            }} />
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', gap: '16px' }}>
+          {pageIndex === 0 ? (
+            <button 
+              onClick={() => setPageIndex(1)}
+              className="sans"
+              style={{
+                padding: '12px 32px',
+                background: 'var(--color-ink)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}
+            >
+              Next Strategy →
+            </button>
+          ) : (
+            <button 
+              onClick={() => setPageIndex(0)}
+              className="sans"
+              style={{
+                padding: '12px 32px',
+                background: 'var(--color-paper-cool)',
+                color: 'var(--color-ink)',
+                border: '1px solid rgba(0,0,0,0.1)',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}
+            >
+              Previous Page
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
