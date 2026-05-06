@@ -78,27 +78,25 @@ export default function ModelDetailScreen({ setActiveTab }) {
         ))}
       </div>
 
-      {/* Back Button */}
-      <div className="animate-slide-up" style={{ marginTop: 'auto', display: 'flex', justifyContent: 'center', paddingBottom: '40px', animationDelay: '0.6s' }}>
+      {/* Navigation Footer */}
+      <div className="animate-slide-up" style={{ marginTop: 'auto', height: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)', animationDelay: '0.6s' }}>
         <button
-          onClick={() => setActiveTab(2)}
+          onClick={() => setActiveTab(0)}
           className="sans"
-          style={{
-            padding: '12px 40px',
-            border: '1px solid var(--color-ink)',
-            borderRadius: '30px',
-            background: 'transparent',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '1px',
-            transition: 'all 0.3s'
-          }}
+          style={{ padding: '12px 28px', border: '1px solid var(--color-ink)', borderRadius: '30px', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
-          ← BACK TO WHAT
+          ← 回首頁
+        </button>
+        <button
+          onClick={() => setActiveTab(22)}
+          className="sans"
+          style={{ padding: '12px 40px', background: 'var(--color-ink)', color: '#fff', border: 'none', borderRadius: '30px', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(26,24,20,0.8)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'var(--color-ink)'}
+        >
+          Agentic AI →
         </button>
       </div>
 

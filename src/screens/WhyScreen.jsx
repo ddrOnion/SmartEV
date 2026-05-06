@@ -15,10 +15,10 @@ export default function WhyScreen({ setActiveTab }) {
             { t: "高昂代價", d: "每次更新須重新談判、整合，成本失控" },
             { t: "量產即過時", d: "車輛出廠後智能功能停止進化，用戶體驗停滯" }
           ].map((item, i) => (
-            <div key={i} className="animate-slide-up" style={{ 
-              background: 'rgba(26, 24, 20, 0.9)', 
-              padding: '24px 32px', 
-              borderRadius: '8px',
+            <div key={i} className="animate-slide-up" style={{
+              background: 'var(--color-ink)',
+              padding: '24px 32px',
+              borderRadius: '12px',
               borderLeft: '4px solid var(--color-accent)',
               animationDelay: `${0.2 + i * 0.1}s`
             }}>
@@ -53,15 +53,18 @@ export default function WhyScreen({ setActiveTab }) {
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       
       {/* Page Content */}
-      <div key={pageIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 80px' }}>
+      <div key={pageIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 100px' }}>
         
         {/* Header Section */}
-        <div className="animate-slide-up" style={{ marginBottom: '40px' }}>
-          <h2 style={{ fontSize: '56px', fontWeight: 300, color: 'var(--color-accent)', marginBottom: '8px', opacity: 0.8 }}>
-            {currentPage.title}
-          </h2>
-          <div className="mono" style={{ fontSize: '18px', letterSpacing: '4px', color: 'var(--color-secondary)' }}>
-            {currentPage.subtitle}
+        <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '40px' }}>
+          <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>{pageIndex === 0 ? '01' : '01.1'}</div>
+          <div>
+            <h2 style={{ fontSize: '56px', fontWeight: 300, color: 'var(--color-accent)', marginBottom: '8px', opacity: 0.8 }}>
+              {currentPage.title}
+            </h2>
+            <div className="mono" style={{ fontSize: '18px', letterSpacing: '4px', color: 'var(--color-secondary)' }}>
+              {currentPage.subtitle}
+            </div>
           </div>
         </div>
 
@@ -125,7 +128,7 @@ export default function WhyScreen({ setActiveTab }) {
               letterSpacing: '1px'
             }}
           >
-            ← BACK TO HUB
+            ← 返回首頁
           </button>
         </div>
 
@@ -160,27 +163,47 @@ export default function WhyScreen({ setActiveTab }) {
                 letterSpacing: '1px'
               }}
             >
-              Next Strategy →
+              下一頁 →
             </button>
           ) : (
-            <button 
-              onClick={() => setPageIndex(0)}
-              className="sans"
-              style={{
-                padding: '12px 32px',
-                background: 'var(--color-paper-cool)',
-                color: 'var(--color-ink)',
-                border: '1px solid rgba(0,0,0,0.1)',
-                borderRadius: '30px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                letterSpacing: '1px'
-              }}
-            >
-              Previous Page
-            </button>
+            <div style={{ display: 'flex', gap: '16px' }}>
+              <button
+                onClick={() => setPageIndex(0)}
+                className="sans"
+                style={{
+                  padding: '12px 32px',
+                  background: 'var(--color-paper-cool)',
+                  color: 'var(--color-ink)',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  borderRadius: '30px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px'
+                }}
+              >
+                ← 上一頁
+              </button>
+              <button
+                onClick={() => setActiveTab(2)}
+                className="sans"
+                style={{
+                  padding: '12px 32px',
+                  background: 'var(--color-ink)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '30px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px'
+                }}
+              >
+                了解產品介紹 →
+              </button>
+            </div>
           )}
         </div>
       </div>

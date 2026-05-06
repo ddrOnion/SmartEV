@@ -4,7 +4,7 @@ export default function WhatScreen({ setActiveTab }) {
   const cardStyle = {
     background: 'rgba(140,115,90,0.05)',
     border: '1px solid rgba(140,115,90,0.15)',
-    borderRadius: '24px',
+    borderRadius: '12px',
     padding: '40px',
     cursor: 'pointer',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -85,25 +85,26 @@ export default function WhatScreen({ setActiveTab }) {
       </div>
 
       {/* Return to Home Button */}
-      <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'center', paddingBottom: '20px' }}>
+      <div style={{ marginTop: 'auto', padding: '20px 0', borderTop: '1px solid rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'flex-start' }}>
         <button
           onClick={() => setActiveTab(0)}
           className="sans"
           style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '12px',
-            background: 'var(--color-ink)',
-            border: 'none',
-            borderRadius: '40px',
-            color: '#fff',
+            padding: '12px 28px',
+            border: '1px solid var(--color-ink)',
+            borderRadius: '30px',
+            background: 'transparent',
             cursor: 'pointer',
-            fontSize: '18px',
-            padding: '16px 40px',
-            transition: 'all 0.3s ease'
+            fontSize: '14px',
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+            transition: 'all 0.3s'
           }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
-          <span style={{ fontSize: '24px' }}>←</span> 回首頁
+          ← 回首頁
         </button>
       </div>
 

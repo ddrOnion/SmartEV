@@ -67,13 +67,13 @@ export default function PlatformScreen({ setActiveTab }) {
           查看價值主張：OEM 真正得到什麼 <span style={{ fontSize: '24px' }}>→</span>
         </button>
 
-        {/* Secondary Action: Right Bottom (Absolute Position) */}
+        {/* Secondary Action: Left Bottom (Absolute Position) */}
         <button
           onClick={() => setActiveTab(0)}
           className="sans"
           style={{
             position: 'absolute',
-            right: '20px',
+            left: '0',
             display: 'inline-flex', alignItems: 'center', gap: '12px',
             background: 'transparent', border: '1px solid var(--color-ink)', borderRadius: '40px',
             color: 'var(--color-ink)', cursor: 'pointer', fontSize: '16px',
@@ -82,7 +82,7 @@ export default function PlatformScreen({ setActiveTab }) {
           onMouseEnter={(e) => { e.currentTarget.style.opacity = 1; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
           onMouseLeave={(e) => { e.currentTarget.style.opacity = 0.6; e.currentTarget.style.background = 'transparent'; }}
         >
-          <span style={{ fontSize: '20px' }}>←</span> 回首頁
+          ← 回首頁
         </button>
       </div>
 

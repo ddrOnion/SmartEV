@@ -39,7 +39,7 @@ export default function AgentDetailScreen({ setActiveTab }) {
       <div style={{ flex: 1, display: 'flex', gap: '80px', alignItems: 'center' }}>
         
         {/* Left Visual Section */}
-        <div className="animate-slide-up" style={{ flex: 1, height: '600px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,0.15)' }}>
+        <div className="animate-slide-up" style={{ flex: 1, height: '600px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,0.15)' }}>
           <img 
             src="agent_iteration_viz.png" 
             alt="Agentic AI Iteration" 
@@ -56,7 +56,7 @@ export default function AgentDetailScreen({ setActiveTab }) {
                 key={i} 
                 className="animate-slide-up" 
                 style={{ 
-                  background: 'rgba(26, 24, 20, 0.85)', 
+                  background: 'var(--color-ink)',
                   padding: '32px', 
                   borderRadius: '12px',
                   gridColumn: i === 2 ? '1 / span 2' : 'auto',
@@ -78,26 +78,24 @@ export default function AgentDetailScreen({ setActiveTab }) {
       </div>
 
       {/* Navigation Footer */}
-      <div style={{ height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
-        <button 
-          onClick={() => setActiveTab(2)}
+      <div style={{ height: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <button
+          onClick={() => setActiveTab(0)}
           className="sans"
-          style={{
-            padding: '12px 40px',
-            border: '1px solid var(--color-ink)',
-            borderRadius: '30px',
-            background: 'transparent',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '1px',
-            transition: 'all 0.3s'
-          }}
+          style={{ padding: '12px 28px', border: '1px solid var(--color-ink)', borderRadius: '30px', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
-          ← BACK TO WHAT
+          ← 回首頁
+        </button>
+        <button
+          onClick={() => setActiveTab(23)}
+          className="sans"
+          style={{ padding: '12px 40px', background: 'var(--color-ink)', color: '#fff', border: 'none', borderRadius: '30px', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(26,24,20,0.8)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'var(--color-ink)'}
+        >
+          智慧電動車平台 →
         </button>
       </div>
 

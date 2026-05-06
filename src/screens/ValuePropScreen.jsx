@@ -12,12 +12,15 @@ export default function ValuePropScreen({ setActiveTab }) {
     <div style={{ padding: '60px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
       
       {/* Header Section */}
-      <div className="animate-slide-up" style={{ marginBottom: '60px' }}>
-        <h2 style={{ fontSize: '56px', fontWeight: 300, color: 'var(--color-accent)', marginBottom: '8px' }}>
-          OEM 真正得到什麼
-        </h2>
-        <div className="mono" style={{ fontSize: '18px', letterSpacing: '4px', color: 'var(--color-secondary)' }}>
-          WHAT OEM REALLY GAINS
+      <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
+        <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>03.1</div>
+        <div>
+          <h2 style={{ fontSize: '56px', fontWeight: 300, color: 'var(--color-accent)', marginBottom: '8px' }}>
+            OEM 真正得到什麼
+          </h2>
+          <div className="mono" style={{ fontSize: '18px', letterSpacing: '4px', color: 'var(--color-secondary)' }}>
+            WHAT OEM REALLY GAINS
+          </div>
         </div>
       </div>
 
@@ -62,50 +65,48 @@ export default function ValuePropScreen({ setActiveTab }) {
           </div>
 
           {/* Green Highlight Box */}
-          <div className="animate-slide-up" style={{ 
-            background: '#0d2b1d', 
-            padding: '24px 32px', 
-            borderRadius: '8px',
+          <div className="animate-slide-up" style={{
+            background: 'var(--color-ink)',
+            padding: '24px 32px',
+            borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
             gap: '16px',
-            borderLeft: '4px solid #2ecc71',
+            borderLeft: '4px solid var(--color-accent)',
             animationDelay: '0.4s'
           }}>
-            <div style={{ 
-              width: '24px', height: '24px', borderRadius: '50%', 
-              border: '2px solid #2ecc71', display: 'flex', 
+            <div style={{
+              width: '24px', height: '24px', borderRadius: '50%',
+              border: '2px solid var(--color-accent)', display: 'flex',
               alignItems: 'center', justifyContent: 'center',
-              color: '#2ecc71', fontSize: '14px'
+              color: 'var(--color-accent)', fontSize: '14px'
             }}>✓</div>
             <p style={{ color: '#fff', fontSize: '20px', fontWeight: 500, letterSpacing: '1px' }}>
-              每一台 <span style={{ color: '#2ecc71' }}>Foxconn inside</span> 的車輛，都將越開越聰明。
+              每一台 <span style={{ color: 'var(--color-accent)' }}>Foxconn inside</span> 的車輛，都將越開越聰明。
             </p>
           </div>
         </div>
       </div>
 
       {/* Navigation Footer */}
-      <div style={{ height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
-        <button 
-          onClick={() => setActiveTab(3)}
+      <div style={{ height: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <button
+          onClick={() => setActiveTab(0)}
           className="sans"
-          style={{
-            padding: '12px 40px',
-            border: '1px solid var(--color-ink)',
-            borderRadius: '30px',
-            background: 'transparent',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '1px',
-            transition: 'all 0.3s'
-          }}
+          style={{ padding: '12px 28px', border: '1px solid var(--color-ink)', borderRadius: '30px', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
-          ← BACK TO PLATFORM
+          ← 回首頁
+        </button>
+        <button
+          onClick={() => setActiveTab(3)}
+          className="sans"
+          style={{ padding: '12px 40px', border: '1px solid var(--color-ink)', borderRadius: '30px', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+        >
+          ← 返回平台運作
         </button>
       </div>
 
