@@ -1,0 +1,185 @@
+:root {
+  /* Editorial Light Palette */
+  --color-paper: #f5f1ea;
+  --color-paper-cool: #f0f2f5;
+  --color-paper-neutral: #f4f4f4;
+  --color-ink: #1a1814;
+  --color-secondary: #6b6357;
+  
+  /* Accent Base Values for Tweaks */
+  --accent-h: 30; /* oklch 0.55 0.08 50 ~ roughly hue 30-50, but let's use HSL for simplicity or directly update standard HEX/RGB */
+  --accent-s: 20%;
+  --accent-l: 50%;
+  --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+
+  /* Typography */
+  --font-serif: 'Noto Serif TC', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Layout Constants */
+  --rail-width: 320px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000; /* Letterbox background */
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 1920x1080 fixed canvas container */
+.stage {
+  width: 1920px;
+  height: 1080px;
+  background-color: var(--color-paper);
+  position: relative;
+  display: flex;
+  transform-origin: center center;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Global Typography Classes */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.sans {
+  font-family: var(--font-sans);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.hairline {
+  border: 0;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.3;
+}
+
+/* Striped Placeholder */
+.striped-bg {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(140, 115, 90, 0.1) 10px,
+    rgba(140, 115, 90, 0.1) 11px
+  );
+  border: 1px solid rgba(140, 115, 90, 0.2);
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* Data Flow Diagram Styles */
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -40; /* matches dasharray for smooth loop */
+  }
+}
+
+@keyframes flowDashReverse {
+  to {
+    stroke-dashoffset: 40;
+  }
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.4; filter: drop-shadow(0 0 2px var(--color-accent)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 8px var(--color-accent)); }
+  100% { opacity: 0.4; filter: drop-shadow(0 0 2px var(--color-accent)); }
+}
+
+.data-line {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-dasharray: 8 12;
+  animation: flowDash 1s linear infinite;
+  opacity: 0.5;
+}
+
+.data-line-reverse {
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  stroke-dasharray: 8 12;
+  animation: flowDashReverse 1s linear infinite;
+  opacity: 0.5;
+}
+
+.data-node {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.df-block {
+  border: 1px solid rgba(140, 115, 90, 0.3);
+  background: rgba(245, 241, 234, 0.5); /* slightly transparent paper */
+  position: relative;
+  transition: all 0.3s;
+}
+
+.df-block:hover {
+  background: rgba(140, 115, 90, 0.05);
+  border-color: rgba(140, 115, 90, 0.6);
+}
+
+.df-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+}
+
