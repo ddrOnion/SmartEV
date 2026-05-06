@@ -20,7 +20,7 @@ export default function ModelDetailScreen({ setActiveTab }) {
   ];
 
   return (
-    <div style={{ padding: '60px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
 
       {/* Header Section */}
       <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
@@ -79,7 +79,7 @@ export default function ModelDetailScreen({ setActiveTab }) {
       </div>
 
       {/* Navigation Footer */}
-      <div className="animate-slide-up" style={{ marginTop: 'auto', height: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)', animationDelay: '0.6s' }}>
+      <div className="animate-slide-up" style={{ height: '100px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(0,0,0,0.05)', animationDelay: '0.6s' }}>
         <button
           onClick={() => setActiveTab(0)}
           className="sans"

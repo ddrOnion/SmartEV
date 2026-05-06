@@ -29,7 +29,7 @@ export default function WhatScreen({ setActiveTab }) {
   };
 
   return (
-    <div style={{ padding: '80px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ padding: '80px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
 
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
         <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>02</div>
@@ -84,8 +84,8 @@ export default function WhatScreen({ setActiveTab }) {
         </div>
       </div>
 
-      {/* Return to Home Button */}
-      <div style={{ marginTop: 'auto', padding: '20px 0', borderTop: '1px solid rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'flex-start' }}>
+      {/* Navigation Footer */}
+      <div style={{ height: '100px', borderTop: '1px solid rgba(0,0,0,0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <button
           onClick={() => setActiveTab(0)}
           className="sans"
@@ -105,6 +105,15 @@ export default function WhatScreen({ setActiveTab }) {
           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
           ← 回首頁
+        </button>
+        <button
+          onClick={() => setActiveTab(21)}
+          className="sans"
+          style={{ padding: '12px 40px', background: 'var(--color-ink)', color: '#fff', border: 'none', borderRadius: '30px', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(26,24,20,0.8)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'var(--color-ink)'}
+        >
+          大模型應用 →
         </button>
       </div>
 

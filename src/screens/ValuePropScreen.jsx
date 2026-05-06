@@ -9,7 +9,7 @@ export default function ValuePropScreen({ setActiveTab }) {
   ];
 
   return (
-    <div style={{ padding: '60px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
       
       {/* Header Section */}
       <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
@@ -100,13 +100,13 @@ export default function ValuePropScreen({ setActiveTab }) {
           ← 回首頁
         </button>
         <button
-          onClick={() => setActiveTab(3)}
+          onClick={() => setActiveTab(32)}
           className="sans"
-          style={{ padding: '12px 40px', border: '1px solid var(--color-ink)', borderRadius: '30px', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
-          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
-          onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+          style={{ padding: '12px 40px', background: 'var(--color-ink)', color: '#fff', border: 'none', borderRadius: '30px', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(26,24,20,0.8)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'var(--color-ink)'}
         >
-          ← 返回平台運作
+          結語展望：越開越聰明 →
         </button>
       </div>
 

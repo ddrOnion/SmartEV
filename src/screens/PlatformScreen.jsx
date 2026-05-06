@@ -3,7 +3,7 @@ import DataFlowDiagram from '../components/DataFlowDiagram';
 
 export default function PlatformScreen({ setActiveTab }) {
   return (
-    <div style={{ padding: '60px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
 
       {/* Header */}
       <div className="animate-slide-up delay-100" style={{ display: 'flex', alignItems: 'flex-start', gap: '32px', marginBottom: '32px' }}>
@@ -39,50 +39,31 @@ export default function PlatformScreen({ setActiveTab }) {
         <DataFlowDiagram />
       </div>
 
-      {/* Navigation Controls - Custom Positioning */}
-      <div className="animate-slide-up delay-700" style={{ 
-        marginTop: 'auto',
-        padding: '24px 0',
-        position: 'relative',
+      {/* Navigation Footer */}
+      <div className="animate-slide-up delay-700" style={{
+        height: '100px',
+        borderTop: '1px solid rgba(0,0,0,0.05)',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%'
       }}>
-        {/* Primary Action: Center Bottom */}
-        <button
-          onClick={() => setActiveTab(31)}
-          className="sans"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: '12px',
-            background: 'var(--color-accent)', border: 'none', borderRadius: '40px',
-            color: 'var(--color-ink)', cursor: 'pointer', fontSize: '20px',
-            fontWeight: 600,
-            padding: '16px 60px', transition: 'all 0.3s ease',
-            boxShadow: '0 10px 30px rgba(184, 158, 128, 0.2)'
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 15px 40px rgba(184, 158, 128, 0.3)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(184, 158, 128, 0.2)'; }}
-        >
-          查看價值主張：OEM 真正得到什麼 <span style={{ fontSize: '24px' }}>→</span>
-        </button>
-
-        {/* Secondary Action: Left Bottom (Absolute Position) */}
         <button
           onClick={() => setActiveTab(0)}
           className="sans"
-          style={{
-            position: 'absolute',
-            left: '0',
-            display: 'inline-flex', alignItems: 'center', gap: '12px',
-            background: 'transparent', border: '1px solid var(--color-ink)', borderRadius: '40px',
-            color: 'var(--color-ink)', cursor: 'pointer', fontSize: '16px',
-            padding: '12px 32px', opacity: 0.6, transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => { e.currentTarget.style.opacity = 1; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.opacity = 0.6; e.currentTarget.style.background = 'transparent'; }}
+          style={{ padding: '12px 28px', border: '1px solid var(--color-ink)', borderRadius: '30px', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
         >
           ← 回首頁
+        </button>
+        <button
+          onClick={() => setActiveTab(31)}
+          className="sans"
+          style={{ padding: '12px 40px', background: 'var(--color-ink)', color: '#fff', border: 'none', borderRadius: '30px', cursor: 'pointer', fontSize: '14px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', transition: 'all 0.3s' }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(26,24,20,0.8)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'var(--color-ink)'}
+        >
+          OEM 真正得到什麼 →
         </button>
       </div>
 

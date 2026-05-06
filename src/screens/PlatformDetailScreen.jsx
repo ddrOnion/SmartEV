@@ -20,7 +20,7 @@ export default function PlatformDetailScreen({ setActiveTab }) {
   ];
 
   return (
-    <div style={{ padding: '60px 100px', height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
       
       {/* Header Section (Unified with 02.1 & 02.2) */}
       <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>

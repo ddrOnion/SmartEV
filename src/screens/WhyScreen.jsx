@@ -106,11 +106,11 @@ export default function WhyScreen({ setActiveTab }) {
 
       {/* Navigation Footer */}
       <div style={{ 
-        height: '120px', 
+        height: '100px',
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'space-between',
-        padding: '0 80px',
+        padding: '0 100px',
         borderTop: '1px solid rgba(0,0,0,0.05)'
       }}>
         <div style={{ display: 'flex', gap: '16px' }}>
