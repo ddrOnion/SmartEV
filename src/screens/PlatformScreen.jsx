@@ -39,21 +39,50 @@ export default function PlatformScreen({ setActiveTab }) {
         <DataFlowDiagram />
       </div>
 
-      {/* Return to Home */}
-      <div className="animate-slide-up delay-700" style={{ display: 'flex', justifyContent: 'center', paddingTop: '24px', paddingBottom: '24px' }}>
+      {/* Navigation Controls - Custom Positioning */}
+      <div className="animate-slide-up delay-700" style={{ 
+        marginTop: 'auto',
+        padding: '24px 0',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%'
+      }}>
+        {/* Primary Action: Center Bottom */}
+        <button
+          onClick={() => setActiveTab(31)}
+          className="sans"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '12px',
+            background: 'var(--color-accent)', border: 'none', borderRadius: '40px',
+            color: 'var(--color-ink)', cursor: 'pointer', fontSize: '20px',
+            fontWeight: 600,
+            padding: '16px 60px', transition: 'all 0.3s ease',
+            boxShadow: '0 10px 30px rgba(184, 158, 128, 0.2)'
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 15px 40px rgba(184, 158, 128, 0.3)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(184, 158, 128, 0.2)'; }}
+        >
+          查看價值主張：OEM 真正得到什麼 <span style={{ fontSize: '24px' }}>→</span>
+        </button>
+
+        {/* Secondary Action: Right Bottom (Absolute Position) */}
         <button
           onClick={() => setActiveTab(0)}
           className="sans"
           style={{
+            position: 'absolute',
+            right: '20px',
             display: 'inline-flex', alignItems: 'center', gap: '12px',
-            background: 'var(--color-ink)', border: 'none', borderRadius: '40px',
-            color: '#fff', cursor: 'pointer', fontSize: '18px',
-            padding: '14px 40px', transition: 'all 0.3s ease'
+            background: 'transparent', border: '1px solid var(--color-ink)', borderRadius: '40px',
+            color: 'var(--color-ink)', cursor: 'pointer', fontSize: '16px',
+            padding: '12px 32px', opacity: 0.6, transition: 'all 0.3s ease'
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.opacity = 1; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.opacity = 0.6; e.currentTarget.style.background = 'transparent'; }}
         >
-          <span style={{ fontSize: '22px' }}>←</span> 回首頁
+          <span style={{ fontSize: '20px' }}>←</span> 回首頁
         </button>
       </div>
 

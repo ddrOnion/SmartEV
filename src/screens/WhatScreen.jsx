@@ -48,9 +48,9 @@ export default function WhatScreen({ setActiveTab }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <h3 style={{ fontSize: '36px', marginBottom: '20px', fontWeight: 600 }}>大模型</h3>
+            <h3 style={{ fontSize: '36px', marginBottom: '20px', fontWeight: 600 }}>大模型 (驅動三大應用)</h3>
             <p style={{ fontSize: '18px', color: 'var(--color-secondary)' }}>
-              AI 智駕駕駛、AI 智駕座艙 與 AI 智駕底盤 的基礎模型。
+              AI 智慧駕駛、AI 智慧座艙 與 AI 智慧助理。
             </p>
             <div style={{ marginTop: '24px', color: 'var(--color-accent)', fontWeight: 600 }}>了解更多 →</div>
           </div>

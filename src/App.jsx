@@ -9,6 +9,7 @@ import PlatformScreen from './screens/PlatformScreen';
 import ModelDetailScreen from './screens/ModelDetailScreen';
 import AgentDetailScreen from './screens/AgentDetailScreen';
 import PlatformDetailScreen from './screens/PlatformDetailScreen';
+import ValuePropScreen from './screens/ValuePropScreen';
 
 function App() {
   const [activeTab, setActiveTab] = useState(0);
@@ -23,6 +24,7 @@ function App() {
       case 21: return <ModelDetailScreen setActiveTab={setActiveTab} />;
       case 22: return <AgentDetailScreen setActiveTab={setActiveTab} />;
       case 23: return <PlatformDetailScreen setActiveTab={setActiveTab} />;
+      case 31: return <ValuePropScreen setActiveTab={setActiveTab} />;
       default: return <HeroScreen setActiveTab={setActiveTab} />;
     }
   };
