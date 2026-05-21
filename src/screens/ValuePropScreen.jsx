@@ -2,15 +2,15 @@ import React from 'react';
 
 export default function ValuePropScreen({ setActiveTab }) {
   const points = [
-    { t: 'Data 主權', d: '掌控核心數據與模型，確保技術資產安全。' },
+    { t: '數據主權', d: '掌控核心數據與模型，確保技術資產安全。' },
     { t: '持續演進', d: '量產後透過 OTA 實現功能進階與性能優化。' },
-    { t: '快速迭代', d: '利用 Agentic AI 大幅縮短從研發到上車的週期。' },
-    { t: '技術獨立', d: '建立自主研發鏈，擺脫供應商鎖定，掌控未來方向。' }
+    { t: '加速迭代', d: '利用 Agentic AI 大幅縮短從研發到上車的週期。' },
+    { t: '技術自主', d: '建立自主研發鏈，擺脫供應商鎖定，掌控未來方向。' }
   ];
 
   return (
     <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      
+
       {/* Header Section */}
       <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
         <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>03.1</div>
@@ -26,20 +26,20 @@ export default function ValuePropScreen({ setActiveTab }) {
 
       {/* Main Content */}
       <div style={{ flex: 1, display: 'flex', gap: '80px', alignItems: 'center' }}>
-        
+
         {/* Left Grid Visual */}
         <div className="animate-slide-up" style={{ flex: 1.2, display: 'flex', justifyContent: 'center' }}>
-          <div style={{ 
-            width: '100%', 
+          <div style={{
+            width: '100%',
             maxWidth: '650px',
             aspectRatio: '1/1',
             borderRadius: '24px',
             overflow: 'hidden',
             boxShadow: '0 40px 80px rgba(0,0,0,0.2)'
           }}>
-            <img 
-              src="value_prop_grid.png" 
-              alt="Value Proposition Grid" 
+            <img
+              src="value_prop_grid.png"
+              alt="Value Proposition Grid"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
           </div>

@@ -9,7 +9,7 @@ export default function PlatformScreen({ setActiveTab }) {
       <div className="animate-slide-up delay-100" style={{ display: 'flex', alignItems: 'flex-start', gap: '32px', marginBottom: '32px' }}>
         <div className="mono text-accent" style={{ fontSize: '100px', lineHeight: 0.8, fontWeight: 300 }}>03</div>
         <div style={{ paddingTop: '8px' }}>
-          <h2 style={{ fontSize: '40px', marginBottom: '12px' }}>智慧電動車平台怎麼運作與創造價值</h2>
+          <h2 style={{ fontSize: '40px', marginBottom: '12px' }}>數據循環，驅動進化，創造收益</h2>
           <div className="mono text-accent" style={{ fontSize: '14px', letterSpacing: '2px', textTransform: 'uppercase' }}>HOW IT WORKS & VALUE</div>
         </div>
       </div>
