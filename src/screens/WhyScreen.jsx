@@ -7,7 +7,7 @@ export default function WhyScreen({ setActiveTab }) {
     {
       title: "車廠面臨的核心困境",
       subtitle: "SDV 時代的結構性痛點",
-      image: "car_factory_dilemma_1778048452901.png",
+      image: "car_factory_dilemma.png",
       content: (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {[
@@ -30,9 +30,9 @@ export default function WhyScreen({ setActiveTab }) {
       )
     },
     {
-      title: "不只是賣軟體",
-      subtitle: "RECLAIMING THE SOUL OF THE VEHICLE",
-      image: "soul_passing_orb_1778048473463.png",
+      title: "改變，從這裡開始",
+      subtitle: "讓車廠具備自主進化的能力",
+      image: "soul_passing_orb.png",
       content: (
         <div className="animate-slide-up" style={{ fontSize: '24px', lineHeight: 1.8, color: 'var(--color-secondary)' }}>
           <p style={{ marginBottom: '40px' }}>
@@ -51,10 +51,10 @@ export default function WhyScreen({ setActiveTab }) {
 
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      
+
       {/* Page Content */}
       <div key={pageIndex} style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '60px 100px' }}>
-        
+
         {/* Header Section */}
         <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '40px' }}>
           <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>{pageIndex === 0 ? '01' : '01.1'}</div>
@@ -69,29 +69,29 @@ export default function WhyScreen({ setActiveTab }) {
         </div>
 
         {/* Main Body */}
-        <div style={{ 
-          flex: 1, 
-          display: 'flex', 
-          alignItems: 'center', 
+        <div style={{
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
           gap: '80px',
-          flexDirection: pageIndex === 0 ? 'row' : 'row-reverse' 
+          flexDirection: pageIndex === 0 ? 'row' : 'row-reverse'
         }}>
           {/* Image Container */}
-          <div className="animate-slide-up" style={{ 
-            flex: 1.5, 
-            height: '600px', 
-            borderRadius: '12px', 
+          <div className="animate-slide-up" style={{
+            flex: 1.5,
+            height: '600px',
+            borderRadius: '12px',
             overflow: 'hidden',
             boxShadow: '0 30px 60px rgba(0,0,0,0.15)',
             position: 'relative'
           }}>
-            <img 
-              src={currentPage.image} 
-              alt={currentPage.title} 
+            <img
+              src={currentPage.image}
+              alt={currentPage.title}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-            <div style={{ 
-              position: 'absolute', 
+            <div style={{
+              position: 'absolute',
               top: 0, left: 0, width: '100%', height: '100%',
               background: 'linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.2))'
             }} />
@@ -105,16 +105,16 @@ export default function WhyScreen({ setActiveTab }) {
       </div>
 
       {/* Navigation Footer */}
-      <div style={{ 
+      <div style={{
         height: '100px',
-        display: 'flex', 
-        alignItems: 'center', 
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'space-between',
         padding: '0 100px',
         borderTop: '1px solid rgba(0,0,0,0.05)'
       }}>
         <div style={{ display: 'flex', gap: '16px' }}>
-          <button 
+          <button
             onClick={() => setActiveTab(0)}
             className="sans"
             style={{
@@ -135,9 +135,9 @@ export default function WhyScreen({ setActiveTab }) {
         {/* Pagination Dots */}
         <div style={{ display: 'flex', gap: '12px' }}>
           {pages.map((_, i) => (
-            <div key={i} style={{ 
-              width: i === pageIndex ? '40px' : '10px', 
-              height: '10px', 
+            <div key={i} style={{
+              width: i === pageIndex ? '40px' : '10px',
+              height: '10px',
               borderRadius: '5px',
               background: i === pageIndex ? 'var(--color-accent)' : 'rgba(0,0,0,0.1)',
               transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
@@ -147,7 +147,7 @@ export default function WhyScreen({ setActiveTab }) {
 
         <div style={{ display: 'flex', gap: '16px' }}>
           {pageIndex === 0 ? (
-            <button 
+            <button
               onClick={() => setPageIndex(1)}
               className="sans"
               style={{

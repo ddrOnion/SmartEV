@@ -5,17 +5,17 @@ export default function ModelDetailScreen({ setActiveTab }) {
     {
       name: 'AI 智慧駕駛',
       image: 'ai_driving_viz.png',
-      detail: '融合感知、決策與控制的端到端智駕模型，持續從真實場景數據中學習進化。'
+      detail: '感知、判斷、控制一體的AI智駕，持續從真實場景中學習與進化'
     },
     {
       name: 'AI 智慧座艙',
       image: 'ai_cockpit_viz.png',
-      detail: '以大模型驅動的沉浸式車內體驗，實現個性化情境感知與人機協作。'
+      detail: '由 AI 驅動的沉浸式體驗，根據用戶的習慣與當下情境提供個人化需求'
     },
     {
       name: 'AI 智慧助理',
       image: 'ai_assistant_viz.png',
-      detail: '理解意圖、跨域協調的 AI Agent，讓駕駛與車輛形成真正的智慧夥伴。'
+      detail: '愈開愈懂你的 AI 助理，像個貼心助手陪伴每一次出行'
     }
   ];
 

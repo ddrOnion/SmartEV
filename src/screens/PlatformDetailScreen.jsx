@@ -10,7 +10,7 @@ export default function PlatformDetailScreen({ setActiveTab }) {
     {
       num: '2',
       title: '雲端大模型訓練',
-      detail: '利用大規模 GPU 叢集進行模型優化與 AIGC 場景生成'
+      detail: '大規模算力加速模型優化，並用 AIGC生成場景'
     },
     {
       num: '3',
@@ -21,7 +21,7 @@ export default function PlatformDetailScreen({ setActiveTab }) {
 
   return (
     <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      
+
       {/* Header Section (Unified with 02.1 & 02.2) */}
       <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
         <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>02.3</div>
@@ -37,12 +37,12 @@ export default function PlatformDetailScreen({ setActiveTab }) {
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', gap: '80px', alignItems: 'center' }}>
-        
+
         {/* Left Visual Section */}
         <div className="animate-slide-up" style={{ flex: 1.2, height: '580px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,0.15)' }}>
-          <img 
-            src="cloud_loop_viz.png" 
-            alt="Cloud Intelligence Loop" 
+          <img
+            src="cloud_loop_viz.png"
+            alt="Cloud Intelligence Loop"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
@@ -50,12 +50,12 @@ export default function PlatformDetailScreen({ setActiveTab }) {
         {/* Right Sequence Section */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '32px' }}>
           {steps.map((s, i) => (
-            <div 
-              key={i} 
-              className="animate-slide-up" 
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+            <div
+              key={i}
+              className="animate-slide-up"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
                 gap: '32px',
                 animationDelay: `${0.2 + i * 0.1}s`
               }}

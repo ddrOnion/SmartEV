@@ -26,7 +26,6 @@ export default function PlatformScreen({ setActiveTab }) {
         {[
           '車輛持續回傳數據，智慧平台進行 AI 訓練與模型迭代。',
           '訓練完成後，透過 OTA 線上更新，讓每台車越來越聰明。',
-          '每一次 AI 互動，皆轉化為平台可計量的 Token 收益。',
         ].map((line, i) => (
           <p key={i} style={{ fontSize: '20px', color: 'var(--color-secondary)', lineHeight: 1.6, margin: 0 }}>
             {line}

@@ -5,23 +5,23 @@ export default function AgentDetailScreen({ setActiveTab }) {
     {
       icon: '🔍',
       title: '極端場景挖掘',
-      detail: 'AI Agent 自動從海量數據中發掘長尾邊緣案例，無需人工標記'
+      detail: 'AI Agent 自動從海量數據中，找出罕見但關鍵的特殊場景，不需要人工逐筆整理'
     },
     {
       icon: '🎮',
       title: '高擬真模擬生成',
-      detail: '以生成式 AI 重建真實場景，大幅降低實車測試成本與週期'
+      detail: '以生成式 AI 重建高擬真場景，大幅降低實車測試成本與週期'
     },
     {
       icon: '⚡',
       title: '邊緣算力優化',
-      detail: '結合大模型精準除錯，持續提升車載推理效率與響應速度'
+      detail: '精準除錯與優化：大模型自動找出問題、修正 與 優化，持續提升用戶體驗'
     }
   ];
 
   return (
     <div style={{ padding: '60px 100px 0', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      
+
       {/* Header Section (Unified with 02.1) */}
       <div className="animate-slide-up" style={{ display: 'flex', alignItems: 'flex-start', gap: '40px', marginBottom: '60px' }}>
         <div className="mono text-accent" style={{ fontSize: '120px', lineHeight: 0.8, fontWeight: 300 }}>02.2</div>
@@ -37,12 +37,12 @@ export default function AgentDetailScreen({ setActiveTab }) {
 
       {/* Main Content Area */}
       <div style={{ flex: 1, display: 'flex', gap: '80px', alignItems: 'center' }}>
-        
+
         {/* Left Visual Section */}
         <div className="animate-slide-up" style={{ flex: 1, height: '600px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,0.15)' }}>
-          <img 
-            src="agent_iteration_viz.png" 
-            alt="Agentic AI Iteration" 
+          <img
+            src="agent_iteration_viz.png"
+            alt="Agentic AI Iteration"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
@@ -52,12 +52,12 @@ export default function AgentDetailScreen({ setActiveTab }) {
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             {features.map((f, i) => (
-              <div 
-                key={i} 
-                className="animate-slide-up" 
-                style={{ 
+              <div
+                key={i}
+                className="animate-slide-up"
+                style={{
                   background: 'var(--color-ink)',
-                  padding: '32px', 
+                  padding: '32px',
                   borderRadius: '12px',
                   gridColumn: i === 2 ? '1 / span 2' : 'auto',
                   borderLeft: '4px solid var(--color-accent)',

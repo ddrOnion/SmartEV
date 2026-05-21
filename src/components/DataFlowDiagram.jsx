@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 // ── Timing config ──────────────────────────────────────────────
 const STEP_DURATION = [0, 1000, 700, 900, 700, 1100, 1400]; // ms per step
-const PAUSE_AFTER   = 5000; // ms to show complete diagram before reset
-const TOKEN_ADD     = [0, 120000, 45000, 380000, 95000, 1850000, 35000];
+const PAUSE_AFTER = 5000; // ms to show complete diagram before reset
+const TOKEN_ADD = [0, 120000, 45000, 380000, 95000, 1850000, 35000];
 
 // ── SVG Layout constants ───────────────────────────────────────
 // viewBox: 0 0 950 380
@@ -32,15 +32,15 @@ const bottom = (r) => r.y + r.h;
 // Each path: { d, length (approx), label, labelPos }
 const PATHS = {
   // Static always-visible connectors
-  token:   `M ${right(C.car)},66 L ${C.ai.x},66`,
-  regQ:    `M ${right(C.ai)},66 L ${C.comp.x},66`,
-  regA:    `M ${C.comp.x},${cy(C.comp)} L ${right(C.plat)},${cy(C.comp)}`,
+  token: `M ${right(C.car)},66 L ${C.ai.x},66`,
+  regQ: `M ${right(C.ai)},66 L ${C.comp.x},66`,
+  regA: `M ${C.comp.x},${cy(C.comp)} L ${right(C.plat)},${cy(C.comp)}`,
   // Animated
-  step1:   `M ${right(C.car)},${cy(C.car)} L ${C.plat.x},${cy(C.car)}`,   // len~90
-  step3:   `M ${right(C.dm)},${cy(C.dm)} L ${C.ai_t.x},${cy(C.ai_t)}`,    // len~80
+  step1: `M ${right(C.car)},${cy(C.car)} L ${C.plat.x},${cy(C.car)}`,   // len~90
+  step3: `M ${right(C.dm)},${cy(C.dm)} L ${C.ai_t.x},${cy(C.ai_t)}`,    // len~80
   step5up: `M ${cx(C.plat) - 10},${C.plat.y} L ${cx(C.plat) - 10},${bottom(C.ai)}`, // len~23
   step5dn: `M ${cx(C.ai) + 10},${bottom(C.ai)} L ${cx(C.ai) + 10},${C.plat.y}`,
-  step6:   `M ${cx(C.ai_t)},${bottom(C.plat)} L ${cx(C.ai_t)},365 L 80,365 L 80,${bottom(C.car)}`, // len~...
+  step6: `M ${cx(C.ai_t)},${bottom(C.plat)} L ${cx(C.ai_t)},365 L 80,365 L 80,${bottom(C.car)}`, // len~...
 };
 
 const PATH_LEN = { step1: 90, step3: 80, step5up: 30, step5dn: 30, step6: 620 };
@@ -95,11 +95,11 @@ function Block({ r, label, active, children, style = {} }) {
 
 // ── Main Component ─────────────────────────────────────────────
 export default function DataFlowDiagram() {
-  const [phase, setPhase]       = useState(0);   // 0=reset, 1-6=steps, 7=pause
-  const [totalToken, setTotal]  = useState(0);
-  const [dispToken, setDisp]    = useState(0);
-  const [glowing, setGlowing]   = useState(false);
-  const timerRef   = useRef(null);
+  const [phase, setPhase] = useState(0);   // 0=reset, 1-6=steps, 7=pause
+  const [totalToken, setTotal] = useState(0);
+  const [dispToken, setDisp] = useState(0);
+  const [glowing, setGlowing] = useState(false);
+  const timerRef = useRef(null);
   const tokenTimer = useRef(null);
 
   // ── State machine ──────────────────────────────────────────
@@ -124,8 +124,8 @@ export default function DataFlowDiagram() {
   useEffect(() => {
     clearInterval(tokenTimer.current);
     if (dispToken === totalToken) return;
-    const diff  = totalToken - dispToken;
-    const step  = Math.ceil(diff / 30);
+    const diff = totalToken - dispToken;
+    const step = Math.ceil(diff / 30);
     tokenTimer.current = setInterval(() => {
       setDisp(d => {
         const next = d + step;
@@ -136,11 +136,11 @@ export default function DataFlowDiagram() {
     return () => clearInterval(tokenTimer.current);
   }, [totalToken]);
 
-  const s  = phase; // shorthand
+  const s = phase; // shorthand
   const gt = (n) => s !== 0 && s >= n; // is phase >= n (and not in reset)
 
   const accentColor = 'hsl(30, 20%, 50%)';
-  const dimColor    = 'rgba(140,115,90,0.25)';
+  const dimColor = 'rgba(140,115,90,0.25)';
 
   return (
     <div style={{ position: 'relative', width: '100%', maxWidth: '1400px', margin: '0 auto' }}>
@@ -179,9 +179,6 @@ export default function DataFlowDiagram() {
                 }} />
               ))}
             </div>
-          </div>
-          <div style={{ fontFamily: 'IBM Plex Mono, monospace', fontSize: '11px', color: 'var(--color-secondary)', letterSpacing: '1px', textAlign: 'center' }}>
-            每次 AI 互動皆轉化為收益
           </div>
         </div>
       </div>
@@ -342,7 +339,7 @@ export default function DataFlowDiagram() {
 
       {/* ── Phase indicator dots (bottom) ─────────────────── */}
       <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '24px' }}>
-        {[1,2,3,4,5,6].map(n => (
+        {[1, 2, 3, 4, 5, 6].map(n => (
           <div key={n} style={{
             width: '8px', height: '8px', borderRadius: '50%',
             background: gt(n) ? 'var(--color-accent)' : 'rgba(140,115,90,0.25)',
