@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球自駕計程車（Robotaxi）產業深度研究報告</title>
+    <meta name="description" content="2026 年全球自駕計程車（Robotaxi）產業深度研究報告：市場規模、技術路線、競爭格局、區域法規、單位經濟、安全紀錄與 2026-2030 前景展望，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Warm Neutrals with Teal/Blue Tech Accents -->
+    <!-- Structure: Sticky ScrollSpy sidebar across 8 sections; readable data tables and Chart.js visual evidence. NO SVG, NO Mermaid. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #0f766e;
+            border-left: 4px solid #0f766e;
+            background-color: #f0fdfa;
+            font-weight: 600;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 340px;
+        }
+        .stat-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-teal-500/10 text-teal-400 border border-teal-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">全球產業趨勢 · 深度研究</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">全球自駕計程車（Robotaxi）產業深度研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">從技術路線之爭到城市規模化商轉——Waymo 與百度蘿蔔快跑領跑下的全球競賽、單位經濟與 2026–2030 前景</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 6 月</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、市場規模與商業化現況</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、核心技術架構與路線之爭</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、主要玩家與競爭格局</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、區域市場與法規環境</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、商業模式與單位經濟</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、安全紀錄與社會接受度</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、挑戰與 2026–2030 展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-teal-600 font-medium">八、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        截至 2026 年中，自駕計程車產業已跨越示範驗證、進入<strong class="text-teal-300">真實規模化商轉</strong>階段，形成由美國 <strong class="text-white">Waymo</strong> 與中國 <strong class="text-white">百度蘿蔔快跑（Apollo Go）</strong>領跑的「雙雄格局」。Waymo 每週提供逾 50 萬次付費載客、橫跨 10 座美國城市，每週行駛逾 400 萬全自駕英里、累積里程突破 1.7 億英里；Apollo Go 則以累積逾 1,100 萬趟次反超 Waymo，並宣稱在武漢達成單車獲利。技術上分裂為<strong class="text-teal-300">多感測器光達融合</strong>（Waymo、NVIDIA DRIVE Thor 逾 1,000 TOPS）與<strong class="text-teal-300">純視覺端對端 AI</strong>（Tesla FSD、Wayve）兩條路線。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-teal-400 stat-num">50 萬+</p>
+                            <p class="text-xs text-slate-400 mt-1">Waymo 每週付費趟次</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-sky-400 stat-num">1,100 萬+</p>
+                            <p class="text-xs text-slate-400 mt-1">Apollo Go 累積趟次</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-indigo-400 stat-num">$250 億+</p>
+                            <p class="text-xs text-slate-400 mt-1">2030 全球市場（高盛）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">82–92%</p>
+                            <p class="text-xs text-slate-400 mt-1">Waymo 自報傷害事故降幅</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：本報告多數營運數字為各公司自報、且為 2025 年底至 2026 年中之快照，數月內可能過時；成本與市場規模為分析機構估值而非經審計數據。詳見各節與第八節來源。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">一、</span>市場規模與商業化現況
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        自駕計程車不再只是實驗室與封閉場域的概念驗證。2025–2026 年是產業的<strong>商業化引爆點</strong>：付費載客量、營運城市數與累積里程同步進入指數成長階段。高盛（Goldman Sachs，2025 年 5 月）估計，全球 Robotaxi 市場規模到 <strong>2030 年將超過 250 億美元</strong>，其中美國市場約 190 億美元，並可能在 <strong>2035 年成長至約 4,000 億美元</strong>。
+                    </p>
+
+                    <div class="bg-teal-50 border border-teal-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-teal-800 flex items-center gap-2">🚀 Waymo：西方規模化的標竿</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            根據 Waymo 官方資料，其每週提供逾 <strong>50 萬次</strong>付費載客、橫跨 <strong>10 座</strong>美國城市（2026 年 3 月），每週行駛逾 <strong>400 萬</strong>全自駕英里（2026 年 4 月），累積全自駕里程從 1 億英里一路突破至逾 <strong>1.7 億英里</strong>。累積載客趟次於 2025 年 5 月達 1,000 萬，約五個月內再翻倍。
+                        </p>
+                    </div>
+
+                    <div class="bg-sky-50 border border-sky-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-sky-800 flex items-center gap-2">🇨🇳 蘿蔔快跑：東方的載客量冠軍</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            百度 Apollo Go 在載客「量」上領先全球：2024 年第二季提供 <strong>89.9 萬</strong>趟、至 2024 年 7 月累積 700 萬趟，至 2025 年中突破 <strong>1,100 萬</strong>趟、反超 Waymo。武漢車隊規模自數百輛擴張至逾 <strong>1,000 輛</strong>無人車。
+                        </p>
+                    </div>
+
+                    <p class="text-slate-600 leading-relaxed">
+                        值得注意的是，跨國的「趟次」比較存在方法學差異：中國的載客數可能包含補貼訂單，並以不同定價制度計算，因此「載客量冠軍」與「營收／獲利冠軍」未必是同一者。
+                    </p>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">二、</span>核心技術架構與路線之爭
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        產業在技術上分裂為兩條哲學路線。一是以 Waymo 與 NVIDIA DRIVE 為代表的<strong>多感測器光達融合</strong>（LiDAR + 相機 + 雷達），強調冗餘與安全裕度；二是以 Tesla（FSD）與英國新創 Wayve 為代表的<strong>純視覺、端對端 AI</strong>路線，主張以相機與神經網路模仿人類駕駛、不依賴高精地圖。
+                    </p>
+
+                    <h3 class="text-lg font-semibold text-slate-700 mt-2">SAE 自駕分級定位</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        真正的 Robotaxi 服務須達到 <strong>SAE Level 4</strong>（特定營運設計範圍 ODD 內無需人類接管），與消費車輛上常見的 Level 2+ 駕駛輔助有本質差異。NVIDIA DRIVE Thor 平台即定位於支援 L2+ 一路到 L4 全自駕、並通過 ASIL-D 車規功能安全等級。
+                    </p>
+
+                    <h3 class="text-lg font-semibold text-slate-700 mt-4">AI 運算平台算力對比</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        車載運算是自駕的「大腦」。NVIDIA DRIVE AGX Thor（Blackwell 架構）提供逾 <strong>1,000 INT8 TOPS</strong>，約為上一代 Orin（254 TOPS）的四倍；雙 Thor 配置可達約 2,000 TOPS。相較之下，Tesla FSD HW4 推估約 <strong>200 TOPS</strong>（非官方估值）。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="computeChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：主要自駕運算平台算力（INT8 TOPS）對比。Tesla HW4 為非官方估值；雙 Thor 為外推。</p>
+
+                    <div class="overflow-x-auto mt-4">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">技術維度</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">光達融合路線（Waymo / NVIDIA）</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">純視覺端對端（Tesla / Wayve）</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium">主要感測器</td>
+                                    <td class="p-3 border border-slate-100">相機 + 光達 + 雷達多重冗餘</td>
+                                    <td class="p-3 border border-slate-100">純相機（Tesla 自 2023 年起移除光達 / 雷達）</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="p-3 border border-slate-100 font-medium">高精地圖</td>
+                                    <td class="p-3 border border-slate-100">依賴預建高精地圖與定位</td>
+                                    <td class="p-3 border border-slate-100">Wayve 主張不依賴高精地圖</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium">代表硬體</td>
+                                    <td class="p-3 border border-slate-100">NVIDIA Thor 1,000+ TOPS；Hyperion 14 相機 / 9 雷達 / 1 光達 / 12 超音波（雙 Thor）</td>
+                                    <td class="p-3 border border-slate-100">Tesla FSD HW4 ≈ 200 TOPS，8–11 相機</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="p-3 border border-slate-100 font-medium">優勢</td>
+                                    <td class="p-3 border border-slate-100">惡劣天候 / 夜間冗餘、安全裕度高</td>
+                                    <td class="p-3 border border-slate-100">硬體成本低、可大規模量產、資料飛輪</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium">挑戰</td>
+                                    <td class="p-3 border border-slate-100">感測器與建圖成本高</td>
+                                    <td class="p-3 border border-slate-100">長尾場景與監管驗證難度高</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-slate-700 mt-4">降本趨勢：Waymo 第六代 Driver 的感測器組成</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        即使是光達陣營，也在積極降本。Waymo 第六代 Driver 將感測器精簡為 <strong>13 顆相機、4 顆光達、6 顆雷達</strong>，在維持安全冗餘的同時壓低硬體成本，為規模化鋪路。
+                    </p>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="sensorChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖二：Waymo 第六代 Driver 感測器組成（共 23 顆）。</p>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">三、</span>主要玩家與競爭格局
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        競爭格局呈現「美中雙雄領跑、中國梯隊全球擴張、新進者重塑賽道」的態勢。下表整理截至 2026 年中各主要玩家的定位與進展。
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">玩家</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">技術路線</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">進展與定位（截至 2026 中）</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium text-teal-700">Waymo（Alphabet）</td>
+                                    <td class="p-3 border border-slate-100">光達融合 L4</td>
+                                    <td class="p-3 border border-slate-100">西方規模化標竿，10 城、每週 50 萬+ 趟、累積 1.7 億+ 英里</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="p-3 border border-slate-100 font-medium text-sky-700">百度 蘿蔔快跑</td>
+                                    <td class="p-3 border border-slate-100">光達融合 L4</td>
+                                    <td class="p-3 border border-slate-100">載客量全球冠軍（1,100 萬+ 趟），武漢宣稱單車獲利，RT6 整車成本約降 50%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium">Tesla Robotaxi</td>
+                                    <td class="p-3 border border-slate-100">純視覺端對端</td>
+                                    <td class="p-3 border border-slate-100">2025 年 6 月於奧斯汀邀請制商轉，4.20 美元統一票價、車內配安全員</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="p-3 border border-slate-100 font-medium">Pony.ai 小馬智行</td>
+                                    <td class="p-3 border border-slate-100">光達融合 L4</td>
+                                    <td class="p-3 border border-slate-100">中國一線城市營運，取得杜拜試行許可，2026 年規劃無人商轉</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium">WeRide 文遠知行</td>
+                                    <td class="p-3 border border-slate-100">光達融合 L4</td>
+                                    <td class="p-3 border border-slate-100">阿布達比首個全無人測試，持 UAE 首張全國級自駕牌照</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="p-3 border border-slate-100 font-medium">Wayve</td>
+                                    <td class="p-3 border border-slate-100">端對端 AI（無高精地圖）</td>
+                                    <td class="p-3 border border-slate-100">與 Uber、Nissan 合作，規劃 2026 年底東京試營運</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border border-slate-100 font-medium text-slate-500">Cruise（GM）</td>
+                                    <td class="p-3 border border-slate-100">光達融合</td>
+                                    <td class="p-3 border border-slate-100">2023 年舊金山事故後業務重挫，GM 已撤出自駕計程車開發</td>
+                                </tr>
+                                <tr class="bg-slate-50/50">
+                                    <td class="p-3 border border-slate-100 font-medium text-slate-500">Zoox（Amazon）、Motional、滴滴、Mobileye</td>
+                                    <td class="p-3 border border-slate-100">多為光達融合</td>
+                                    <td class="p-3 border border-slate-100">持續測試與區域試點；本報告之高信度查證未涵蓋其最新規模（詳見待答問題）</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-400">註：Cruise、Zoox、Motional、滴滴、Mobileye 之最新部署規模未在本次對抗式驗證範圍內，相關描述為公開常識性背景，引用時請另行查證。</p>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">四、</span>區域市場與法規環境
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        自駕計程車的落地高度依賴在地法規。各區域進度與監管框架差異顯著，形成「美中主場、中東快速開放、日歐接棒」的全球版圖。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                            <p class="font-semibold text-slate-800">🇺🇸 美國</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">Waymo 主導，10 城規模化商轉；Tesla 於德州奧斯汀邀請制起步。各州法規不一，加州 CPUC / DMV 與聯邦 NHTSA 共同監管。</p>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                            <p class="font-semibold text-slate-800">🇨🇳 中國</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">百度、Pony.ai、WeRide 形成本土梯隊。武漢、北京、廣州等示範區開放無人商轉，成本與票價遠低於美國。</p>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                            <p class="font-semibold text-slate-800">🇦🇪 中東（杜拜 / 阿布達比）</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">快速崛起的部署樞紐。WeRide 於 2025 第二季在阿布達比啟動全無人測試（區域首例）並持 UAE 首張全國牌照；杜拜 RTA 於 2025 年 9 月核發 Pony.ai 試行許可，規劃 2026 年無人商轉。</p>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+                            <p class="font-semibold text-slate-800">🇯🇵 日本</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">下一個前沿。Wayve、Uber 與 Nissan 規劃 2026 年底於東京試營運，採用搭載 Wayve AI Driver 的 Nissan LEAF，初期車內配安全員。</p>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100 md:col-span-2">
+                            <p class="font-semibold text-slate-800">🇪🇺 歐洲</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">監管相對審慎、跨國框架仍在演進，民眾接受度分歧。2026 年初多家業者宣布進軍歐洲試點，但全面無人商轉的法規路徑尚未明朗（屬本報告待答問題之一）。</p>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto mt-3">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">區域</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">領先業者</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">商轉階段（2026 中）</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100">美國</td><td class="p-3 border border-slate-100">Waymo、Tesla</td><td class="p-3 border border-slate-100">多城規模商轉 / 邀請制</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100">中國</td><td class="p-3 border border-slate-100">百度、Pony.ai、WeRide</td><td class="p-3 border border-slate-100">示範區無人商轉</td></tr>
+                                <tr><td class="p-3 border border-slate-100">中東</td><td class="p-3 border border-slate-100">WeRide、Pony.ai</td><td class="p-3 border border-slate-100">全無人測試 → 2026 商轉</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100">日本</td><td class="p-3 border border-slate-100">Wayve / Uber / Nissan</td><td class="p-3 border border-slate-100">2026 年底試營運（規劃）</td></tr>
+                                <tr><td class="p-3 border border-slate-100">歐洲</td><td class="p-3 border border-slate-100">多家業者</td><td class="p-3 border border-slate-100">早期試點 / 法規演進中</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">五、</span>商業模式與單位經濟
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        規模化不等於獲利。<strong>單位經濟（每英里成本）</strong>仍是產業最關鍵的挑戰。截至 2025 年，美國 Robotaxi 服務仍處於虧損營運：每英里成本約 <strong>7–9 美元</strong>，遠高於私家車的約 1 美元。麥肯錫（McKinsey）預估，美國要到 <strong>2035 年</strong>才可能將每英里成本降至 2 美元以下。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        相較之下，中國的成本結構顯著較低。根據 ARK Invest 2025 年報告，中國每英里成本約 <strong>0.35 美元</strong>，僅約美國（約 2 美元基準）的零頭，這也是 Apollo Go 能較早宣稱單車獲利的結構性原因之一——惟此獲利為未經審計、且高度依賴中國較低的人力與整車成本及可能的補貼。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖三：每英里成本對比（美元）。美國現況取 7–9 區間中值；數據為分析機構估值，非經審計。</p>
+
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">💰 獲利方程式</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            獲利取決於四個變數：<strong>整車與感測器成本</strong>（百度 RT6 宣稱降 50%、Waymo 第六代精簡感測器）、<strong>車隊利用率</strong>（每車每日有效載客時數）、<strong>遠端遙控與營運人力</strong>（仍是隱性成本），以及<strong>票價與補貼</strong>。規模擴張攤平固定研發與建圖成本，是通往獲利的主要槓桿。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">六、</span>安全紀錄與社會接受度
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        安全是社會接受度與監管許可的核心。Waymo 公布其跨越 <strong>1.7 億</strong>全自駕英里的自報安全數據，相較人類駕駛：
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5 text-center">
+                            <p class="text-3xl font-bold text-teal-700 stat-num">−92%</p>
+                            <p class="text-xs text-slate-500 mt-1">嚴重 / 致命傷害事故<br>（少 35 件）</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5 text-center">
+                            <p class="text-3xl font-bold text-teal-700 stat-num">−83%</p>
+                            <p class="text-xs text-slate-500 mt-1">氣囊彈出事故<br>（少 230 件）</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5 text-center">
+                            <p class="text-3xl font-bold text-teal-700 stat-num">−82%</p>
+                            <p class="text-xs text-slate-500 mt-1">任何傷害事故<br>（少 544 件）</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        獨立再保業者 Swiss Re 的分析亦佐證了「人身傷害理賠減少 92%」此一數字。不過須強調：這些百分比為 <strong>Waymo 自行建構之人類駕駛基準</strong>、未經同儕審查，應以審慎角度解讀。
+                    </p>
+                    <div class="bg-rose-50 border border-rose-100 rounded-xl p-5">
+                        <p class="font-semibold text-rose-800 flex items-center gap-2">⚠️ 信任的脆弱性：Cruise 案例</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            社會信任可能因單一事件崩解。2023 年 Cruise 在舊金山發生行人拖行事故後，營運許可遭吊銷、業務重挫，最終 GM 撤出自駕計程車開發。此案例顯示：監管許可與公眾接受度高度敏感，跨業者標準化的事故通報機制仍付之闕如，是產業亟待補強的治理缺口。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-teal-600">七、</span>挑戰與 2026–2030 展望
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <span class="text-teal-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>通往獲利之路</strong>：規模已先於獲利到來。美國業者的盈利時程與路徑、以及 Apollo Go 武漢獲利對中國低成本與補貼的依賴程度，仍是最大未知數。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-teal-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>獨立安全驗證</strong>：缺乏跨業者標準化的事故通報；Tesla、Apollo Go 等的非廠商獨立安全紀錄仍待建立。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-teal-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>法規碎片化</strong>：歐洲及其他市場的全無人商轉框架尚未成形，跨區複製受限於在地審批。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-teal-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>技術路線收斂</strong>：光達降本與純視覺端對端 AI 能力提升將持續對撞，最終商業勝負取決於「安全裕度 × 單位成本」的平衡點。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-teal-600 to-sky-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">2026–2030 展望</p>
+                        <p class="text-teal-50 text-sm mt-2 leading-relaxed">
+                            自駕計程車已通過「能不能做到」的技術門檻，進入「能否規模化獲利、能否取得社會與法規信任」的商業與治理階段。未來五年，美中雙雄將持續以城市為單位擴張，中東成為快速開放的試驗場，日本與歐洲接棒。全球市場上看 2030 年逾 250 億美元、2035 年逼近 4,000 億美元——但這條曲線能否兌現，取決於單位經濟與公眾信任這兩道真正的關卡。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-teal-400">八、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，需 2/3 反駁始淘汰）。標註說明資料性質，部分頭條數字為公司自報或機構估值。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://waymo.com/blog/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[Waymo 官方部落格] 載客量、里程與城市數（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog</span>
+                        </a>
+                        <a href="https://waymo.com/safety/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[Waymo Safety] 自報安全數據與里程（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/safety</span>
+                        </a>
+                        <a href="https://restofworld.org/2025/robotaxi-waymo-apollo-go/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[Rest of World] Waymo vs Apollo Go 比較與每英里成本</p>
+                            <span class="text-slate-500 hover:underline break-all">restofworld.org/2025/robotaxi-waymo-apollo-go</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Robotaxi" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[Wikipedia] Robotaxi：載客數、Tesla 奧斯汀、單位經濟</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Robotaxi</span>
+                        </a>
+                        <a href="https://www.cnbc.com/2025/11/20/global-robotaxi-race-heats-up-between-us-and-chinese-rivals.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[CNBC] 美中競賽、高盛市場規模、武漢獲利</p>
+                            <span class="text-slate-500 hover:underline break-all">cnbc.com/2025/11/20/global-robotaxi-race-heats-up...</span>
+                        </a>
+                        <a href="https://www.nvidia.com/en-us/solutions/autonomous-vehicles/in-vehicle-computing/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[NVIDIA] DRIVE Thor / Hyperion 規格（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">nvidia.com/.../autonomous-vehicles/in-vehicle-computing</span>
+                        </a>
+                        <a href="https://technews.tw/2024/08/20/meet-the-6th-generation-waymo-driver/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[科技新報] Waymo 第六代 Driver 感測器組成</p>
+                            <span class="text-slate-500 hover:underline break-all">technews.tw/2024/08/20/meet-the-6th-generation-waymo-driver</span>
+                        </a>
+                        <a href="https://ts2.tech/en/self-driving-supercomputer-showdown-nvidia-drive-thor-vs-tesla-fsd-hardware-4-vs-qualcomm-snapdragon-ride-flex/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[TS2] Thor vs Tesla HW4 vs Snapdragon 算力對比</p>
+                            <span class="text-slate-500 hover:underline break-all">ts2.tech/.../nvidia-drive-thor-vs-tesla-fsd-hardware-4...</span>
+                        </a>
+                        <a href="https://www.weride.ai/posts/wati17fk5o245tps1iikdj5y" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[WeRide] 阿布達比全無人測試與 UAE 牌照（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">weride.ai/posts</span>
+                        </a>
+                        <a href="https://www.prnewswire.com/news-releases/ponyai-secures-robotaxi-testing-permit-in-dubai-accelerating-middle-east-deployment-302568182.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[PR Newswire] Pony.ai 杜拜試行許可（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">prnewswire.com/.../ponyai-secures-robotaxi-testing-permit-in-dubai</span>
+                        </a>
+                        <a href="https://wayve.ai/press/wayve-nissan-uber-robotaxi-collaboration/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[Wayve] 與 Uber、Nissan 東京 2026 試營運（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">wayve.ai/press/wayve-nissan-uber-robotaxi-collaboration</span>
+                        </a>
+                        <a href="https://cnevpost.com/2026/04/20/pony-ai-deploys-driverless-robotaxis-trials-dubai/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[CnEVPost] Pony.ai 杜拜無人試行部署</p>
+                            <span class="text-slate-500 hover:underline break-all">cnevpost.com/2026/04/20/pony-ai-deploys-driverless-robotaxis-trials-dubai</span>
+                        </a>
+                        <a href="https://www.latimes.com/business/story/2025-10-27/chinese-robotaxis-race-waymo-to-take-driverless-cars-global" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[LA Times] 中國 Robotaxi 與 Waymo 的全球競賽</p>
+                            <span class="text-slate-500 hover:underline break-all">latimes.com/.../chinese-robotaxis-race-waymo...</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-teal-400 mb-1">[Wikipedia] Cruise：舊金山事故與業務變化</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 全球智慧交通產業研究 · 自駕計程車（Robotaxi）深度研究報告</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為各公司自報或機構估值、且為 2025 年底至 2026 年中之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ScrollSpy Navigation Highlight
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // CHART 1: Compute platform TOPS comparison
+            new Chart(document.getElementById('computeChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Tesla FSD HW4 (估)', 'NVIDIA Orin', 'NVIDIA Thor', '雙 Thor (外推)'],
+                    datasets: [{
+                        label: 'INT8 TOPS',
+                        data: [200, 254, 1000, 2000],
+                        backgroundColor: ['#94a3b8', '#6366f1', '#0ea5e9', '#0f766e'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'INT8 TOPS' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 2: Waymo 6th-gen sensor composition (doughnut)
+            new Chart(document.getElementById('sensorChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['相機 (13)', '雷達 (6)', '光達 (4)'],
+                    datasets: [{
+                        data: [13, 6, 4],
+                        backgroundColor: ['#0ea5e9', '#6366f1', '#0f766e'],
+                        borderWidth: 0, hoverOffset: 12
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { padding: 15, font: { size: 12 } } } },
+                    cutout: '65%'
+                }
+            });
+
+            // CHART 3: Cost per mile comparison
+            new Chart(document.getElementById('costChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['中國 Robotaxi', '私家車', '美國 2035 目標', '美國 Robotaxi 現況'],
+                    datasets: [{
+                        label: '每英里成本 (美元)',
+                        data: [0.35, 1, 2, 8],
+                        backgroundColor: ['#0f766e', '#10b981', '#0ea5e9', '#f59e0b'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'USD / 英里' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
