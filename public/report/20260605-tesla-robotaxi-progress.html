@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Robotaxi 當前進展研究報告 ｜ 2026</title>
+    <meta name="description" content="Tesla Robotaxi 當前進展深度研究（2026 年中）：奧斯汀商轉與擴張、車隊規模、FSD 純視覺架構、Cybercab 量產、與 Waymo 規模落差、NHTSA 調查與監管阻力、2026–2027 展望與風險，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #b91c1c;
+            border-left: 4px solid #b91c1c;
+            background-color: #fef2f2;
+            font-weight: 600;
+        }
+        .chart-container { position: relative; width: 100%; height: 340px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+        .tl-dot::before { content: ""; position: absolute; left: -29px; top: 4px; width: 12px; height: 12px; border-radius: 9999px; background: #e11d48; box-shadow: 0 0 0 4px #fee2e2; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-red-500/10 text-red-400 border border-red-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">單一玩家 · 進展追蹤</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">Tesla Robotaxi 當前進展研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">純視覺端對端的豪賭——從奧斯汀邀請制到 Cybercab 量產，規模、安全與監管的三重考驗（截至 2026 年中）</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 6 月</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/report/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-red-600 transition-colors">← 返回報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、商業化時間軸</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、車隊規模與營運現況</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、技術架構：純視覺賭注</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、Cybercab 專用車與量產</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、與 Waymo 的規模落差</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、安全紀錄與監管阻力</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、2026–2027 展望與風險</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-red-600 font-medium">八、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        Tesla 於 2025 年 6 月在德州奧斯汀以邀請制推出 Robotaxi 服務，2025 年 11 月轉為全面商業營運，並於 2026 年 1 月起<strong class="text-red-300">移除車內安全監控員</strong>（改以跟隨「護衛車」chase car 監看），同年 4 月將無監督服務擴張至達拉斯與休士頓。然而，截至 2026 年中，Tesla 的營運車隊僅約 <strong class="text-white">25 輛</strong>、橫跨三座城市，距離馬斯克宣稱的 500 輛目標仍遠——相較之下，Waymo 已有約 <strong class="text-white">3,700 輛</strong>、橫跨 10 個都會區、每週 50 萬趟。Tesla 押注<strong class="text-red-300">純視覺端對端 AI</strong>（無光達）與專用無方向盤車型 <strong class="text-white">Cybercab</strong>（2026 年 4 月於德州廠進入量產）以「製造規模」實現彎道超車，但同時面臨 NHTSA 升級調查、加州無營運牌照、以及多起奧斯汀事故的監管與安全壓力。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-red-400 stat-num">~25 輛</p>
+                            <p class="text-xs text-slate-400 mt-1">營運車隊（vs 500 目標）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-sky-400 stat-num">3 城</p>
+                            <p class="text-xs text-slate-400 mt-1">無監督營運（Austin/Dallas/Houston）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">&lt;$30,000</p>
+                            <p class="text-xs text-slate-400 mt-1">Cybercab 目標成本</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-rose-400 stat-num">EA26002</p>
+                            <p class="text-xs text-slate-400 mt-1">NHTSA 升級調查（涉 320 萬車）</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：Tesla 的每週/累積載客趟次、營運時段、HW4 算力、AI5/HW5 與 teleoperation 具體規模未獲可靠來源證實；多項較高的車隊數字與「每英里 $0.18–0.20」獲利目標在查證中遭反駁，已排除。Waymo 車隊數字（約 3,000–3,700）來源仍有出入。本報告為 2026 年中之快照。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">一、</span>商業化時間軸
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Tesla 的 Robotaxi 採「<strong>小範圍起步、快速去除人類監督、再橫向複製城市</strong>」的策略。以下為截至 2026 年中經查證的關鍵里程碑。
+                    </p>
+                    <div class="relative border-l-2 border-slate-100 pl-8 space-y-7 ml-2">
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-red-600 mono">2025 / 06 / 22</p>
+                            <p class="font-semibold text-slate-800 mt-1">奧斯汀邀請制上線</p>
+                            <p class="text-slate-600 text-sm mt-1">於德州奧斯汀以邀請制推出，採 <strong>$4.20 統一票價</strong>、限定 geofence 範圍，駕駛座無人、但<strong>前座配置安全監控員</strong>。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-red-600 mono">2025 / 11 / 18</p>
+                            <p class="font-semibold text-slate-800 mt-1">奧斯汀轉為全面商業營運</p>
+                            <p class="text-slate-600 text-sm mt-1">從邀請制擴大為對外開放的商業服務（此里程碑來源間略有出入，2-1 通過驗證）。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-red-600 mono">2026 / 01 / 22 前後</p>
+                            <p class="font-semibold text-slate-800 mt-1">移除車內安全監控員</p>
+                            <p class="text-slate-600 text-sm mt-1">馬斯克宣布在部分奧斯汀車輛移除前座監控員，改由<strong>跟隨護衛車（chase car）</strong>在後監看，邁向「真無人」。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-red-600 mono">2026 / 04 / 18</p>
+                            <p class="font-semibold text-slate-800 mt-1">擴張至達拉斯、休士頓（無監督）</p>
+                            <p class="text-slate-600 text-sm mt-1">將無監督 Robotaxi 服務複製到德州另兩座城市。舊金山灣區則因加州法規，仍須配置安全駕駛。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-red-600 mono">2026 上半年（規劃）</p>
+                            <p class="font-semibold text-slate-800 mt-1">宣布擴張候選城市</p>
+                            <p class="text-slate-600 text-sm mt-1">對外宣布鳳凰城、邁阿密、奧蘭多、坦帕、拉斯維加斯等擴張計畫（多屬規劃 / 待監管）。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">二、</span>車隊規模與營運現況
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        擴張的「城市數」亮眼，但<strong>車隊「密度」極低</strong>是 Tesla 現階段最關鍵的現實。截至 2026 年中，經查證的營運車隊僅約 <strong>25 輛</strong>、分布於三座城市，遠低於馬斯克所稱的 500 輛目標。2026 年 6 月初雖宣布將營運範圍擴大至整個奧斯汀都會區，但實際投入車輛據報僅約 20 輛。
+                    </p>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">📉 「廣度有餘、深度不足」</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            Tesla 以極少車輛覆蓋大面積與多城市，象徵意義（證明可複製）大於營運意義（規模載客）。每週與累積載客趟次、營運時段等數字，目前<strong>缺乏可靠公開來源證實</strong>；多筆較高的車隊估計（如 135 輛、奧斯汀 42 輛＋灣區 130 輛、合計約 200 輛）在本研究的對抗式查證中均遭反駁。
+                        </p>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">指標</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">現況（2026 中）</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">備註</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">營運車隊</td><td class="p-3 border border-slate-100">約 25 輛</td><td class="p-3 border border-slate-100">vs 500 輛目標；數字隨擴張變動</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">無監督城市</td><td class="p-3 border border-slate-100">奧斯汀、達拉斯、休士頓</td><td class="p-3 border border-slate-100">皆位於德州</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">需安全駕駛</td><td class="p-3 border border-slate-100">舊金山灣區</td><td class="p-3 border border-slate-100">受加州法規限制</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">監督方式</td><td class="p-3 border border-slate-100">護衛車跟隨</td><td class="p-3 border border-slate-100">2026/01 起移除前座監控員</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">載客趟次</td><td class="p-3 border border-slate-100">未證實</td><td class="p-3 border border-slate-100">無可靠公開數據</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">三、</span>技術架構：純視覺的豪賭
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Tesla 的核心差異化在於<strong>純視覺（Vision-only）端對端神經網路</strong>：以 FSD（Full Self-Driving）軟體、僅靠相機感知，<strong>不使用光達（LiDAR）</strong>，主張以模仿人類駕駛的方式達成自駕，並可隨全球數百萬輛量產車的資料飛輪持續迭代。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        這與光達陣營形成鮮明對照。以 Waymo 為例，其採用<strong>自研光達</strong>（360 度、感測距離約 300 公尺），並宣稱光達成本相較 2017 年的約 7.5 萬美元已下降約 <strong>90%</strong>，藉多重感測器冗餘換取安全裕度。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-red-50 border border-red-100 rounded-xl p-5">
+                            <p class="font-semibold text-red-800">Tesla：純視覺端對端</p>
+                            <ul class="text-slate-600 text-sm mt-2 space-y-1 list-disc list-inside">
+                                <li>僅相機，無光達</li>
+                                <li>硬體成本低、可大規模量產</li>
+                                <li>全球車隊資料飛輪</li>
+                                <li>長尾場景與監管驗證為挑戰</li>
+                            </ul>
+                        </div>
+                        <div class="bg-sky-50 border border-sky-100 rounded-xl p-5">
+                            <p class="font-semibold text-sky-800">Waymo：多感測器光達融合</p>
+                            <ul class="text-slate-600 text-sm mt-2 space-y-1 list-disc list-inside">
+                                <li>相機＋光達＋雷達冗餘</li>
+                                <li>360°、約 300m 感測距離</li>
+                                <li>光達成本較 2017 年降約 90%</li>
+                                <li>感測與建圖成本較高</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：Tesla HW4 算力（坊間估約 200 TOPS）、AI5/HW5 進度與 teleoperation（遠端遙控）的具體規模，未獲本研究可靠來源證實，故不於此列出數字。</p>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">四、</span>Cybercab 專用車與量產
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Tesla 的長期賭注是專為自駕設計的 <strong>Cybercab</strong>。它於 2024 年 10 月 10 日在加州 Burbank 的「We, Robot」活動發表，是一款<strong>雙座、無方向盤、無踏板</strong>的純自駕車型。Tesla 押注「以汽車製造的規模與成本優勢」反超對手——這正是其相對 Waymo 改裝車隊的核心論述。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center"><p class="text-xl font-bold text-slate-800">2 座</p><p class="text-xs text-slate-500 mt-1">無方向盤 / 無踏板</p></div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center"><p class="text-xl font-bold text-slate-800">35 kWh</p><p class="text-xs text-slate-500 mt-1">電池，續航約 200 英里</p></div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center"><p class="text-xl font-bold text-slate-800">&lt;$30,000</p><p class="text-xs text-slate-500 mt-1">目標售價（馬斯克）</p></div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center"><p class="text-xl font-bold text-slate-800">2026 / 04</p><p class="text-xs text-slate-500 mt-1">德州廠量產（規劃）</p></div>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        生產時程上：首輛無方向盤 Cybercab 約於 <strong>2026 年 2 月 17 日</strong>於德州 Giga Texas 廠下線，量產（volume production）目標為 <strong>2026 年 4 月</strong>。不過須留意：首車下線早於完整自駕能力與法規核准之前，量產到「可商業載客」之間仍有落差。
+                    </p>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">⚠️ 被反駁的數字</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            坊間流傳的「Cybercab 消費者版 2027 年發售」「車隊每英里營運成本 $0.18–0.20」等說法，在本研究查證中<strong>未獲足夠佐證而遭反駁</strong>，故不採用。請以 Tesla 官方後續揭露為準。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">五、</span>與 Waymo 的規模落差
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        以「當前營運規模」衡量，Tesla 仍大幅落後 Waymo。截至 2026 年 3 月，Waymo 約有 <strong>3,700 輛</strong> Robotaxi（部分來源為約 3,000 輛）、橫跨 <strong>10 個</strong>都會區、每週約 <strong>50 萬</strong>趟付費載客；Tesla 則約 25 輛、三座城市、載客量未公開。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="fleetChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：營運車隊規模對比（輛）。Waymo 數字來源間有 3,000–3,700 之出入，此處取約 3,700；Tesla 約 25。</p>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                        <p class="font-semibold text-slate-800 flex items-center gap-2">🏭 兩種賭注</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            Waymo 走「<strong>先把自駕做到極致、再擴規模</strong>」；Tesla 走「<strong>先把車做到極便宜可量產、再用軟體迭代補齊自駕</strong>」。Tesla 的論述是：一旦 FSD 與 Cybercab 量產成立，製造規模將快速拉開車隊數量差距。但這完全取決於 FSD 能否取得監管與安全上的「無監督」核准——目前尚未實現。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">六、</span>安全紀錄與監管阻力
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        安全與監管是 Tesla Robotaxi 最大的外部變數。自 2025 年 6 月上線以來，奧斯汀已累計 <strong>14 起</strong>事故（含兩起輕傷、一起與公車相撞）；其中 2025 年 7 月與 10 月各有一起造成輕傷。
+                    </p>
+                    <div class="bg-rose-50 border border-rose-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-rose-800 flex items-center gap-2">🔍 NHTSA 升級調查：EA26002</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            美國國家公路交通安全管理局（NHTSA）自 2025 年 6 月起關注奧斯汀的異常駕駛行為，並於 <strong>2026 年 3 月 19 日將 FSD「能見度」調查升級為工程分析 EA26002</strong>，涉及約 <strong>320 萬輛</strong>車、九起事故（含一起致命撞擊）。
+                        </p>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🚫 加州：無營運牌照</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">Tesla 在加州<strong>尚未取得</strong>無人自駕計程車營運牌照，灣區服務仍須配置安全駕駛。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">📋 聯邦：FMVSS 限制</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">聯邦機動車安全標準（FMVSS）仍要求車輛具備人工操控裝置，Cybercab 尚未取得豁免，影響無方向盤車型上路。</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：將 Tesla 事故率與人類駕駛直接比較的某些說法（如「事故頻率約為人類四倍」）因里程基數與方法學爭議，在查證中遭反駁，故未採用。</p>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-red-600">七、</span>2026–2027 展望與風險
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <span class="text-red-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>監管核准是第一道關卡</strong>：NHTSA 的 EA26002 工程分析結果、FMVSS 豁免、以及加州營運牌照，將決定 Tesla 能否真正大規模「去人化」與跨州擴張。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-red-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>規模兌現的時間差</strong>：Cybercab 量產與「可商業無監督載客」之間存在落差；車隊從約 25 輛拉升到具經濟規模，需要 FSD 安全表現與監管同步到位。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-red-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>安全信任的脆弱性</strong>：如同 Cruise 前車之鑑，單一重大事故即可能逆轉監管與輿論；護衛車監看雖屬過渡，但也凸顯系統尚未完全獨立。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-red-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>時間表可信度</strong>：馬斯克歷來自駕時程多次延後，市場對「2026 量產、快速擴張」的承諾將以實際載客數據檢驗。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">結論</p>
+                        <p class="text-rose-50 text-sm mt-2 leading-relaxed">
+                            Tesla 已從「示範」跨入「真無人商轉」，並握有純視覺低成本與 Cybercab 量產兩張長期王牌；但就<strong>當前營運規模</strong>而言，仍遠落後 Waymo。未來 12–18 個月的勝負手，不在於再多開幾座城市，而在於<strong>能否以可驗證的安全紀錄換取監管的無監督核准、並讓 Cybercab 真正量產載客</strong>。在此之前，Tesla Robotaxi 的故事仍是「潛力巨大、但尚待證實」。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-red-400">八、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，需 2/3 反駁始淘汰）。本主題部分數字為單一車隊追蹤站或科技媒體報導，數值波動快，引用前請以官方與主流媒體最新揭露為準。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://en.wikipedia.org/wiki/Tesla_Robotaxi" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Wikipedia] Tesla Robotaxi：時間軸與營運</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Tesla_Robotaxi</span>
+                        </a>
+                        <a href="https://electrek.co/guides/tesla-robotaxi/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Electrek] Tesla Robotaxi 指南與進展彙整</p>
+                            <span class="text-slate-500 hover:underline break-all">electrek.co/guides/tesla-robotaxi</span>
+                        </a>
+                        <a href="https://electrek.co/2026/06/03/tesla-robotaxi-expands-entire-austin-metro-only-20-vehicles/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Electrek] 擴張至整個奧斯汀都會區，僅約 20 輛</p>
+                            <span class="text-slate-500 hover:underline break-all">electrek.co/2026/06/03/tesla-robotaxi-expands-entire-austin-metro...</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Tesla_Cybercab" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Wikipedia] Tesla Cybercab：發表與規格</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Tesla_Cybercab</span>
+                        </a>
+                        <a href="https://electrek.co/2026/02/17/tesla-rolls-first-steering-wheel-less-cybercab-unit-off-the-line-before-solving-autonomy/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Electrek] 首輛無方向盤 Cybercab 下線</p>
+                            <span class="text-slate-500 hover:underline break-all">electrek.co/2026/02/17/tesla-rolls-first-steering-wheel-less-cybercab...</span>
+                        </a>
+                        <a href="https://tesorb.com/cybercab-tracker/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Tesorb] Cybercab / Robotaxi 追蹤站</p>
+                            <span class="text-slate-500 hover:underline break-all">tesorb.com/cybercab-tracker</span>
+                        </a>
+                        <a href="https://www.cbsnews.com/news/tesla-robotaxi-austin-14-crashes-nhtsa/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[CBS News] 奧斯汀 14 起事故與 NHTSA 調查</p>
+                            <span class="text-slate-500 hover:underline break-all">cbsnews.com/news/tesla-robotaxi-austin-14-crashes-nhtsa</span>
+                        </a>
+                        <a href="https://www.theguardian.com/technology/2025/jun/24/tesla-robotaxi-investigation-us" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[The Guardian] NHTSA 對 Robotaxi 啟動調查</p>
+                            <span class="text-slate-500 hover:underline break-all">theguardian.com/.../tesla-robotaxi-investigation-us</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Waymo" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Wikipedia] Waymo：車隊、光達與規模對照</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Waymo</span>
+                        </a>
+                        <a href="https://spectrum.ieee.org/tesla-robotaxi-chinese-competitors" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[IEEE Spectrum] Tesla 與中國競爭者對比</p>
+                            <span class="text-slate-500 hover:underline break-all">spectrum.ieee.org/tesla-robotaxi-chinese-competitors</span>
+                        </a>
+                        <a href="https://sacra.com/research/waymo-at-355m-year/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[Sacra] Waymo 營運規模與營收分析</p>
+                            <span class="text-slate-500 hover:underline break-all">sacra.com/research/waymo-at-355m-year</span>
+                        </a>
+                        <a href="https://tradfi.multibankgroup.com/en/about/blog/inside-the-markets/driverless-taxi-battle-intensifies-is-tesla-catching-waymo-or-falling-behind" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-red-400 mb-1">[MultiBank] Tesla 追趕 Waymo？競爭分析</p>
+                            <span class="text-slate-500 hover:underline break-all">tradfi.multibankgroup.com/.../is-tesla-catching-waymo-or-falling-behind</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 自駕計程車產業研究 · Tesla Robotaxi 當前進展研究報告</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為媒體報導或追蹤站之快照、且為 2026 年中之狀態，數值波動快，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) link.classList.add('active');
+                });
+            });
+
+            // CHART: Fleet scale comparison
+            new Chart(document.getElementById('fleetChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Tesla Robotaxi', 'Waymo'],
+                    datasets: [{
+                        label: '營運車隊規模（輛）',
+                        data: [25, 3700],
+                        backgroundColor: ['#e11d48', '#0ea5e9'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x.toLocaleString() + ' 輛' } } },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '車隊規模（輛，約值）' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
