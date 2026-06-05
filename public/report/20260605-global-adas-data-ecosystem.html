@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球 ADAS 數據採集生態研究報告 ｜ 2026</title>
+    <meta name="description" content="全球 ADAS／自駕數據採集生態深度研究（2026）：數據飛輪、車隊眾包（Mobileye REM）、感測器資料量、冗餘與長尾、主動學習與自動標註、合成數據與世界模型（Waymo World Model、NVIDIA Cosmos）、市場規模、生態玩家、法規隱私與展望，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #4f46e5;
+            border-left: 4px solid #4f46e5;
+            background-color: #eef2ff;
+            font-weight: 600;
+        }
+        .chart-container { position: relative; width: 100%; height: 340px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+        .flow-step { position: relative; }
+        .flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); color: #c7d2fe; font-weight: 700; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">數據基礎建設 · 生態研究</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">全球 ADAS 數據採集生態研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">從車隊眾包到世界模型——驅動自駕 AI 的「數據飛輪」如何運轉（截至 2026 年）</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 6 月</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/report/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-indigo-600 transition-colors">← 返回報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、數據飛輪：生態總覽</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、數據從何而來</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、冗餘、長尾與主動學習</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、數據價值鏈與標註</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、合成數據與世界模型</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、市場規模與生態玩家</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、法規與隱私框架</a>
+                    <a href="#section8" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">八、趨勢與展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-indigo-600 font-medium">九、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        截至 2026 年，全球 ADAS／自駕的競爭核心已從「演算法」轉向「<strong class="text-indigo-300">數據飛輪</strong>」——誰能更便宜、更快地採集、篩選、標註與回灌資料，誰就能更快迭代。數據主力來自<strong class="text-white">量產車隊眾包</strong>：Mobileye REM 以數百萬輛 ADAS 車作為「採集代理」，每公里僅回傳約 <strong class="text-white">10KB</strong> 的語意地標即可建構並更新高精地圖。然而單車每日可生成約 <strong class="text-white">4TB+</strong> 感測器資料，其中絕大多數為冗餘（直線行駛），真正有價值的是稀少的「<strong class="text-indigo-300">長尾</strong>」安全關鍵案例。這催生了<strong class="text-white">主動學習</strong>（ActiveAD 僅用 30% 資料即達 SOTA）與 2024–2026 最大的躍進——<strong class="text-indigo-300">合成數據與世界模型</strong>：Waymo World Model（基於 DeepMind Genie 3）能生成相機＋光達輸出並模擬龍捲風、大象等罕見事件；NVIDIA 以 Cosmos 世界基礎模型系統性「製造」長尾資料。模擬里程已遠超實車里程。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-indigo-400 stat-num">~4TB+</p>
+                            <p class="text-xs text-slate-400 mt-1">單車每日資料量（量級）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-sky-400 stat-num">~10KB/km</p>
+                            <p class="text-xs text-slate-400 mt-1">Mobileye REM 回傳頻寬</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-violet-400 stat-num">數十億</p>
+                            <p class="text-xs text-slate-400 mt-1">Waymo 模擬里程（vs ~2 億實車）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">$152.6 億</p>
+                            <p class="text-xs text-slate-400 mt-1">2030 數據採集與標註市場</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：技術與規模數字（10KB/km、4TB/日、9,000 兆 token、數十億模擬英里）多為廠商自報、未經第三方審計；市場規模來自付費市調且口徑差異大。法規隱私一節為框架性概述（本次查證未產出可引用之確認數據，列為重大缺口）。部分主張（如某自動標註省 65%、某 AV 標註市場規模）在查證中遭反駁，已排除。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">一、</span>數據飛輪：生態總覽
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        自駕 AI 的進步是一個自我強化的循環：<strong>更多車輛上路 → 採集更多真實資料（尤其是失誤與接管事件）→ 篩選與標註 → 重新訓練模型 → 透過 OTA 回灌車隊 → 表現更好、吸引更多里程</strong>。這個「數據飛輪」決定了競爭速度，也是本報告的主軸。
+                    </p>
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-5">
+                        <p class="font-semibold text-indigo-800 mb-4">數據價值鏈（端到端）</p>
+                        <div class="flex flex-wrap items-center gap-x-7 gap-y-3 text-sm">
+                            <span class="flow-step font-medium text-slate-700">採集</span>
+                            <span class="flow-step font-medium text-slate-700">傳輸</span>
+                            <span class="flow-step font-medium text-slate-700">儲存</span>
+                            <span class="flow-step font-medium text-slate-700">篩選/挖掘</span>
+                            <span class="flow-step font-medium text-slate-700">標註</span>
+                            <span class="flow-step font-medium text-slate-700">訓練</span>
+                            <span class="flow-step font-medium text-slate-700">模擬驗證</span>
+                            <span class="font-medium text-indigo-700">OTA 回灌</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        2024–2026 年，飛輪的瓶頸已從「採集量」轉向「<strong>如何從海量冗餘中找出稀有的長尾、並以低成本製造更多長尾</strong>」——這正是主動學習、自動標註與合成數據／世界模型崛起的根本原因。
+                    </p>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">二、</span>數據從何而來：車隊眾包與感測器
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        資料來源大致分兩類：少量但高保真的<strong>專業採集車隊</strong>（配備昂貴 LiDAR、錄製原始感測資料），以及海量、低成本的<strong>量產車隊眾包</strong>。後者是規模化的關鍵。
+                    </p>
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-indigo-800 flex items-center gap-2">🛰️ 標竿：Mobileye REM（道路體驗管理）</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Mobileye 以<strong>數百萬輛</strong>搭載其 ADAS 的量產車作為「採集代理（harvesting agents）」，將資料回傳雲端、自動生成並持續更新高精地圖。其關鍵在於頻寬極省——演算法只上傳語意地標而非原始感測資料，<strong>每車每公里僅約 10KB</strong>，使「全球眾包建圖」在經濟上可行。
+                        </p>
+                    </div>
+                    <h3 class="text-lg font-semibold text-slate-700 mt-2">感測器與資料量級</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        一輛配備相機、雷達、光達、IMU/GPS 的自駕車，每日可生成約 <strong>4TB+（≈4,000GB）</strong>資料（此為廣被引用之量級估計；專業測試車甚至有 11–152 TB/日的估算）。實際數值高度取決於感測器配置與是否錄製原始串流，故重點不在精確值，而在於「<strong>擷取→傳輸→儲存→標註</strong>」整條鏈的龐大負荷與成本。
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">採集模式</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">特性</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">代表</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">量產車隊眾包</td><td class="p-3 border border-slate-100">數量龐大、低頻寬、語意化回傳；用於建圖與長尾挖掘</td><td class="p-3 border border-slate-100">Mobileye REM、Tesla 車隊學習／shadow mode</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">專業採集車隊</td><td class="p-3 border border-slate-100">高保真原始感測資料、成本高、覆蓋有限</td><td class="p-3 border border-slate-100">傳統高精地圖測繪車</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">合成生成</td><td class="p-3 border border-slate-100">以模擬／世界模型「製造」資料，尤利於罕見長尾</td><td class="p-3 border border-slate-100">NVIDIA Cosmos、Waymo World Model</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-400">註：Tesla shadow mode／fleet learning 雖為業界常引述的數據飛輪範例，但其可驗證的採集量級與機制本次未取得第一手或獨立佐證，故僅列為範例、不附具體數字。</p>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">三、</span>冗餘、長尾與主動學習
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        車隊採集的資料存在一個根本矛盾：<strong>絕大部分是冗餘的</strong>（例如在筆直道路上前行），<strong>只有極少數是安全關鍵的</strong>長尾案例。若全部標註，成本將失控。因此「<strong>選擇性採集與標註</strong>」成為核心能力。
+                    </p>
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-5">
+                        <p class="font-semibold text-indigo-800 flex items-center gap-2">🎯 主動學習（Active Learning）：以少勝多</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            研究方法 <strong>ActiveAD</strong>（面向規劃的端對端自駕主動學習，arXiv 2024/03）證明：僅使用 <strong>30% 的 nuScenes 資料</strong>，即可達到與當時 SOTA 端對端自駕方法相當的表現。換言之，聰明地「挑資料」比盲目地「堆資料」更有效率，可大幅削減標註需求。
+                        </p>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        圍繞此一洞見，業界發展出<strong>邊緣案例挖掘（edge case mining）</strong>、不確定性取樣、以及以「接管／急煞／異常」事件為觸發的選擇性上傳機制，讓有限的標註預算集中在最有價值的資料上。
+                    </p>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">四、</span>數據價值鏈與標註
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        資料採集只是起點，真正昂貴的是<strong>標註（labeling/annotation）</strong>。為了壓低成本與加速迭代，產業正從「人工標註」轉向「<strong>自動標註（auto-labeling）＋人工審核</strong>」與「<strong>4D 標註</strong>」（在時間維度上對多感測器序列進行一致標註）。
+                    </p>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">自動標註</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">以大模型預先標註、人工只做審核與修正，降低單位標註成本與週期。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">4D 標註</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">跨時間、跨感測器（相機＋光達＋雷達）的一致化標註，支援端對端與時序模型。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">主動學習回路</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">模型挑出「最不確定」樣本優先標註，形成資料→模型→挑樣本的閉環。</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：坊間流傳的具體自動標註效率數字（如某管線「省 65% 人工」）在本研究的對抗式查證中遭反駁，故不引用；自動標註的真實成本下降幅度仍缺乏可靠公開量化。</p>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">五、</span>合成數據與世界模型
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2024–2026 年最大的範式轉移，是用 <strong>合成數據（synthetic data）</strong>與<strong>世界模型（world model）</strong>來「製造」現實中難以規模化採集的長尾資料。模擬不再只是測試工具，更成為訓練資料的來源。
+                    </p>
+
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-indigo-800 flex items-center gap-2">🌐 Waymo World Model（建構於 DeepMind Genie 3）</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Waymo（2026/02）發表的世界模型建構於 Google DeepMind 的通用世界模型 <strong>Genie 3</strong>，將 2D 影片中的世界知識轉移為符合 Waymo 感測器套件的 <strong>3D 光達輸出</strong>，能生成<strong>相機＋光達多感測器</strong>輸出，並模擬<strong>龍捲風、與大象的偶遇</strong>等極罕見、現實中幾乎無法規模化採集的事件。
+                        </p>
+                    </div>
+
+                    <div class="bg-sky-50 border border-sky-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-sky-800 flex items-center gap-2">🟩 NVIDIA Cosmos 世界基礎模型家族</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            NVIDIA 的 <strong>Cosmos</strong>（CES 2025 發表）是 4–14B 參數的擴散＋自迴歸平台，生成「物理感知」影片以產生合成資料；NVIDIA 稱以 <strong>2,000 萬小時真實資料、9,000 兆 token</strong> 訓練。延伸的 <strong>Cosmos-Drive-Dreams</strong> 合成管線專為「製造罕見邊緣案例」設計；配合 Omniverse 神經重建與 <strong>AlpaSim</strong> 開源閉環模擬，可在數百萬虛擬英里上迭代。2026/05 更發布含 <strong>26.4 萬段、約 1,467 小時 4K</strong>（約 1.27 億幀、8.24TB）的全合成自駕資料集。
+                        </p>
+                    </div>
+
+                    <h3 class="text-lg font-semibold text-slate-700 mt-2">模擬里程已遠超實車里程</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Waymo 表示其 Driver 在虛擬世界已行駛<strong>數十億英里</strong>，遠超約 <strong>2 億</strong>真實全自駕英里——讓系統「在公共道路遭遇之前」就先掌握複雜長尾情境。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="milesChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：模擬 vs 實車里程（示意，對數尺度）。實車約 2 億英里為 Waymo 揭露值；模擬「數十億」為廠商陳述，此處以 20 億作示意下限。</p>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">六、</span>市場規模與生態玩家
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        廣義的<strong>「數據採集與標註」市場</strong>（跨產業）據市調估計 2025 年約 <strong>44.1 億美元</strong>、2026 年約 56.4 億美元，預計 <strong>2030 年達 152.6 億美元</strong>（CAGR 約 28%），且自動駕駛被列為主要成長動能。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖二：數據採集與標註市場規模（十億美元）。來源為付費市調、跨產業口徑，非自駕專屬。</p>
+
+                    <p class="text-slate-600 leading-relaxed mt-2">
+                        至於 <strong>ADAS 整體市場</strong>，各機構估計差異極大——CAGR 從約 7% 到 16% 不等，凸顯定義與口徑的不一致，引用單一數字須謹慎。
+                    </p>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="cagrChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖三：ADAS 市場 CAGR——不同市調機構估計差異（%）。</p>
+
+                    <h3 class="text-lg font-semibold text-slate-700 mt-2">生態玩家地圖</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">角色</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">代表玩家</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">在數據生態中的定位</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">眾包採集／建圖</td><td class="p-3 border border-slate-100">Mobileye、Tesla</td><td class="p-3 border border-slate-100">以量產車隊回傳資料、建構數據飛輪</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">運算與世界模型</td><td class="p-3 border border-slate-100">NVIDIA、Waymo（DeepMind）</td><td class="p-3 border border-slate-100">合成數據、模擬、世界基礎模型</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">晶片／平台</td><td class="p-3 border border-slate-100">NVIDIA、Mobileye、Qualcomm</td><td class="p-3 border border-slate-100">車端推論與資料管線硬體</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">Tier-1 供應商</td><td class="p-3 border border-slate-100">Bosch、Continental</td><td class="p-3 border border-slate-100">感測器與 ADAS 系統整合</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">數據標註／服務</td><td class="p-3 border border-slate-100">Scale AI、Appen 等</td><td class="p-3 border border-slate-100">標註、資料管理與品質</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-400">註：本表為定位地圖；各玩家在 ADAS 數據領域的市佔／營收／資料量等量化對比，本次未取得可驗證數據（列為待答問題）。</p>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">七、</span>法規與隱私框架
+                    </h2>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-4">
+                        <p class="text-amber-800 text-sm leading-relaxed">⚠️ <strong>研究缺口聲明</strong>：本節為框架性概述。本次對抗式查證<strong>未產出可引用的確認數據</strong>，以下內容屬公開已知的監管框架背景，具體條文與門檻請以官方法源為準（詳見參考來源）。</p>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed">
+                        數據生態最大的不確定性來自<strong>法規與隱私</strong>。車隊採集涉及大量影像與位置資料，跨境流動更觸及國家安全與測繪主權，主要框架包括：
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🇪🇺 歐盟 GDPR</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">EDPB 對「聯網車輛與行動相關應用之個資處理」發布指引，規範車內外影像與位置等個資的蒐集與處理。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🇨🇳 中國數據法規</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">《數據安全法》與《汽車數據安全管理若干規定》要求重要資料境內儲存、跨境傳輸須安全評估／認證。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🌐 資料在地化與跨境</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">多國要求資料在地化與跨境傳輸審查，直接影響全球車隊「集中訓練」的可行性與架構。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🗺️ 高精地圖測繪資質</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">部分國家（尤其中國）將高精地圖視為測繪行為，須具備測繪資質，形成在地化合作的門檻。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section8" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-600">八、</span>趨勢與展望
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <span class="text-indigo-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>從「採集」到「生成」</strong>：世界模型與合成數據將承擔越來越多長尾與安全關鍵場景的供給，模擬里程持續拉開與實車里程的差距。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-indigo-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>標註自動化</strong>：自動標註＋主動學習成為標配，人類角色轉向審核與長尾判讀；但真實成本下降幅度仍需更透明的公開數據。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-indigo-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>端對端與基礎模型</strong>：資料需求從「分模組標註」轉向「大規模序列資料」，推升對 4D 標註與大規模運算的需求。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-indigo-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>法規成為勝負手</strong>：資料在地化與跨境限制，可能迫使全球玩家走向「區域化數據飛輪」，地圖測繪資質則決定在地落地夥伴。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">結論</p>
+                        <p class="text-indigo-50 text-sm mt-2 leading-relaxed">
+                            自駕競爭的下半場，是<strong>數據基礎建設</strong>的競爭。贏家不必然是「採集最多」者，而是能以最低成本<strong>找出長尾、製造長尾、標註長尾並快速回灌</strong>的玩家。隨著世界模型把「資料」變成可程式化生成的資產，數據飛輪正從「靠里程累積」邁向「靠運算合成」——而真正的天花板，將是法規、隱私與運算成本。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-indigo-400">九、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，需 2/3 反駁始淘汰）。技術／規模數字多為廠商第一手揭露（未經第三方審計），市場規模為付費市調估計，引用前請查證原始來源。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://www.mobileye.com/technology/rem/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Mobileye] REM 道路體驗管理（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">mobileye.com/technology/rem</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Mobileye" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Wikipedia] Mobileye：REM 與 10KB/km 佐證</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Mobileye</span>
+                        </a>
+                        <a href="https://arxiv.org/abs/2403.02877" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[arXiv] ActiveAD：主動學習，30% 資料達 SOTA</p>
+                            <span class="text-slate-500 hover:underline break-all">arxiv.org/abs/2403.02877</span>
+                        </a>
+                        <a href="https://premioinc.com/pages/autonomous-vehicle-data-storage" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Premio] 單車每日 ~4TB 資料量</p>
+                            <span class="text-slate-500 hover:underline break-all">premioinc.com/pages/autonomous-vehicle-data-storage</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Waymo] Waymo World Model（一手，2026/02）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2026/02/the-waymo-world-model...</span>
+                        </a>
+                        <a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Google DeepMind] Genie 3 世界模型（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">deepmind.google/blog/genie-3-a-new-frontier-for-world-models</span>
+                        </a>
+                        <a href="https://blogs.nvidia.com/blog/cosmos-world-foundation-models/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[NVIDIA] Cosmos 世界基礎模型（一手，CES 2025）</p>
+                            <span class="text-slate-500 hover:underline break-all">blogs.nvidia.com/blog/cosmos-world-foundation-models</span>
+                        </a>
+                        <a href="https://arxiv.org/abs/2506.09042" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[arXiv] NVIDIA Cosmos-Drive-Dreams 合成管線</p>
+                            <span class="text-slate-500 hover:underline break-all">arxiv.org/abs/2506.09042</span>
+                        </a>
+                        <a href="https://developer.nvidia.com/drive/simulation" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[NVIDIA] DRIVE 模擬與 AlpaSim 閉環（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">developer.nvidia.com/drive/simulation</span>
+                        </a>
+                        <a href="https://huggingface.co/datasets/nvidia/PhysicalAI-WorldModel-Synthetic-Autonomous-Driving-Scenarios" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Hugging Face] NVIDIA 全合成自駕資料集（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">huggingface.co/datasets/nvidia/PhysicalAI-WorldModel...</span>
+                        </a>
+                        <a href="https://www.researchandmarkets.com/reports/5819900/data-collection-labeling-market-report" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[ResearchAndMarkets] 數據採集與標註市場規模</p>
+                            <span class="text-slate-500 hover:underline break-all">researchandmarkets.com/reports/5819900/data-collection-labeling...</span>
+                        </a>
+                        <a href="https://www.fortunebusinessinsights.com/industry-reports/adas-market-101897" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Fortune Business Insights] ADAS 市場 CAGR</p>
+                            <span class="text-slate-500 hover:underline break-all">fortunebusinessinsights.com/industry-reports/adas-market-101897</span>
+                        </a>
+                        <a href="https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-012020-processing-personal-data-context-connected_en" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[EDPB] 聯網車輛個資處理指引（GDPR，一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">edpb.europa.eu/.../processing-personal-data-context-connected</span>
+                        </a>
+                        <a href="https://www.china-briefing.com/news/china-cross-border-data-transfer-certification/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[China Briefing] 中國跨境資料傳輸與認證</p>
+                            <span class="text-slate-500 hover:underline break-all">china-briefing.com/news/china-cross-border-data-transfer-certification</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Scale_AI" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Wikipedia] Scale AI：數據標註服務商</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Scale_AI</span>
+                        </a>
+                        <a href="https://en.wikipedia.org/wiki/Appen_(company)" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-indigo-300 mb-1">[Wikipedia] Appen：數據標註服務商</p>
+                            <span class="text-slate-500 hover:underline break-all">en.wikipedia.org/wiki/Appen_(company)</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 自駕計程車產業研究 · 全球 ADAS 數據採集生態研究報告</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，技術數字多為廠商自報、市場規模為市調估計，且為 2026 年中之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) link.classList.add('active');
+                });
+            });
+
+            // CHART 1: simulated vs real miles (log scale)
+            new Chart(document.getElementById('milesChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['實車自駕里程（~2 億）', '模擬里程（數十億，示意）'],
+                    datasets: [{
+                        label: '里程（英里，對數尺度）',
+                        data: [200000000, 2000000000],
+                        backgroundColor: ['#0ea5e9', '#4f46e5'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => (c.parsed.x/100000000) + ' 億英里' } } },
+                    scales: {
+                        x: { type: 'logarithmic', grid: { color: '#f1f5f9' }, title: { display: true, text: '英里（對數尺度）' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 2: data collection & labeling market size
+            new Chart(document.getElementById('marketChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025', '2026', '2030 (預估)'],
+                    datasets: [{
+                        label: '市場規模（十億美元）',
+                        data: [4.41, 5.64, 15.26],
+                        backgroundColor: ['#a5b4fc', '#6366f1', '#4f46e5'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => '$' + c.parsed.y + 'B' } } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '十億美元 (USD B)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 3: ADAS CAGR estimates across firms
+            new Chart(document.getElementById('cagrChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['MarketsandMarkets', 'Precedence Research', 'Fortune Business Insights'],
+                    datasets: [{
+                        label: 'ADAS 市場 CAGR (%)',
+                        data: [7.1, 10.84, 16.10],
+                        backgroundColor: ['#94a3b8', '#818cf8', '#4f46e5'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + '%' } } },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'CAGR (%)' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
