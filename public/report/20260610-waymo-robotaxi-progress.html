@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waymo Robotaxi 當前進展研究報告 ｜ 2026</title>
+    <meta name="description" content="Waymo Robotaxi 當前進展深度研究（2026 年中）：2,000 萬趟載客、近 2 億英里、高速公路與五座新城擴張、東京倫敦國際化、第六代 Driver 與 Ojai 平台、World Model 模擬、安全紀錄與 Swiss Re 分析、160 億美元融資、挑戰與展望，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #0284c7;
+            border-left: 4px solid #0284c7;
+            background-color: #f0f9ff;
+            font-weight: 600;
+        }
+        .chart-container { position: relative; width: 100%; height: 340px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+        .tl-dot::before { content: ""; position: absolute; left: -29px; top: 4px; width: 12px; height: 12px; border-radius: 9999px; background: #0284c7; box-shadow: 0 0 0 4px #e0f2fe; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-sky-500/10 text-sky-300 border border-sky-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">單一玩家 · 進展追蹤</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">Waymo Robotaxi 當前進展研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">規模化領跑者的下一步——從 2,000 萬趟到高速公路、東京與倫敦，以及第六代 Driver 的降本豪賭（截至 2026 年中）</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 6 月</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/report/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-sky-600 transition-colors">← 返回報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、營運規模：里程與載客</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、2025–2026 擴張時間軸</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、國際化：倫敦與東京</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、第六代 Driver 與降本</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、World Model 與模擬</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、安全紀錄與第三方佐證</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、商業面與融資</a>
+                    <a href="#section8" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">八、挑戰與 2026–2027 展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-sky-600 font-medium">九、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        截至 2026 年中，Waymo 仍是全球規模最大的商業化 Robotaxi 營運商。2025 年底累積付費全自駕載客突破 <strong class="text-sky-300">2,000 萬趟</strong>（2025 年單年約 1,500 萬趟、為前一年三倍以上），至 2026 年 2 月全自駕里程已近 <strong class="text-white">2 億英里</strong>。2025 下半年的三記重拳：<strong class="text-sky-300">開放高速公路載客</strong>（灣區、鳳凰城、洛杉磯）、一口氣宣布<strong class="text-white">邁阿密、達拉斯、休士頓、聖安東尼奧、奧蘭多</strong>五座新城，以及啟動<strong class="text-sky-300">東京、倫敦</strong>等 20+ 城市的 2026 佈局。技術面以第六代 Waymo Driver（相機減半、感測器大幅降本）搭載新平台「Ojai」（Zeekr RT）上線，並發表建立於 DeepMind Genie 3 的 <strong class="text-white">Waymo World Model</strong>。2026 年 2 月完成 <strong class="text-sky-300">160 億美元</strong>融資以支撐車隊擴張。安全面，自報重傷以上事故減少 92%，並有 Swiss Re 理賠分析方向性佐證。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-sky-400 stat-num">2,000 萬+</p>
+                            <p class="text-xs text-slate-400 mt-1">累積付費載客趟次（2025 底）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-teal-400 stat-num">~2 億</p>
+                            <p class="text-xs text-slate-400 mt-1">全自駕英里（2026/02）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-indigo-400 stat-num">$160 億</p>
+                            <p class="text-xs text-slate-400 mt-1">2026/02 融資輪</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">−92%</p>
+                            <p class="text-xs text-slate-400 mt-1">重傷以上事故（自報）</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：載客、里程與安全數字多為 Waymo 官方公布、未經獨立審計（Swiss Re 研究為共同作者形式）；「2026 年 20+ 城市」官方措辭是「鋪設早期基礎」而非承諾全部開通。車隊總數、每週趟次、估值傳聞等未通過本輪驗證的數字一律未引用。數據截點為 2025/12–2026/02，實際值應已更高。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">一、</span>營運規模：里程與載客
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2025 年是 Waymo 規模化的引爆年：全年載客約 <strong>1,500 萬趟</strong>（較前一年成長三倍以上），累積突破 <strong>2,000 萬趟</strong>；自 2025 年春季起<strong>每月超過 100 萬趟</strong>。里程方面，2025 年 10 月達成 1 億英里全自駕里程，至 2026 年 2 月已<strong>近 2 億英里</strong>——成長曲線明顯加速。
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        其中「rider-only」（車上完全無人類駕駛）里程至 2025 年 12 月累積 <strong>1.707 億英里</strong>，由四大都會區貢獻：
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="milesCityChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：Waymo rider-only 里程城市分布（百萬英里，至 2025/12，總計 170.7M）。來源：Waymo Safety Impact Hub。</p>
+                    <div class="bg-sky-50 border border-sky-100 rounded-xl p-5">
+                        <p class="font-semibold text-sky-800 flex items-center gap-2">📈 規模意義</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            近 2 億英里的真實全自駕里程，是 Waymo 安全統計可信度的基礎，也是後進者短期內難以複製的資料資產。對照同期 Tesla Robotaxi 約 25 輛車隊（見本系列 Tesla 專題報告），Waymo 在「營運深度」上仍是斷層式領先。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">二、</span>2025–2026 擴張時間軸
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2025 下半年起，Waymo 的擴張從「多開城市」升級為「<strong>解鎖新場景</strong>」——高速公路、機場、跨都會走廊——並以「先無人營運、後開放乘客」的標準節奏複製城市。
+                    </p>
+                    <div class="relative border-l-2 border-slate-100 pl-8 space-y-7 ml-2">
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-sky-600">2025 / 10</p>
+                            <p class="font-semibold text-slate-800 mt-1">突破 1 億英里、1,000 萬趟付費載客</p>
+                            <p class="text-slate-600 text-sm mt-1">規模里程碑；同月車輛抵達倫敦展開地圖測繪。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-sky-600">2025 / 11 / 12</p>
+                            <p class="font-semibold text-slate-800 mt-1">開放高速公路載客＋延伸至聖荷西</p>
+                            <p class="text-slate-600 text-sm mt-1">灣區、鳳凰城、洛杉磯三大都會區漸進開放 freeway 行程；灣區服務沿半島延伸至聖荷西，含 <strong>SJC 機場</strong>路邊接送。計畫 2026 年擴及奧斯汀、亞特蘭大。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-sky-600">2025 / 11 / 18</p>
+                            <p class="font-semibold text-slate-800 mt-1">五座新城啟動全自駕營運</p>
+                            <p class="text-slate-600 text-sm mt-1">邁阿密當日啟動，達拉斯、休士頓、聖安東尼奧、奧蘭多數週內跟進；2026 年向乘客開放（2026/02 已證實四城向部分乘客開放）。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-sky-600">2025 / 12</p>
+                            <p class="font-semibold text-slate-800 mt-1">年度回顧：2,000 萬趟、20+ 城市佈局</p>
+                            <p class="text-slate-600 text-sm mt-1">宣布 2026 年將在超過 20 個新城市（含東京、倫敦）鋪設載客營運的早期基礎。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-sky-600">2026 / 02</p>
+                            <p class="font-semibold text-slate-800 mt-1">160 億美元融資＋第六代平台上線</p>
+                            <p class="text-slate-600 text-sm mt-1">完成 160 億美元融資輪以擴大車隊；第六代 Driver 於 Ojai 平台展開 rider-only 營運。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">三、</span>國際化：倫敦與東京
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2026 年是 Waymo 首度跨出美國的部署年。官方明確點名<strong>東京與倫敦</strong>為國際擴張目標，列入「20+ 新城市」佈局。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-sky-50 border border-sky-100 rounded-xl p-5">
+                            <p class="font-semibold text-sky-800">🇬🇧 倫敦：進度最具體</p>
+                            <ul class="text-slate-600 text-sm mt-2 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li>2025/10 車輛抵達倫敦展開地圖測繪（與車隊夥伴 Moove 合作、Jaguar I-PACE 車隊）</li>
+                                <li>2026/04 起在逾 100 平方英里範圍進行<strong>有安全員</strong>的自駕測試</li>
+                                <li>目標 2026 年（FT 報導指 Q4）提供無人駕駛載客</li>
+                                <li>在英國政府擬議的自駕試點方案下進行，獲運輸大臣公開確認</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🇯🇵 東京：列入 2026 佈局</p>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                東京與倫敦同列官方「2026 年 20+ 城市」國際名單。注意官方措辭為「鋪設早期基礎（laying the early groundwork）」，並非承諾 2026 年內正式商轉；具體測試階段細節未在本輪驗證範圍內。
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：截至 2026 年中，倫敦 rider-only 服務尚未正式上線，仍取決於英國監管許可。</p>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">四、</span>第六代 Driver 與降本
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        擴張的前提是降本。2026 年 2 月 12 日起，Waymo 以<strong>第六代 Waymo Driver</strong> 搭載新車輛平台「<strong>Ojai</strong>」（即 Zeekr RT，2026 年 1 月更名，由 Zeekr 於中國寧波製造）展開全自駕營運——初期服務員工及其賓客，「即將」向公眾開放；<strong>Hyundai IONIQ 5</strong> 為另一個適配第六代系統的平台。
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">感測器</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">第五代</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">第六代</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">變化</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">相機</td><td class="p-3 border border-slate-100">29 顆</td><td class="p-3 border border-slate-100">13 顆（1,700 萬畫素次世代）</td><td class="p-3 border border-slate-100 text-sky-700 font-medium">減少超過一半</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">光達</td><td class="p-3 border border-slate-100">5 顆</td><td class="p-3 border border-slate-100">4 顆</td><td class="p-3 border border-slate-100">受惠產業五年降本</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">雷達</td><td class="p-3 border border-slate-100">—</td><td class="p-3 border border-slate-100">6 顆成像雷達</td><td class="p-3 border border-slate-100">解析度提升</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">音訊</td><td class="p-3 border border-slate-100">—</td><td class="p-3 border border-slate-100">外部音訊接收器（EARs）</td><td class="p-3 border border-slate-100">偵測警笛／平交道</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        相機畫素從傳統 500–800 萬提升至 <strong>1,700 萬</strong>、數量卻減半，加上光達借力消費車市場普及帶來的成本下降，第六代套件的成本結構是為「20+ 城市規模化」設計的。降本幅度為公司自報、無獨立審計數字。
+                    </p>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">五、</span>World Model 與模擬訓練
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2026 年 2 月，Waymo 發表 <strong>Waymo World Model</strong>——建立於 Google DeepMind 最先進的通用世界模型 <strong>Genie 3</strong> 之上、針對駕駛領域改造，用於生成照片級真實、可互動的 3D 模擬環境，支撐<strong>數十億英里</strong>的虛擬訓練里程（遠超近 2 億英里的實車里程）。
+                    </p>
+                    <div class="bg-sky-50 border border-sky-100 rounded-xl p-5">
+                        <p class="font-semibold text-sky-800 flex items-center gap-2">🌐 戰略意義</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            World Model 讓 Waymo 能在虛擬世界「製造」現實中難以採集的長尾場景（官方示例：龍捲風、與大象偶遇），在公共道路遭遇之前先行掌握。這與 NVIDIA Cosmos 同屬「合成數據／世界模型」典範轉移——詳見本系列《全球 ADAS 數據採集生態研究報告》。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">六、</span>安全紀錄與第三方佐證
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        以 1.707 億 rider-only 英里為基礎（至 2025/12），Waymo 自報相較同路段人類駕駛基準的事故降幅如下，方法論已經同儕審查（<em>Traffic Injury Prevention</em>）：
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="safetyChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖二：Waymo 自報事故降幅（%，vs 人類駕駛基準，170.7M rider-only 英里）。括號為絕對減少件數。</p>
+
+                    <div class="bg-teal-50 border border-teal-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-teal-800 flex items-center gap-2">🛡️ Swiss Re 理賠分析（第三方佐證）</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            與再保巨頭 Swiss Re 的擴大研究（25.3M rider-only 英里，對照逾 50 萬筆理賠、2,000 億英里人類駕駛曝險資料）：<strong>財產損失理賠減少 88%、人身傷害理賠減少 92%</strong>——實際僅 9 起財損、2 起人傷理賠，對比人類駕駛同里程預期的 78 起與 26 起。後續更新已擴展至約 9,600 萬英里。
+                        </p>
+                    </div>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="claimsChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖三：Swiss Re 研究——實際理賠 vs 人類駕駛預期（25.3M 英里）。</p>
+                    <p class="text-xs text-slate-400">註：安全數據為 Waymo 公布（人類基準經低報調整）；Swiss Re 研究為共同作者形式、非完全獨立。2025 年底 NHTSA 曾就校車相關行為對 Waymo 展開調查（NPR、Car and Driver 報導），其最新狀態未在本輪驗證範圍內，引用前請查證。</p>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">七、</span>商業面與融資
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2026 年 2 月，Waymo 完成 <strong>160 億美元</strong>融資輪，明確用途是擴大車隊規模、支撐倫敦與東京等國際擴張。這是其「規模化但尚未獲利」階段最重要的資本補給。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🤝 平台合作（背景）</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">與 Uber 的合作（亞特蘭大、奧斯汀經 Uber 叫車）與 Toyota 的個人車輛合作為媒體廣泛報導的既有方向，但其最新進展未通過本輪三票驗證，引用前請以官方揭露為準。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">📊 未驗證的傳聞數字</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">車隊總數（3,000–3,700 輛）、每週 50 萬趟、估值傳聞、營收與單位經濟等，本輪均未取得通過驗證的最新數據，本報告不予引用。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section8" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-sky-600">八、</span>挑戰與 2026–2027 展望
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <span class="text-sky-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>車輛供應與地緣風險</strong>：主力新平台 Ojai（Zeekr RT）於中國寧波製造，美中關稅與供應鏈政策是 20+ 城市擴張的最大硬體變數。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-sky-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>擴張節奏 vs 燒錢速度</strong>：160 億美元融資反映規模化仍需巨額資本；單位經濟與獲利時程仍缺乏公開可驗證數據。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-sky-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>監管與社會事件</strong>：校車事件調查、城市抗爭中車輛遭破壞等事件提醒：規模越大、暴露面越大，公共信任需持續經營。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-sky-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>競爭壓力</strong>：Tesla 以量產製造論述追趕、百度蘿蔔快跑在載客量與成本上施壓，Waymo 的護城河是里程資料、安全紀錄與多城市營運 know-how。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-sky-600 to-teal-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">結論</p>
+                        <p class="text-sky-50 text-sm mt-2 leading-relaxed">
+                            Waymo 已用 2,000 萬趟與近 2 億英里證明「無人駕駛計程車可以規模化營運」。2026–2027 的命題是<strong>從「美國領先」走向「全球標準」</strong>：第六代降本、World Model 模擬與 160 億美元資本是三大引擎，而車輛供應鏈、單位經濟與國際監管則是三道關卡。若倫敦與東京順利落地，Waymo 將率先完成 Robotaxi 的跨國複製——這將是產業下一個分水嶺。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-sky-400">九、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，本輪 25 條主張全數通過、0 條遭反駁）。營運與安全數字多為 Waymo 官方揭露，引用前請以最新官方資料為準。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://waymo.com/blog/2025/12/2025-year-in-review/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 2025 年度回顧：2,000 萬趟、20+ 城（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2025/12/2025-year-in-review</span>
+                        </a>
+                        <a href="https://waymo.com/safety/impact/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] Safety Impact Hub：170.7M 英里安全數據（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/safety/impact</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2025/11/taking-riders-further-safely-with-freeways" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 高速公路載客與聖荷西/SJC 擴張（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2025/11/taking-riders-further-safely-with-freeways</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2025/11/safe-routine-ready-autonomous-driving-in-new-cities" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 五座新城全自駕營運公告（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2025/11/safe-routine-ready-autonomous-driving...</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2025/10/hello-london-your-waymo-ride-is-arriving" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 倫敦進場計畫（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2025/10/hello-london-your-waymo-ride-is-arriving</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2026/02/ro-on-6th-gen-waymo-driver/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 第六代 Driver 於 Ojai 平台上線（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2026/02/ro-on-6th-gen-waymo-driver</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2024/08/meet-the-6th-generation-waymo-driver" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 第六代感測器組成（一手，2024/08）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2024/08/meet-the-6th-generation-waymo-driver</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2026/02/the-waymo-world-model-a-new-frontier-for-autonomous-driving-simulation/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] Waymo World Model（一手，2026/02）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2026/02/the-waymo-world-model...</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2026/02/waymo-raises-usd16-billion-investment-round/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo] 160 億美元融資輪（一手，2026/02）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2026/02/waymo-raises-usd16-billion-investment-round</span>
+                        </a>
+                        <a href="https://waymo.com/blog/2024/12/new-swiss-re-study-waymo/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Waymo × Swiss Re] 25.3M 英里理賠研究</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2024/12/new-swiss-re-study-waymo</span>
+                        </a>
+                        <a href="https://www.tandfonline.com/doi/full/10.1080/15389588.2025.2499887" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Traffic Injury Prevention] 安全方法論同儕審查論文</p>
+                            <span class="text-slate-500 hover:underline break-all">tandfonline.com/doi/full/10.1080/15389588.2025.2499887</span>
+                        </a>
+                        <a href="https://techcrunch.com/2026/02/02/waymo-raises-16-billion-round-to-scale-robotaxi-fleet-london-tokyo/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[TechCrunch] 160 億融資與倫敦東京擴張</p>
+                            <span class="text-slate-500 hover:underline break-all">techcrunch.com/2026/02/02/waymo-raises-16-billion-round...</span>
+                        </a>
+                        <a href="https://electrek.co/2025/11/18/waymo-expansion-autonomous-rides-miami-dallas-houston/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Electrek] 五座新城擴張報導</p>
+                            <span class="text-slate-500 hover:underline break-all">electrek.co/2025/11/18/waymo-expansion-autonomous-rides...</span>
+                        </a>
+                        <a href="https://arstechnica.com/google/2026/02/waymo-leverages-genie-3-to-create-a-world-model-for-self-driving-cars/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Ars Technica] World Model 與 Genie 3 報導</p>
+                            <span class="text-slate-500 hover:underline break-all">arstechnica.com/google/2026/02/waymo-leverages-genie-3...</span>
+                        </a>
+                        <a href="https://www.npr.org/2025/12/06/nx-s1-5635614/waymo-school-buses-recall" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[NPR] 校車事件與 NHTSA 關注（背景）</p>
+                            <span class="text-slate-500 hover:underline break-all">npr.org/2025/12/06/nx-s1-5635614/waymo-school-buses-recall</span>
+                        </a>
+                        <a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-sky-300 mb-1">[Google DeepMind] Genie 3 世界模型（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">deepmind.google/blog/genie-3-a-new-frontier-for-world-models</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 自駕計程車產業研究 · Waymo Robotaxi 當前進展研究報告</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為 Waymo 官方揭露、且為 2025/12–2026/02 之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) link.classList.add('active');
+                });
+            });
+
+            // CHART 1: rider-only miles by city (doughnut)
+            new Chart(document.getElementById('milesCityChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['鳳凰城 (68.6M)', '舊金山灣區 (53.5M)', '洛杉磯 (37.9M)', '奧斯汀 (10.7M)'],
+                    datasets: [{
+                        data: [68.6, 53.5, 37.9, 10.7],
+                        backgroundColor: ['#0284c7', '#0d9488', '#6366f1', '#94a3b8'],
+                        borderWidth: 0, hoverOffset: 12
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { padding: 15, font: { size: 12 } } },
+                        tooltip: { callbacks: { label: c => c.label + ' 百萬英里' } }
+                    },
+                    cutout: '65%'
+                }
+            });
+
+            // CHART 2: safety reductions
+            new Chart(document.getElementById('safetyChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['重傷以上 (−35 起)', '行人致傷 (−62 起)', '自行車致傷 (−39 起)', '氣囊展開 (−230 起)', '任何致傷 (−544 起)', '機車致傷 (−25 起)'],
+                    datasets: [{
+                        label: '事故降幅 (%)',
+                        data: [92, 92, 85, 83, 82, 81],
+                        backgroundColor: ['#0284c7', '#0ea5e9', '#38bdf8', '#0d9488', '#14b8a6', '#2dd4bf'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => '−' + c.parsed.x + '%' } } },
+                    scales: {
+                        x: { beginAtZero: true, max: 100, grid: { color: '#f1f5f9' }, title: { display: true, text: '相較人類駕駛之降幅 (%)' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 3: Swiss Re claims actual vs expected
+            new Chart(document.getElementById('claimsChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['財產損失理賠', '人身傷害理賠'],
+                    datasets: [
+                        { label: '人類駕駛預期', data: [78, 26], backgroundColor: '#94a3b8', borderRadius: 6 },
+                        { label: 'Waymo 實際', data: [9, 2], backgroundColor: '#0284c7', borderRadius: 6 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'top' } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '理賠件數（25.3M 英里）' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
