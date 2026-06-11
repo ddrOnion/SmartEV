@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蘿蔔快跑（Apollo Go）Robotaxi 當前進展研究報告 ｜ 2026</title>
+    <meta name="description" content="百度蘿蔔快跑（Apollo Go）Robotaxi 當前進展深度研究（2026 年中）：1,700 萬累計訂單、22 城營運、2.4 億公里、中國 100% 全無人、阿布達比首批商業許可、杜拜千輛計畫、香港右駕跳板、瑞士 PostBus 歐洲試營運、RT6 成本優勢與武漢單車盈利，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #d97706;
+            border-left: 4px solid #d97706;
+            background-color: #fffbeb;
+            font-weight: 600;
+        }
+        .chart-container { position: relative; width: 100%; height: 340px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+        .tl-dot::before { content: ""; position: absolute; left: -29px; top: 4px; width: 12px; height: 12px; border-radius: 9999px; background: #d97706; box-shadow: 0 0 0 4px #fef3c7; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-amber-500/10 text-amber-300 border border-amber-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">單一玩家 · 進展追蹤</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">蘿蔔快跑（Apollo Go）Robotaxi 當前進展研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">中國軍團的全球輸出——1,700 萬單、22 城、100% 全無人之後，以低成本 RT6 從中東打進歐洲（截至 2026 年中）</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 6 月</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/report/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-amber-600 transition-colors">← 返回報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、營運規模：訂單與里程</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、100% 全無人營運</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、中東：阿布達比與杜拜</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、香港、瑞士與下一步</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、RT6 與成本結構</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、商業化與盈利</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、與 Waymo / Tesla 比較</a>
+                    <a href="#section8" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">八、監管、挑戰與展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-amber-600 font-medium">九、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        截至 2026 年中（通過驗證的數據最晚至 2025 年 11 月），百度蘿蔔快跑（Apollo Go）是全球營運規模最大的 Robotaxi 服務之一：營運範圍涵蓋全球 <strong class="text-amber-300">22 城</strong>（含香港、杜拜、阿布達比），累計訂單由 2024 年 10 月的 800 萬單成長至 2025 年 10 月底的<strong class="text-white">逾 1,700 萬單</strong>，每週全無人駕駛訂單<strong class="text-amber-300">超過 25 萬單</strong>，累計自動駕駛里程<strong class="text-white">逾 2.4 億公里</strong>，中國境內公開營運車隊已 <strong class="text-amber-300">100% 無安全員</strong>。海外擴張快速推進：取得<strong class="text-white">阿布達比首批全無人商業營運許可</strong>（與 K2 旗下 AutoGo 合作）、杜拜與 RTA 簽約計畫三年擴至 1,000 輛並於 2026 年商轉、香港為其<strong class="text-amber-300">首個右駕市場</strong>、瑞士與 PostBus 合作於 2025 年 12 月啟動歐洲試營運。成本面以第六代車型 <strong class="text-white">RT6</strong>（約 20.46 萬人民幣、換電方案下不到 3 萬美元）建立顯著優勢；商業化方面百度宣稱武漢（逾 1,000 輛車）自 2024 年底起實現單車層級盈利（自報）。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">1,700 萬+</p>
+                            <p class="text-xs text-slate-400 mt-1">累計訂單（至 2025/10/31）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-teal-400 stat-num">2.4 億+ km</p>
+                            <p class="text-xs text-slate-400 mt-1">累計自動駕駛里程</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-sky-400 stat-num">22 城</p>
+                            <p class="text-xs text-slate-400 mt-1">全球營運城市（含試點）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-rose-400 stat-num">&lt;$3 萬</p>
+                            <p class="text-xs text-slate-400 mt-1">RT6 單車成本（自報）</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：訂單、里程、車隊與成本數字全部源自百度自報（財報或新聞稿），未經獨立稽核；「單車盈利」排除研發與總部費用。「累計訂單超越 Waymo 居全球第一」、「新加坡/馬來西亞 2025 年底落地」、「Waymo 單車成本為 RT6 五倍」等說法在本輪對抗式驗證中被駁回，本報告不予引用。中國境內監管動態與重大安全事件未在本輪驗證範圍內（見第八章）。數據截點為 2025/11，實際值應已更高。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">一、</span>營運規模：訂單與里程
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        蘿蔔快跑的訂單成長曲線在 2025 年明顯加速：2024 年第三季單季 98.8 萬單（年增 20%）、同年 10 月累計達 800 萬單；2025 年第一季單季<strong>逾 140 萬單（年增 75%）</strong>、4 月累計破 1,000 萬單、5–6 月破 1,100 萬單並部署逾 1,000 輛車；至 <strong>2025 年 10 月 31 日累計已逾 1,700 萬單</strong>——半年內淨增約 600 萬單，相當於前面數年的總和。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="ordersChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：Apollo Go 累計訂單成長（百萬單）。來源：百度財報與官方新聞稿（自報），經 3 票對抗驗證。</p>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">📈 規模意義</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            累計自動駕駛里程逾 <strong>2.4 億公里</strong>（約 1.5 億英里），與 Waymo 的近 2 億英里（約 3.2 億公里）同屬全球第一梯隊（見本系列 Waymo 專題報告）。兩者口徑不同——Apollo Go 計入含安全員時期里程、Waymo 的 1.707 億英里為 rider-only——直接排名比較在本輪驗證中未獲支持。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">二、</span>100% 全無人營運
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2025 年 2 月起，蘿蔔快跑在中國的公開營運車隊已<strong>全面移除安全員（100% 全無人駕駛）</strong>——此為杜拜政府媒體辦公室官方新聞稿與百度 2024 Q4 財報共同佐證的里程碑。截至 2025 年 10 月底，<strong>每週超過 25 萬單</strong>全數為無安全員的全無人訂單（CNBC 獨立佐證）。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                            <p class="font-semibold text-amber-800">🇨🇳 中國本土：全無人規模化</p>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                武漢為最大部署（逾 1,000 輛），北京、上海、深圳等城市陸續開放。中國的「先試點區、後擴範圍」監管模式，讓蘿蔔快跑得以在單一城市堆出全球罕見的車隊密度。
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🌏 海外：仍多為有安全員試點</p>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                「100% 全無人」僅指中國境內車隊；香港測試仍配安全員、杜拜處於試營運階段。「營運 22 城」中海外城市多為試點性質，解讀時需留意口徑。
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">三、</span>中東：阿布達比與杜拜
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        中東是蘿蔔快跑海外擴張的灘頭堡。截至 2025 年 11 月，Apollo Go 在阿布達比與杜拜合計營運<strong>約 100 輛</strong> Robotaxi，並計畫數月內倍增。
+                    </p>
+                    <div class="relative border-l-2 border-slate-100 pl-8 space-y-7 ml-2">
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-amber-600">2025 / 03</p>
+                            <p class="font-semibold text-slate-800 mt-1">阿布達比：與 K2 旗下 AutoGo 合作啟動試營運</p>
+                            <p class="text-slate-600 text-sm mt-1">以 AutoGo 品牌落地，展開為期約 8 個月的試營運驗證。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-amber-600">2025 / 04</p>
+                            <p class="font-semibold text-slate-800 mt-1">杜拜：RTA 簽署 MoU</p>
+                            <p class="text-slate-600 text-sm mt-1">計畫數月內啟動 50 輛試營運、2026 年正式對公眾推出服務、<strong>三年內車隊擴至 1,000 輛</strong>（杜拜政府一手來源）。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-amber-600">2025 / 08</p>
+                            <p class="font-semibold text-slate-800 mt-1">杜拜試營運啟動、取得首張全無人測試許可</p>
+                            <p class="text-slate-600 text-sm mt-1">實際試營運於 8 月前後展開，並獲杜拜首張全無人測試許可。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-amber-600">2025 / 11</p>
+                            <p class="font-semibold text-slate-800 mt-1">阿布達比：首批全無人「商業」營運許可</p>
+                            <p class="text-slate-600 text-sm mt-1">與 AutoGo 取得阿布達比整合運輸中心（ITC）首批全無人商業 Robotaxi 許可之一（WeRide 亦獲早期許可），可收費營運；目標 2026 年部署數百輛、打造當地最大全無人車隊（前瞻性企業目標）。</p>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="fleetChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖二：海外車隊現況 vs 官方計畫目標（輛）。實線數據截至 2025/11；計畫目標為企業/政府宣示，非已實現事實。</p>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">四、</span>香港、瑞士與下一步
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                            <p class="font-semibold text-amber-800">🇭🇰 香港：首個右駕市場（跳板）</p>
+                            <ul class="text-slate-600 text-sm mt-2 space-y-1.5 list-disc list-inside leading-relaxed">
+                                <li>2024/11 獲運輸署發出<strong>首張 AV 先導牌照</strong>（2024/12/09 生效、上限 10 輛）</li>
+                                <li>2024/12 以 5 輛車（配安全員）在北大嶼山啟動測試，累積逾 14,000 公里</li>
+                                <li>2025/04–05 牌照更新、車隊倍增：10 輛車、約 20 條街道</li>
+                                <li>香港是 Apollo Go 首個右駕、靠左行駛市場——進軍其他右駕市場的技術與監管跳板</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🇨🇭 瑞士：歐洲首站（信心中等）</p>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                與瑞士郵巴 PostBus 合作（2025/10/22 正式公告）、以「AmiGo」品牌使用 RT6，於 2025 年 12 月起在瑞士部分地區啟動試營運，目標 2027 年第一季商轉。Apollo Go 事業負責人受訪時亦<strong>不排除進軍美國</strong>。本項驗證票數 2-1，截至 2026 年中的實際進度未在本輪確認。
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：「2025 年底前於新加坡與馬來西亞推出服務」的報導在本輪驗證中被一致駁回（0-3），不予採信。另有 2026 年報導指向南韓擴張，未經本輪驗證。</p>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">五、</span>RT6 與成本結構
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        蘿蔔快跑全球擴張的底氣是<strong>硬體成本</strong>。第六代車型 <strong>RT6</strong>（2024 年 5 月 Apollo Day 發表量產版、原生 L4 設計）單車成本 <strong>204,600 元人民幣（約 2.86 萬美元）</strong>——李彥宏現場展示車輛發票；採換電方案時官方稱<strong>低於 3 萬美元</strong>。第七代車型據報目標成本<strong>低於 2 萬美元</strong>（媒體轉述、未經百度官方確認）。
+                    </p>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖三：Apollo Go 車輛單車成本演進（美元，公司自報/媒體轉述）。「Waymo 單車成本為 RT6 五倍」的對比宣稱經驗證被駁回，本圖不做跨公司比較。</p>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">💡 成本即戰略</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            不到 3 萬美元的整車（含 L4 套件）成本，使「千輛級城市車隊」的資本門檻大幅下降——這是杜拜敢簽 1,000 輛、阿布達比敢談「數百輛」的前提，也是蘿蔔快跑與中東主權資本一拍即合的原因。注意此為公司自報的製造成本，未經獨立稽核。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">六、</span>商業化與盈利
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        百度宣稱蘿蔔快跑自 <strong>2024 年底起在武漢實現單車層級盈利</strong>（unit economics 損益兩平轉正）。武漢是其中國最大部署（逾 1,000 輛車），且車資較一線城市低約 30%——管理層的論點是：「<strong>能在二線城市單車盈利，即可在全球許多城市盈利</strong>」。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">📐 「單車盈利」的口徑</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">此為百度自報的單車層級損益（排除研發與總部費用），不等於 Apollo Go 部門或公司層級盈利，亦未經審計。「武漢營運 2025 年底達整體盈利」的另一說法在本輪驗證中被駁回（1-2），顯示具體盈利時點的報導存在出入。</p>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-100 rounded-xl p-5">
+                            <p class="font-semibold text-slate-800">🌍 複製公式</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">低成本 RT6 ＋ 全無人營運（省去安全員人力）＋ 政府合作框架（中東模式），構成其海外輸出的標準包。能否在車資更高的海外市場放大單位經濟優勢，是 2026–2027 的觀察重點。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">七、</span>與 Waymo / Tesla 比較
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        本輪驗證確立的個別事實：Apollo Go 營運 <strong>22 城</strong>、累計 <strong>1,700 萬+ 單</strong>（至 2025/10）、RT6 成本<strong>不到 3 萬美元</strong>——在「城市數」與「成本結構」上具相對優勢。但兩條常見的跨公司比較宣稱<strong>未通過驗證</strong>，本報告不採用：
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">常見說法</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">驗證結果</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">說明</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">「累計訂單超越 Waymo、全球第一」</td><td class="p-3 border border-slate-100 text-rose-600 font-medium">駁回（0-3）</td><td class="p-3 border border-slate-100">兩家口徑與時點不同，直接排名缺乏可靠依據（Waymo 2025 底累計 2,000 萬趟）</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">「Waymo 單車成本為 RT6 五倍」</td><td class="p-3 border border-slate-100 text-rose-600 font-medium">駁回（1-2）</td><td class="p-3 border border-slate-100">Waymo 成本無可靠公開數字，倍數對比不成立</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">與 Tesla Robotaxi 比較</td><td class="p-3 border border-slate-100 text-slate-500 font-medium">無通過驗證的主張</td><td class="p-3 border border-slate-100">參見本系列 Tesla 專題報告（約 25 輛車隊，營運深度差距明顯）</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">⚖️ 可靠的定位陳述</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            Waymo 與蘿蔔快跑分別是<strong>美中兩大陣營的規模領跑者</strong>：Waymo 強在 rider-only 里程深度、安全數據體系與高客單價市場；蘿蔔快跑強在車輛成本、車隊密度與政府合作式出海。兩者在中東（阿布達比同場競技 WeRide）與未來的歐洲市場將正面交鋒。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section8" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-amber-600">八、</span>監管、挑戰與展望
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        海外監管路徑呈現清晰的階梯：<strong>政府合作（MoU）先行 → 有限測試牌照 → 試營運 → 收費商轉</strong>。香港（先導牌照、上限 10 輛）、杜拜（MoU + 50 張測試牌照）、阿布達比（8 個月試營運後發商業許可）、瑞士（PostBus 合作框架）皆循此模式。
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <span class="text-amber-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>中國本土監管與安全事件為本輪驗證缺口</strong>：本輪搜尋曾觸及 2026 年 4 月有關武漢營運與牌照的負面報導（紐約時報中文網、unwire、聯合早報），但相關主張均未通過驗證，無法寫入正文。中國境內政策風向與重大事故影響，是引用本報告前最需要另行查證的面向。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-amber-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>地緣政治</strong>：中國車隊與數據跨境進入歐美市場，將面臨比中東更嚴格的數據主權與國安審查；「不排除進軍美國」在現行政策環境下挑戰極大。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-amber-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>自報數據的可信度</strong>：訂單、里程、成本、盈利全為百度自報，缺乏 Waymo 式的同儕審查安全論文或 Swiss Re 式第三方佐證——這在爭取歐美監管信任時是結構性短板。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-amber-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>社會接受度</strong>：香港的士業界對「司機遭淘汰」的反彈、各市場的勞動與安全輿情，是規模化過程中持續的摩擦力。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">結論</p>
+                        <p class="text-amber-50 text-sm mt-2 leading-relaxed">
+                            蘿蔔快跑用 1,700 萬單、2.4 億公里與中國 100% 全無人營運，證明了「低成本路線的 Robotaxi 也能規模化」。2026–2027 的命題是<strong>從「中國規模」走向「全球商轉」</strong>：RT6 成本優勢、武漢驗證的單位經濟與中東商業許可是三大引擎；而中國本土監管變數、歐美地緣審查與自報數據的信任赤字則是三道關卡。杜拜 2026 商轉與瑞士試營運的成敗，將決定它是「中國冠軍」還是「全球玩家」。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-amber-400">九、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，本輪 25 條主張中 20 條通過、5 條遭駁回並已排除）。營運與成本數字多為百度官方揭露，引用前請以最新官方資料為準。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://www.prnewswire.com/news-releases/baidus-apollo-go-and-k2s-autogo-announce-fleet-expansion-plan-in-abu-dhabi-winning-one-of-the-emirates-inaugural-fully-driverless-commercial-permits-302611516.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[百度/PRNewswire] 阿布達比商業許可與 17M 訂單（一手，2025/11）</p>
+                            <span class="text-slate-500 hover:underline break-all">prnewswire.com/news-releases/baidus-apollo-go-and-k2s-autogo...</span>
+                        </a>
+                        <a href="https://www.mediaoffice.ae/en/news/2025/april/20-04/rta-signs-mou-with-baidu-apollo-go-to-launch-operational-trials-of-autonomous-taxis-in-2025" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[杜拜政府媒體辦公室] RTA × 百度 MoU、千輛計畫（政府一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">mediaoffice.ae/en/news/2025/april/20-04/rta-signs-mou-with-baidu...</span>
+                        </a>
+                        <a href="https://www.scmp.com/business/china-evs/article/3309911/baidus-apollo-go-expands-robotaxi-tests-hong-kong-it-aims-global-reach" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[SCMP] 香港測試擴大與右駕跳板定位（2025/05）</p>
+                            <span class="text-slate-500 hover:underline break-all">scmp.com/business/china-evs/article/3309911/baidus-apollo-go...</span>
+                        </a>
+                        <a href="https://www.cnbc.com/2025/11/20/global-robotaxi-race-heats-up-between-us-and-chinese-rivals.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[CNBC] 美中 Robotaxi 競賽：瑞士計畫、武漢盈利說法（2025/11）</p>
+                            <span class="text-slate-500 hover:underline break-all">cnbc.com/2025/11/20/global-robotaxi-race-heats-up...</span>
+                        </a>
+                        <a href="https://www.cnbc.com/2025/11/03/china-baidu-robotaxis-alphabet-waymo-.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[CNBC] 週 25 萬全無人訂單佐證（2025/11）</p>
+                            <span class="text-slate-500 hover:underline break-all">cnbc.com/2025/11/03/china-baidu-robotaxis-alphabet-waymo</span>
+                        </a>
+                        <a href="https://wallstreetcn.com/articles/3747542" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[華爾街見聞] Q1 2025 財報訂單數據轉述</p>
+                            <span class="text-slate-500 hover:underline break-all">wallstreetcn.com/articles/3747542</span>
+                        </a>
+                        <a href="https://carnewschina.com/2025/11/13/baidus-apollo-go-robotaxi-leads-global-autonomous-driving-with-17m-orders-targets-profit-this-year/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[CarNewsChina] 17M 訂單與第七代成本目標（2025/11）</p>
+                            <span class="text-slate-500 hover:underline break-all">carnewschina.com/2025/11/13/baidus-apollo-go-robotaxi-leads...</span>
+                        </a>
+                        <a href="https://www.theverge.com/2024/11/22/24303299/baidu-apollo-go-rt6-robotaxi-unit-economics-waymo" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[The Verge] RT6 單位經濟分析（2024/11）</p>
+                            <span class="text-slate-500 hover:underline break-all">theverge.com/2024/11/22/24303299/baidu-apollo-go-rt6...</span>
+                        </a>
+                        <a href="https://cnevpost.com/2024/05/15/baidu-apollo-launches-6th-gen-robotaxi/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[CNEVPost] RT6 發表與 20.46 萬人民幣成本（2024/05）</p>
+                            <span class="text-slate-500 hover:underline break-all">cnevpost.com/2024/05/15/baidu-apollo-launches-6th-gen-robotaxi</span>
+                        </a>
+                        <a href="https://theindependent.sg/baidus-robotaxis-and-singapores-av-push-signal-a-new-transport-era/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[The Independent SG] 東南亞佈局報導（新加坡計畫經驗證駁回）</p>
+                            <span class="text-slate-500 hover:underline break-all">theindependent.sg/baidus-robotaxis-and-singapores-av-push...</span>
+                        </a>
+                        <a href="https://restofworld.org/2025/robotaxi-waymo-apollo-go/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[Rest of World] Waymo vs Apollo Go 全球對比（2025）</p>
+                            <span class="text-slate-500 hover:underline break-all">restofworld.org/2025/robotaxi-waymo-apollo-go</span>
+                        </a>
+                        <a href="https://hk.news.yahoo.com/%E3%80%8C%E8%98%BF%E8%94%94%E5%BF%AB%E8%B7%91%E3%80%8D%E6%94%BB%E6%B8%AF%EF%BD%9C%E7%84%A1%E4%BA%BA%E9%A7%95%E9%A7%9B%E6%83%B9%E5%AE%89%E5%85%A8%E9%9A%B1%E6%86%82-%E6%9C%AC%E5%9C%B0%E4%B9%98%E5%AE%A2%E9%A1%98%E8%A9%A6%E6%90%AD-%E7%9A%84%E5%A3%AB%E6%A5%AD%E7%95%8C%EF%BC%9A%E5%8F%B8%E6%A9%9F%E5%8B%A2%E9%81%AD%E6%B7%98%E6%B1%B0%EF%BD%9Cyahoo-091112060.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[Yahoo HK] 蘿蔔快跑攻港：安全隱憂與的士業界反彈（輿情背景）</p>
+                            <span class="text-slate-500 hover:underline break-all">hk.news.yahoo.com/蘿蔔快跑攻港-無人駕駛惹安全隱憂...</span>
+                        </a>
+                        <a href="https://cn.nytimes.com/business/20260402/baidu-robotaxi-wuhan-china/zh-hant/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[紐約時報中文網] 武漢營運報導（2026/04，主張未通過驗證、僅列備查）</p>
+                            <span class="text-slate-500 hover:underline break-all">cn.nytimes.com/business/20260402/baidu-robotaxi-wuhan-china</span>
+                        </a>
+                        <a href="https://cnevpost.com/2026/02/27/baidu-apollo-go-robotaxi-300000-weekly-rides-expands-to-south-korea/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-amber-300 mb-1">[CNEVPost] 週 30 萬單與南韓擴張（2026/02，未經本輪驗證、僅列備查）</p>
+                            <span class="text-slate-500 hover:underline break-all">cnevpost.com/2026/02/27/baidu-apollo-go-robotaxi-300000-weekly-rides...</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 自駕計程車產業研究 · 蘿蔔快跑（Apollo Go）Robotaxi 當前進展研究報告</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為百度官方揭露、且為 2025/11 之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) link.classList.add('active');
+                });
+            });
+
+            // CHART 1: cumulative orders growth
+            new Chart(document.getElementById('ordersChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2024/10', '2025/04', '2025/05–06', '2025/10'],
+                    datasets: [{
+                        label: '累計訂單（百萬單）',
+                        data: [8, 10, 11, 17],
+                        borderColor: '#d97706',
+                        backgroundColor: 'rgba(217, 119, 6, 0.12)',
+                        fill: true,
+                        tension: 0.35,
+                        pointBackgroundColor: '#d97706',
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => c.parsed.y + ' 百萬單（累計）' } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '累計訂單（百萬單）' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 2: overseas fleet current vs planned
+            new Chart(document.getElementById('fleetChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['阿布達比＋杜拜（現況 2025/11）', '香港（測試上限）', '杜拜（3 年計畫）', '阿布達比（2026 目標）'],
+                    datasets: [{
+                        label: '車輛數',
+                        data: [100, 10, 1000, 300],
+                        backgroundColor: ['#d97706', '#f59e0b', '#fcd34d', '#fde68a'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => c.parsed.x + ' 輛' + (c.dataIndex >= 2 ? '（計畫目標）' : '') } }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '車輛數（輛）；「數百輛」目標以 300 示意' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 3: vehicle cost evolution
+            new Chart(document.getElementById('costChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['RT6（第六代，2024 發表）', 'RT6 換電方案（官方說法）', '第七代目標（媒體轉述、未證實）'],
+                    datasets: [{
+                        label: '單車成本（美元）',
+                        data: [28600, 30000, 20000],
+                        backgroundColor: ['#d97706', '#f59e0b', '#fcd34d'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => '~$' + c.parsed.y.toLocaleString() + (c.dataIndex === 1 ? '（低於 3 萬美元）' : c.dataIndex === 2 ? '（低於 2 萬美元目標）' : '') } }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '單車成本（美元，自報）' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
