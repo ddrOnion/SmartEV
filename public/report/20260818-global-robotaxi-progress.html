@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球 Robotaxi 進展研究報告（2026 年 8 月） ｜ 2026</title>
+    <meta name="description" content="全球自駕計程車（Robotaxi）進展更新（2026 年 8 月節點）：Waymo 11 都會區與 160 億融資執行、Apollo Go 倫敦路測與瑞士 L4、Tesla 七都會區與 Cybercab、Zoox 收費里程碑、Uber 聚合戰局與 Waymo 分手、高盛 4,150 億美元預測，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #059669;
+            border-left: 4px solid #059669;
+            background-color: #ecfdf5;
+            font-weight: 600;
+        }
+        .chart-container { position: relative; width: 100%; height: 340px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+        .tl-dot::before { content: ""; position: absolute; left: -29px; top: 4px; width: 12px; height: 12px; border-radius: 9999px; background: #059669; box-shadow: 0 0 0 4px #d1fae5; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">全球產業趨勢 · 進展更新</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">全球 Robotaxi 進展研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">規模化拐點已至——Waymo 十一城、Zoox 收費破冰、中國軍團登陸歐洲、Uber 聚合帝國與分手風波（2026 年 8 月節點）</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 8 月 18 日</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/report/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-emerald-600 transition-colors">← 返回報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、本期大事記（6–8 月）</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、Waymo：融資後的執行</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、蘿蔔快跑：全球化提速</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、Tesla：廣度與深度落差</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、Zoox 破冰與其他玩家</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、平台聚合戰與分手風波</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、監管與安全動態</a>
+                    <a href="#section8" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">八、市場預測與展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-emerald-600 font-medium">九、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        2026 年 6–8 月，全球 Robotaxi 產業出現明顯的<strong class="text-emerald-300">規模化拐點</strong>。<strong class="text-white">Waymo</strong> 在 2 月完成 160 億美元融資（投後估值 1,260 億美元）後執行力全開：7 月 8 日一舉新增聖地牙哥、拉斯維加斯、坦帕、丹佛，達 <strong class="text-emerald-300">11 個美國都會區</strong>、每週約 50 萬趟、在役車隊約 3,500 輛。<strong class="text-white">百度蘿蔔快跑</strong>累積突破 2,200 萬趟、Q1 單季 320 萬全無人趟次，6 月取得<strong class="text-emerald-300">瑞士 L4 許可</strong>、7 月底在<strong class="text-emerald-300">倫敦</strong>展開路測——中國玩家首度進入英國。<strong class="text-white">Zoox</strong> 於 7 月 30 日取得 NHTSA 每年 2,500 輛的 FMVSS 豁免、8 月 10 日在拉斯維加斯開始收費——<strong class="text-emerald-300">美國首個無方向盤收費服務</strong>。<strong class="text-white">Tesla</strong> 擴至 7 個都會區但德州無人車隊僅估 20–42 輛，Cybercab 已量產但僅供員工接駁。平台面，Uber 兩年簽下 30+ 家 AV 夥伴、宣布與 Rivian 部署最多 5 萬輛，但 <strong class="text-emerald-300">Waymo–Uber 關係年中生變</strong>。高盛 4 月將 2035 年全球市場預測上調至約 <strong class="text-white">4,150 億美元</strong>。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-emerald-400 stat-num">11 城</p>
+                            <p class="text-xs text-slate-400 mt-1">Waymo 美國都會區（7 月）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">2,200 萬+</p>
+                            <p class="text-xs text-slate-400 mt-1">Apollo Go 累積趟次（4 月）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-sky-400 stat-num">首例</p>
+                            <p class="text-xs text-slate-400 mt-1">Zoox 無方向盤收費（8/10）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-violet-400 stat-num">$4,150 億</p>
+                            <p class="text-xs text-slate-400 mt-1">2035 全球市場（高盛預測）</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：車隊與趟次數字多為公司自報營運指標、未經獨立稽核；Waymo「20+ 新城市」與 WeRide「1,200 輛/2027」屬前瞻承諾；高盛數字為預測而非事實。NHTSA 調查最新狀態、加州/日本法規、獲利進度等子題未產出本輪已驗證主張（見第七、八節標註）。本報告為 2026/08/18 之快照。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">一、</span>本期大事記（2026 年 6–8 月）
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        與 6 月上旬（本系列前次全球報告節點）相比，這兩個多月的變化密度顯著提高——幾乎每週都有指標性事件：
+                    </p>
+                    <div class="relative border-l-2 border-slate-100 pl-8 space-y-6 ml-2">
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">06 / 16</p>
+                            <p class="font-semibold text-slate-800 mt-1">百度取得瑞士 L4 許可</p>
+                            <p class="text-slate-600 text-sm mt-1">與瑞士郵政 PostBus 合作「AmiGo」專案，中國技術首度獲歐洲 L4 級核准。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">06 / 29</p>
+                            <p class="font-semibold text-slate-800 mt-1">Waymo 與 Uber 鳳凰城合作告終</p>
+                            <p class="text-slate-600 text-sm mt-1">試點合約到期不續，聚合關係出現第一道裂縫。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">07 / 08</p>
+                            <p class="font-semibold text-slate-800 mt-1">Waymo 一舉新增四大都會區</p>
+                            <p class="text-slate-600 text-sm mt-1">聖地牙哥、拉斯維加斯、坦帕、丹佛上線，達 11 個美國都會區。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">07 / 21</p>
+                            <p class="font-semibold text-slate-800 mt-1">Tesla 進駐坦帕、奧蘭多</p>
+                            <p class="text-slate-600 text-sm mt-1">服務範圍達 7 個美國都會區（灣區仍限帶安全員）。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">07 / 28</p>
+                            <p class="font-semibold text-slate-800 mt-1">蘿蔔快跑登陸倫敦路測</p>
+                            <p class="text-slate-600 text-sm mt-1">Brent 區、RT6 車型、帶安全員，與 Lyft 旗下 Freenow 合作；2027 年目標公開載客。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">07 / 30</p>
+                            <p class="font-semibold text-slate-800 mt-1">Zoox 取得 NHTSA FMVSS 豁免</p>
+                            <p class="text-slate-600 text-sm mt-1">每年最多 2,500 輛無方向盤/踏板車輛，效期至 2028/07——聯邦級里程碑。</p>
+                        </div>
+                        <div class="relative tl-dot">
+                            <p class="text-xs font-semibold text-emerald-600">08 / 10</p>
+                            <p class="font-semibold text-slate-800 mt-1">Zoox 拉斯維加斯開始收費</p>
+                            <p class="text-slate-600 text-sm mt-1">美國首家以無方向盤車輛收費營運的公司；四城累計近 100 萬名乘客。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">二、</span>Waymo：160 億美元融資後的執行
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2 月 2 日，Waymo 完成 <strong>160 億美元</strong>融資（投後估值 <strong>1,260 億美元</strong>，Dragoneer、DST Global、紅杉領投，Alphabet 維持多數股權）。融資時每週逾 40 萬趟、6 大都會區；到 7–8 月已是 <strong>11 個美國都會區、每週約 50 萬趟、在役車隊約 3,500 輛</strong>、累積付費行程突破 2,000 萬趟——資本正快速轉化為版圖。
+                    </p>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-5">
+                        <p class="font-semibold text-emerald-800 flex items-center gap-2">📈 半年執行對照</p>
+                        <div class="overflow-x-auto mt-3">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-white/60 text-slate-600 text-left">
+                                        <th class="p-3 border border-emerald-100 font-semibold">指標</th>
+                                        <th class="p-3 border border-emerald-100 font-semibold">2026/02（融資時）</th>
+                                        <th class="p-3 border border-emerald-100 font-semibold">2026/07–08</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-slate-600">
+                                    <tr><td class="p-3 border border-emerald-100 font-medium">美國都會區</td><td class="p-3 border border-emerald-100">6</td><td class="p-3 border border-emerald-100 text-emerald-700 font-semibold">11</td></tr>
+                                    <tr><td class="p-3 border border-emerald-100 font-medium">每週付費趟次</td><td class="p-3 border border-emerald-100">40 萬+</td><td class="p-3 border border-emerald-100 text-emerald-700 font-semibold">約 50 萬</td></tr>
+                                    <tr><td class="p-3 border border-emerald-100 font-medium">在役車隊</td><td class="p-3 border border-emerald-100">—</td><td class="p-3 border border-emerald-100 text-emerald-700 font-semibold">約 3,500 輛</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        「2026 年為 20+ 新城市（含東京、倫敦）鋪路」仍是官方目標（laying the groundwork 措辭），倫敦/東京的實際落地時點未在本輪取得已驗證更新。車隊數字與聯邦申報（5 月約 3,791 輛、6 月約 3,871 輛具無人能力車輛）方向一致。
+                    </p>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">三、</span>蘿蔔快跑（Apollo Go）：全球化提速
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        百度 Q1 財報（SEC 6-K）揭露：單季 <strong>320 萬趟全無人行程</strong>（年增逾 120%）、3 月週峰值約 35 萬趟；累積至 4 月已<strong>逾 2,200 萬趟</strong>，全球足跡達 27+ 城市（中國約 20 城）。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                            <p class="font-semibold text-amber-800">🇬🇧 倫敦：中國玩家首入英國</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">7 月 28 日起於 Brent 區以 RT6 展開帶安全員路測，與 Lyft 旗下 Freenow 合作（另與 Uber 有平行測試計畫），公開載客目標 2027 年、視監管核准。</p>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                            <p class="font-semibold text-amber-800">🇨🇭 瑞士：歐洲 L4 首張門票</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">6 月取得瑞士 L4 許可，與瑞士郵政 PostBus 合作「AmiGo」。海外版圖另含杜拜（與 Uber）、阿布達比、首爾。</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        與 Waymo 的「美國縱深」不同，蘿蔔快跑走「多國廣佈」：以 RT6 成本優勢＋在地平台合作（Uber/Freenow/PostBus）快速插旗。歐洲成為美中之外的第三戰場。
+                    </p>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">四、</span>Tesla：廣度與深度的落差
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Tesla 至 8 月已覆蓋 <strong>7 個美國都會區</strong>（奧斯汀、達拉斯、休士頓、邁阿密、奧蘭多、坦帕＋僅限安全員的舊金山灣區），但<strong>德州無人車隊估計僅 20–42 輛</strong>（DMV 授權 42 輛 vs 實際運行約 17–25 輛）——與 Waymo 約 3,500 輛、每週 50 萬趟仍差 1–2 個數量級。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-red-50 border border-red-100 rounded-xl p-5">
+                            <p class="font-semibold text-red-800">🚕 Cybercab：量產≠商轉</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">已在 Giga Texas 量產，7 月起提供<strong>員工園區接駁</strong>（官方影片佐證），但尚未公開載客營運。</p>
+                        </div>
+                        <div class="bg-red-50 border border-red-100 rounded-xl p-5">
+                            <p class="font-semibold text-red-800">🎰 內華達：核准但被限縮</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">6 月 5 日申請最多 5,000 輛；7 月 27 日獲批卻被限制為 <strong>10 輛</strong>、45 mph 限速、禁機場接送——監管態度謹慎的縮影。</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：一項「5 月初 25 輛無人車＋加州 107 輛監督車隊」的流傳說法在本輪查證中遭 3 票反駁，Tesla 車隊數字混亂、引用時請謹慎。</p>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">五、</span>Zoox 破冰與其他玩家
+                    </h2>
+                    <div class="bg-sky-50 border border-sky-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-sky-800 flex items-center gap-2">🚐 Zoox（Amazon）：兩週內連下兩城</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            7 月 30 日獲 <strong>NHTSA FMVSS 臨時豁免</strong>（聯邦公報一手來源：2026/07/31 生效至 2028/07/31，每年最多 2,500 輛）；8 月 10 日在拉斯維加斯<strong>開始收費營運</strong>——美國首家以無方向盤/無踏板車輛收費的公司。自免費服務以來已在拉斯維加斯、舊金山、奧斯汀、邁阿密累計服務<strong>近 100 萬名乘客</strong>。
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-slate-800 flex items-center gap-2">🌍 WeRide × Uber：中東最大商業承諾</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            2 月 6 日雙方承諾 2027 年前在阿布達比、杜拜、利雅德部署<strong>至少 1,200 輛</strong>（公告時該區已營運 200+ 輛，阿布達比朝單位經濟損益兩平推進）；此為 15 城協議中的 3 城，其餘 12 城（含馬德里、蘇黎世）計畫 2030 年前落地。
+                        </p>
+                    </div>
+                    <p class="text-xs text-slate-400">註：Pony.ai 與 Uber 於 8 月中旬傳出歐洲 2,000 輛合作（CNBC 報導），以及 Motional、May Mobility、Nuro、滴滴等動態，均未列入本輪已驗證主張，引用前請查證。</p>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">六、</span>平台聚合戰與分手風波
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Uber 過去兩年已與 <strong>30+ 家</strong> AV 公司合作或投資（Robotaxi：Waymo、WeRide、Motional、Avride、May Mobility、Zoox；外送：Serve、Starship；卡車：Aurora、Torc、Waabi 等），並宣布與 <strong>Rivian</strong> 合作部署<strong>最多 5 萬輛</strong>無人車——「聚合平台」已是 Robotaxi 商業化的第二條主軸。
+                    </p>
+                    <div class="bg-rose-50 border border-rose-100 rounded-xl p-5">
+                        <p class="font-semibold text-rose-800 flex items-center gap-2">💔 Waymo–Uber 關係生變</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            鳳凰城合作於 6–7 月合約到期結束；7 月下旬 FT/Bloomberg/CNBC 報導 Waymo <strong>探索提前結束與 Uber 的獨家安排</strong>——已通知將於 2028 年 1 月在奧斯汀/亞特蘭大終止獨家（原約至 2028 年 5 月）並自建 App 上線。規模領先者正嘗試把需求端握回自己手中；聚合與自營的拉鋸將定義下一階段的商業模式。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">七、</span>監管與安全動態
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        本期最重要的監管訊號是 <strong>Zoox 的 FMVSS 豁免</strong>：聯邦層級首次以「每年 2,500 輛」規模放行無方向盤/踏板車輛，為專用 Robotaxi 車型（含 Cybercab）建立了可循先例。中國方面，7 月下旬有恢復核發 Robotaxi 牌照的報導（CnEVPost）。
+                    </p>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-4">
+                        <p class="text-amber-800 text-sm leading-relaxed">⚠️ <strong>研究缺口聲明</strong>：NHTSA 對 Tesla FSD（EA26002）與 Waymo（校車事件）調查的 6–8 月最新狀態、加州/亞利桑那新規、日本法規、以及 6 月中旬 Waymo 因高速公路施工區問題召回近 4,000 輛（TechCrunch 報導）、7 月 Tesla 休士頓遠端操作員事故（Electrek 報導）等事件——均<strong>未產出本輪已驗證主張</strong>，此處僅列為背景線索，引用前請查證原始來源（連結見第九節）。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section8" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-600">八、</span>市場預測與展望
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        高盛研究（4 月 30 日）大幅上修預測：2035 年全球 Robotaxi 市場約 <strong>4,150 億美元</strong>；美國市場 2030 年 190 億、2035 年 480 億美元；全球商用無人車隊從 2025 年約 <strong>7,000 輛</strong>增至 2030 年約 <strong>100 萬輛</strong>、2035 年約 <strong>600 萬輛</strong>。（前瞻預測，非事實。）
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="fleetForecastChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：全球商用 Robotaxi 車隊預測（輛，對數尺度）。來源：高盛研究（2026/04），屬預測值。</p>
+
+                    <div class="chart-container">
+                        <canvas id="scaleChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖二：主要營運商當前規模對比（2026 年 7–8 月，約值、公司自報口徑不一）。Tesla 取估計區間上緣 42。</p>
+
+                    <div class="space-y-3 mt-2">
+                        <div class="flex gap-3">
+                            <span class="text-emerald-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>拐點的本質是「複製速度」</strong>：Waymo 單月新增四城、Zoox 兩週完成「豁免→收費」，顯示玩家已把開城流程工業化。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-emerald-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>歐洲成為第三戰場</strong>：蘿蔔快跑（倫敦/瑞士）、WeRide（馬德里/蘇黎世規劃）與 Waymo（倫敦佈局）將在 2027 年正面相遇。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-emerald-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>聚合 vs 自營的路線之爭</strong>：Waymo 抽身 Uber 獨家、自建 App，若成功將壓縮聚合平台的議價權；反之 Uber 的 30+ 夥伴組合仍是最大流量入口。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-emerald-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>獲利仍是未解題</strong>：規模指標亮眼，但各家單位經濟與獲利進度依舊缺乏可驗證公開數據（本輪研究缺口之一）。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">結論</p>
+                        <p class="text-emerald-50 text-sm mt-2 leading-relaxed">
+                            相較 6 月，8 月的產業已從「證明可行」進入「<strong>比誰複製得快</strong>」：Waymo 用資本換城市、蘿蔔快跑用成本換國家、Zoox 用法規豁免換商業模式、Tesla 用量產能力賭未來。2026 下半年的觀察重點：Waymo 倫敦/東京能否如期落地、Zoox 豁免模式會否成為 Cybercab 的先例、以及第一份可驗證的「單城獲利」財務數據花落誰家。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-emerald-400">九、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，本輪 25 條主張 24 條通過、1 條反駁）。營運數字多為公司自報，引用前請以最新官方揭露為準。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://waymo.com/blog/2026/02/waymo-raises-usd16-billion-investment-round/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[Waymo] 160 億美元融資輪（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">waymo.com/blog/2026/02/waymo-raises-usd16-billion-investment-round</span>
+                        </a>
+                        <a href="https://www.cnbc.com/2026/07/08/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[CNBC] Waymo 新增四都會區、達 11 城</p>
+                            <span class="text-slate-500 hover:underline break-all">cnbc.com/2026/07/08</span>
+                        </a>
+                        <a href="https://www.sec.gov/Archives/edgar/data/1329099/000119312526076505/d117608dex991.htm" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[SEC 6-K] 百度 Q1 2026 財報：320 萬趟（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">sec.gov/Archives/edgar/data/1329099/.../d117608dex991.htm</span>
+                        </a>
+                        <a href="https://electrek.co/2026/06/16/baidu-apollo-go-amigo-switzerland-level-4-approval/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[Electrek] 百度瑞士 L4 許可（AmiGo/PostBus）</p>
+                            <span class="text-slate-500 hover:underline break-all">electrek.co/2026/06/16/baidu-apollo-go-amigo-switzerland...</span>
+                        </a>
+                        <a href="https://cnevpost.com/2026/07/28/baidu-apollo-go-robotaxi-road-tests-london/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[CnEVPost] 蘿蔔快跑倫敦路測啟動</p>
+                            <span class="text-slate-500 hover:underline break-all">cnevpost.com/2026/07/28/baidu-apollo-go-robotaxi-road-tests-london</span>
+                        </a>
+                        <a href="https://www.federalregister.gov/documents/2026/07/31/2026-15485" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[聯邦公報] Zoox FMVSS 豁免（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">federalregister.gov/documents/2026/07/31/2026-15485</span>
+                        </a>
+                        <a href="https://www.cnbc.com/2026/08/05/amazon-zoox-paid-robotaxi-rides-las-vegas.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[CNBC] Zoox 拉斯維加斯收費營運</p>
+                            <span class="text-slate-500 hover:underline break-all">cnbc.com/2026/08/05/amazon-zoox-paid-robotaxi-rides-las-vegas</span>
+                        </a>
+                        <a href="https://electrek.co/2026/07/21/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[Electrek] Tesla 坦帕/奧蘭多上線、7 都會區</p>
+                            <span class="text-slate-500 hover:underline break-all">electrek.co/2026/07/21</span>
+                        </a>
+                        <a href="https://www.reviewjournal.com/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[Las Vegas Review-Journal] Tesla 內華達 10 輛限制</p>
+                            <span class="text-slate-500 hover:underline break-all">reviewjournal.com</span>
+                        </a>
+                        <a href="https://ir.weride.ai/news-releases/news-release-details/weride-and-uber-deploy-1200-robotaxis-middle-east" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[WeRide IR] 與 Uber 中東 1,200 輛承諾（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">ir.weride.ai/.../weride-and-uber-deploy-1200-robotaxis-middle-east</span>
+                        </a>
+                        <a href="https://techcrunch.com/2026/08/01/ubers-autonomous-vehicle-deal-tracker/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[TechCrunch] Uber AV 合作追蹤（30+ 家）</p>
+                            <span class="text-slate-500 hover:underline break-all">techcrunch.com/2026/08/01/ubers-autonomous-vehicle-deal-tracker</span>
+                        </a>
+                        <a href="https://techcrunch.com/2026/06/29/waymo-and-uber-quietly-part-ways-in-phoenix/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[TechCrunch] Waymo–Uber 鳳凰城分手</p>
+                            <span class="text-slate-500 hover:underline break-all">techcrunch.com/2026/06/29/waymo-and-uber-quietly-part-ways...</span>
+                        </a>
+                        <a href="https://www.cnbc.com/2026/07/24/uber-and-waymo-to-end-exclusivity-arrangement-in-atlanta-and-austin.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[CNBC] Waymo 終止奧斯汀/亞特蘭大獨家</p>
+                            <span class="text-slate-500 hover:underline break-all">cnbc.com/2026/07/24/uber-and-waymo-to-end-exclusivity...</span>
+                        </a>
+                        <a href="https://investor.uber.com/news-events/news/press-release-details/2026/Uber-and-Rivian-Partner-to-Deploy-up-to-50000-Fully-Autonomous-Robotaxis-2026-TViR4R05gi/default.aspx" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[Uber IR] 與 Rivian 最多 5 萬輛合作（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">investor.uber.com/.../Uber-and-Rivian-Partner-to-Deploy...</span>
+                        </a>
+                        <a href="https://www.goldmansachs.com/insights/articles/robotaxis-to-become-a-400-billion-dollar-market-in-2035" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[Goldman Sachs] 2035 年 4,150 億美元預測（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">goldmansachs.com/insights/articles/robotaxis-to-become...</span>
+                        </a>
+                        <a href="https://thechargeport.com/robotaxi-tracker" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[ChargePort] Robotaxi 追蹤器（彙整站，數字經交叉驗證）</p>
+                            <span class="text-slate-500 hover:underline break-all">thechargeport.com/robotaxi-tracker</span>
+                        </a>
+                        <a href="https://techcrunch.com/2026/06/18/waymo-recalls-nearly-4000-robotaxis-to-stop-them-driving-into-highway-construction-zones/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[TechCrunch] Waymo 召回近 4,000 輛（背景，未驗證）</p>
+                            <span class="text-slate-500 hover:underline break-all">techcrunch.com/2026/06/18/waymo-recalls-nearly-4000-robotaxis...</span>
+                        </a>
+                        <a href="https://cnevpost.com/2026/07/23/china-resumes-issuing-robotaxi-licenses/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-emerald-300 mb-1">[CnEVPost] 中國恢復核發 Robotaxi 牌照（背景，未驗證）</p>
+                            <span class="text-slate-500 hover:underline break-all">cnevpost.com/2026/07/23/china-resumes-issuing-robotaxi-licenses</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 自駕計程車產業研究 · 全球 Robotaxi 進展研究報告（2026 年 8 月節點）</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為公司自報或機構預測、且為 2026/08/18 之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) link.classList.add('active');
+                });
+            });
+
+            // CHART 1: Goldman fleet forecast (log)
+            new Chart(document.getElementById('fleetForecastChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025（約值）', '2030（預測）', '2035（預測）'],
+                    datasets: [{
+                        label: '全球商用 Robotaxi 車隊（輛）',
+                        data: [7000, 1000000, 6000000],
+                        backgroundColor: ['#94a3b8', '#34d399', '#059669'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y.toLocaleString() + ' 輛' } } },
+                    scales: {
+                        y: { type: 'logarithmic', grid: { color: '#f1f5f9' }, title: { display: true, text: '輛（對數尺度）' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 2: operator scale comparison (log)
+            new Chart(document.getElementById('scaleChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Waymo（在役車隊）', 'WeRide（中東在役）', 'Tesla（德州無人，上緣）', 'Zoox（年豁免上限）'],
+                    datasets: [{
+                        label: '車輛數（約值）',
+                        data: [3500, 200, 42, 2500],
+                        backgroundColor: ['#0ea5e9', '#8b5cf6', '#ef4444', '#059669'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x.toLocaleString() + ' 輛' } } },
+                    scales: {
+                        x: { type: 'logarithmic', grid: { color: '#f1f5f9' }, title: { display: true, text: '輛（對數尺度，口徑不一僅供對比）' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
