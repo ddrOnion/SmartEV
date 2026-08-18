@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全球 AI 進展研究報告（2026 年 8 月） ｜ 2026</title>
+    <meta name="description" content="全球 AI 產業進展深度研究（2026 年 8 月 19 日節點）：GPT-5.6 與價格戰、AI coding agent 主流化（Claude Code 39% 採用率）、NVIDIA 財報與 Stargate 基建、OpenAI vs Anthropic 營收交叉、Stanford 就業影響實證，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active {
+            color: #7c3aed;
+            border-left: 4px solid #7c3aed;
+            background-color: #f5f3ff;
+            font-weight: 600;
+        }
+        .chart-container { position: relative; width: 100%; height: 340px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-violet-500/10 text-violet-300 border border-violet-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">AI 產業趨勢 · 進展研究</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">全球 AI 進展研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">模型迭代加速、Agent 全面落地、算力軍備競賽與營收格局重排——四大態勢下的 AI 產業（2026 年 8 月節點）</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 8 月 19 日</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/reportAI/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-violet-600 transition-colors">← 返回 AI 報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、格局總覽：四大態勢</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、前沿模型與價格戰</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、Coding Agent 主流化</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、算力與超大型基建</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、營收格局重排</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、就業與社會影響</a>
+                    <a href="#section7" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、未覆蓋領域與缺口</a>
+                    <a href="#section8" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">八、展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-violet-600 font-medium">九、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+
+                <!-- 摘要 -->
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        截至 2026 年 8 月，全球 AI 產業呈現四大態勢：<strong class="text-violet-300">模型迭代加速</strong>——OpenAI 7 月推出 GPT-5.6 三層級系列（Sol/Terra/Luna）並在月底大幅降價，與 Anthropic Claude Fable 5 在 agent/coding 基準上互有領先；<strong class="text-violet-300">Agent 全面落地</strong>——JetBrains 調查顯示 <strong class="text-white">90%</strong> 專業開發者每週使用 AI coding agent（Claude Code 以 39% 採用率領先），微軟數萬人實證顯示 CLI coding agent 帶來約 <strong class="text-white">+24%</strong> 的 PR 產出；<strong class="text-violet-300">算力軍備競賽持續</strong>——NVIDIA 資料中心營收年增 56%，Stargate 五千億美元計畫擴至七站點、規劃逾 9 GW，但實際上線僅約 0.3 GW；<strong class="text-violet-300">營收爆發但格局重排</strong>——OpenAI 年化營收從 2025 底約 $214 億增至 8 月約 $400 億，而 Anthropic 以更快成長率在 8 月前後<strong class="text-white">完成營收交叉超越</strong>（run rate 約 $650 億）。就業面，Stanford 實證顯示尚無經濟體層面的大規模替代，但 22–25 歲年輕勞工在高 AI 曝險職業就業已低於基準 19%。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-violet-400 stat-num">90%</p>
+                            <p class="text-xs text-slate-400 mt-1">開發者每週使用 coding agent</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-emerald-400 stat-num">+56%</p>
+                            <p class="text-xs text-slate-400 mt-1">NVIDIA 資料中心營收 YoY</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">$650 億</p>
+                            <p class="text-xs text-slate-400 mt-1">Anthropic 年化營收（8 月，報導）</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-rose-400 stat-num">−19%</p>
+                            <p class="text-xs text-slate-400 mt-1">年輕勞工高曝險職業就業缺口</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ 注意：基準分數多為廠商自選口徑；營收為 run-rate 且兩家口徑可能不同；Stargate 金額與容量絕大多數為承諾/規劃而非已支出/建成；JetBrains 調查為單一廠商生態樣本。Google/Meta/xAI/中國模型、巨頭資本支出、機器人、監管細節等子題未產出本輪已驗證主張（見第七節缺口聲明）。本報告為 2026/08/19 之快照。</p>
+                </section>
+
+                <!-- Section 1 -->
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">一、</span>格局總覽：四大態勢
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-violet-50 border border-violet-100 rounded-xl p-5">
+                            <p class="font-semibold text-violet-800">🚀 模型迭代加速</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">旗艦模型更新週期壓縮至數月，並以「多層級＋激進降價」爭奪 API 市場；agent 能力（而非單純問答）成為主戰場。</p>
+                        </div>
+                        <div class="bg-violet-50 border border-violet-100 rounded-xl p-5">
+                            <p class="font-semibold text-violet-800">🤖 Agent 全面落地</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">Coding agent 從嘗鮮變成日常工具；企業級大樣本實證首度給出可信的生產力數字。</p>
+                        </div>
+                        <div class="bg-violet-50 border border-violet-100 rounded-xl p-5">
+                            <p class="font-semibold text-violet-800">🏗️ 算力軍備競賽</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">NVIDIA 供給續強，超大型資料中心以「GW」為單位規劃——但規劃與實際上線之間存在巨大時間差。</p>
+                        </div>
+                        <div class="bg-violet-50 border border-violet-100 rounded-xl p-5">
+                            <p class="font-semibold text-violet-800">💰 營收爆發、格局重排</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">頭部實驗室營收以年化數百億美元計，且領先位置正在易主——商業競爭進入下半場。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">二、</span>前沿模型與價格戰
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        2026 年 7 月 9 日，OpenAI 全面開放 <strong>GPT-5.6 系列</strong>：旗艦 <strong>Sol</strong>、中階 <strong>Terra</strong>、低成本 <strong>Luna</strong>，同步上線 ChatGPT、Codex 與 API。7 月 30 日再打價格戰：Luna 降價 <strong>80%</strong>（至 $0.20/$1.20 每百萬 token）、Terra 降 20%（至 $2/$12），Sol 維持 $5/$30。
+                    </p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">模型</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">定位</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">發布價（輸入/輸出，每百萬 token）</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">7/30 降價後</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">GPT-5.6 Sol</td><td class="p-3 border border-slate-100">旗艦</td><td class="p-3 border border-slate-100">$5 / $30</td><td class="p-3 border border-slate-100">不變</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">GPT-5.6 Terra</td><td class="p-3 border border-slate-100">中階</td><td class="p-3 border border-slate-100">$2.50 / $15</td><td class="p-3 border border-slate-100 text-violet-700 font-medium">$2 / $12（−20%）</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">GPT-5.6 Luna</td><td class="p-3 border border-slate-100">低成本</td><td class="p-3 border border-slate-100">$1 / $6</td><td class="p-3 border border-slate-100 text-violet-700 font-medium">$0.20 / $1.20（−80%）</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800 flex items-center gap-2">⚔️ 基準之爭：廠商框架須保留</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            OpenAI 宣稱 Sol 在 Agents' Last Exam 以 53.6 分創新高（高於 Anthropic Claude Fable 5 達 13.1 分）、在 Artificial Analysis Coding Agent Index 以 80 分居首且成本約低三分之一；但同一機構的<strong>綜合智慧指數上 Sol 仍次於 Fable 5</strong>——「誰領先」取決於選哪把尺，引用時應保留廠商框架。另一則「Gemini 3.1 Pro 在 HLE 領先」的說法在本輪查證中遭反駁，不予引用。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">三、</span>Coding Agent 主流化
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        JetBrains 2026 開發者生態調查（15,000+ 專業開發者，5–7 月執行）顯示：<strong>90%</strong> 專業開發者至少每週在工作中使用 AI coding agent、<strong>68%</strong> 每天使用。工具版圖亦重排：<strong>Claude Code</strong> 全球採用率 39%（美國 47%）、使用頻率約為 GitHub Copilot 兩倍；Copilot 由 29% 降至 21%、Cursor 由 18% 降至 12%。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="adoptionChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：AI coding agent 全球採用率（%，JetBrains Developer Ecosystem Survey 2026）。單一廠商生態樣本，引用時請註明出處。</p>
+                    <div class="bg-violet-50 border border-violet-100 rounded-xl p-5">
+                        <p class="font-semibold text-violet-800 flex items-center gap-2">🧪 微軟數萬人實證：+24% PR 產出</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            微軟 2026 年初對 CLI coding agent（Claude Code 與 GitHub Copilot CLI）的大規模推廣研究（arXiv 2607.01418，數萬名工程師、四個月）：採用者合併的 pull request 較反事實基準多約 <strong>24%</strong>（95% CI +14.5% ~ +33.7%），且效果持續整個觀察期、非新奇效應。屬準實驗設計，PR 為產出代理指標。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 4 -->
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">四、</span>算力與超大型基建
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        供給端，NVIDIA FY2026 Q2（至 2025 年 7 月）總營收 <strong>$467 億</strong>（+56% YoY）、資料中心 <strong>$411 億</strong>（+56% YoY），Blackwell 環比 +17%；其後 Q3 實際 $570 億超出指引、Q4 指引約 $650 億——高速成長未見放緩（此為歷史數據點，最新季度請以 NVIDIA 官網為準）。
+                    </p>
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-5 space-y-2">
+                        <p class="font-semibold text-emerald-800 flex items-center gap-2">🏗️ Stargate：規劃 9 GW vs 上線 0.3 GW</p>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            OpenAI/Oracle/SoftBank 的 <strong>$5,000 億</strong>計畫已擴至<strong>七個美國站點</strong>、2029 年前規劃容量<strong>逾 9 GW</strong>（約當 2,000 萬張 H100）。但 Epoch AI 追蹤顯示：截至 2026 年 4 月<strong>僅 Abilene 約 0.3 GW 實際上線</strong>，其餘六站施工中；最大站點 Shackelford（2.0 GW）與 Doña Ana（2.2 GW，空品許可未決）要到 2028 Q4 才完工。金額為承諾、容量為規劃——「已建成」與「已宣布」之間有數年時差。
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="stargateChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖二：Stargate 規劃容量 vs 實際上線（GW）。來源：Epoch AI（2026/04）、OpenAI 官方公告。</p>
+                </section>
+
+                <!-- Section 5 -->
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">五、</span>營收格局重排：交叉點已至
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        OpenAI 年化營收於 2025 年 12 月底約 <strong>$214 億</strong>（CFO 公開證實 >$200 億）。Epoch AI 在 2026 年 2 月即以成長率外推預測：Anthropic（年化成長約 7–10 倍）將於 <strong>2026 年 8 月前後</strong>超越 OpenAI（約 3.4 倍）。8 月中旬 Bloomberg 等報導顯示交叉<strong>確已在預測窗內發生</strong>——Anthropic run rate 約 <strong>$650 億</strong>、OpenAI 約 <strong>$400 億</strong>（兩家口徑可能不同，屬報導數字）。
+                    </p>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖三：年化營收（run rate，十億美元）。2025/12 為 CFO 證實值；2026/08 為媒體報導值、口徑可能不一致。</p>
+                    <p class="text-xs text-slate-400">註：「Anthropic 2026 年 2 月年化營收約 $140 億」的流傳數字在本輪查證中遭反駁，不予引用。Epoch 預測的交叉水位（~$430 億）低於實際發生水位，顯示兩家成長皆快於外推。</p>
+                </section>
+
+                <!-- Section 6 -->
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">六、</span>就業與社會影響
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Stanford Digital Economy Lab「Canaries in the Coal Mine」（2026 年 8 月 12 日修訂版，ADP 薪資數據至 2026 年 6 月）給出目前最重要的實證：
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-5">
+                            <p class="font-semibold text-emerald-800">整體：尚無大規模替代</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">「沒有發現經濟體層面大規模職位替代的證據」；有經驗勞工未見就業下滑。</p>
+                        </div>
+                        <div class="bg-rose-50 border border-rose-100 rounded-xl p-5">
+                            <p class="font-semibold text-rose-800">但：入口正在收窄</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">22–25 歲年輕勞工在高 AI 曝險職業的就業已低於反事實基準 <strong>19%</strong>——主因是招聘減少而非裁員，且缺口自 2025 年 8 月以來持續擴大。</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400">註：AI 因果歸因仍有學界討論（加入 firm-time 固定效應後下滑僅明確定時於 2024 年後），應以「該研究發現」框架引用；「無全面替代」不等於「無就業影響」。</p>
+                </section>
+
+                <!-- Section 7 -->
+                <section id="section7" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">七、</span>未覆蓋領域與研究缺口
+                    </h2>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-4">
+                        <p class="text-amber-800 text-sm leading-relaxed">⚠️ <strong>缺口聲明</strong>：以下子題在本輪對抗式查證中<strong>未產出已驗證主張</strong>，本報告不引用相關流傳數字，僅列出方向供後續專題研究：</p>
+                    </div>
+                    <ul class="text-slate-600 text-sm space-y-2 list-disc list-inside leading-relaxed">
+                        <li><strong>其他前沿玩家</strong>：Google DeepMind（Gemini 3.x、Genie 3）、Meta Llama、xAI Grok、中國陣營（DeepSeek、Qwen、Kimi）的最新旗艦與基準表現。</li>
+                        <li><strong>消費端規模</strong>：ChatGPT 週活躍用戶數等最新數字。</li>
+                        <li><strong>巨頭資本支出</strong>：微軟/Google/Meta/Amazon 2026 年 AI capex 總規模與能源瓶頸量化。</li>
+                        <li><strong>估值與融資</strong>：OpenAI（含 IPO 傳聞）、Anthropic、xAI 最新輪次細節。</li>
+                        <li><strong>機器人／具身智慧</strong>：Figure、Tesla Optimus、中國人形機器人進展。</li>
+                        <li><strong>監管治理</strong>：歐盟 AI Act 高風險條款實施、加州 SB 系列後續、中國政策落地（來源清單含 IAPP/A&amp;O Shearman 背景文章，未經驗證）。</li>
+                    </ul>
+                    <p class="text-slate-600 text-sm leading-relaxed">自駕／Robotaxi 領域請參閱本站姊妹系列 <a href="/report/" class="text-violet-600 font-medium hover:underline">/report</a>（2026/08/18 全球進展報告）。</p>
+                </section>
+
+                <!-- Section 8 -->
+                <section id="section8" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2">
+                        <span class="text-violet-600">八、</span>展望
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex gap-3">
+                            <span class="text-violet-600 font-bold shrink-0">①</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>Agent 經濟成形</strong>：coding agent 的採用曲線（90% 週活）與可量化產出（+24% PR）預示其他知識工作領域將複製同樣路徑。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-violet-600 font-bold shrink-0">②</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>價格戰與商品化</strong>：低階模型 token 價格一年內崩跌（Luna −80%），推理成本曲線將決定應用層的利潤空間。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-violet-600 font-bold shrink-0">③</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>基建兌現風險</strong>：9 GW 規劃 vs 0.3 GW 上線的落差，意味 2027–2028 的算力供給、電力與許可執行將是 AI 產業的實體瓶頸。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-violet-600 font-bold shrink-0">④</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>雙頭競爭時代</strong>：營收交叉後，OpenAI（消費規模＋IPO 傳聞）與 Anthropic（企業/agent 縱深）的路線分化將定義下一階段。</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-violet-600 font-bold shrink-0">⑤</span>
+                            <p class="text-slate-600 text-sm leading-relaxed"><strong>社會契約壓力</strong>：年輕勞工入口收窄若持續擴大，將把 AI 就業議題從學術討論推向政策議程。</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-xl p-6 mt-4">
+                        <p class="font-semibold text-lg">結論</p>
+                        <p class="text-violet-50 text-sm mt-2 leading-relaxed">
+                            2026 年 8 月的 AI 產業，敘事重心已從「模型有多聰明」轉向「<strong>Agent 產出多少、算力蓋得多快、營收長得多猛</strong>」。可驗證的實證數據（開發者採用率、PR 產出、薪資就業）首度足以支撐或反駁炒作——而它們顯示：生產力增益是真的、規模化是真的、但基建兌現與就業入口的壓力也是真的。下一份報告的觀察重點：Stargate 上線曲線、營收交叉後的雙頭競爭、以及缺口清單中的監管與中國陣營動態。
+                        </p>
+                    </div>
+                </section>
+
+                <!-- References -->
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2">
+                        <span class="text-violet-400">九、</span>參考來源與連結
+                    </h2>
+                    <p class="text-slate-400 text-sm">以下來源經多角度搜尋與對抗式查證（3 票制，本輪 25 條主張 23 條通過、2 條反駁）。基準與營收數字多為廠商自報或媒體報導，引用前請以最新官方揭露為準。</p>
+                    <div class="grid md:grid-cols-2 gap-3 text-sm">
+                        <a href="https://openai.com/index/gpt-5-6/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[OpenAI] GPT-5.6 系列發布（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">openai.com/index/gpt-5-6</span>
+                        </a>
+                        <a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[OpenAI] 7/30 降價公告（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">openai.com/index/advancing-the-price-performance-frontier...</span>
+                        </a>
+                        <a href="https://artificialanalysis.ai/articles/gpt-5-6-has-landed" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Artificial Analysis] GPT-5.6 獨立評測</p>
+                            <span class="text-slate-500 hover:underline break-all">artificialanalysis.ai/articles/gpt-5-6-has-landed</span>
+                        </a>
+                        <a href="https://blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[JetBrains] 2026 開發者生態調查（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">blog.jetbrains.com/research/2026/08/ai-coding-agent-adoption-2026</span>
+                        </a>
+                        <a href="https://arxiv.org/abs/2607.01418" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[arXiv] 微軟 CLI coding agent 生產力研究（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">arxiv.org/abs/2607.01418</span>
+                        </a>
+                        <a href="https://epoch.ai/data-insights/anthropic-openai-revenue" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Epoch AI] Anthropic vs OpenAI 營收交叉分析</p>
+                            <span class="text-slate-500 hover:underline break-all">epoch.ai/data-insights/anthropic-openai-revenue</span>
+                        </a>
+                        <a href="https://www.bloomberg.com/news/articles/2026-08-13/openai-s-revenue-run-rate-tops-40-billion-ahead-of-ipo" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Bloomberg] OpenAI run rate 破 $400 億（2026/08）</p>
+                            <span class="text-slate-500 hover:underline break-all">bloomberg.com/news/articles/2026-08-13/openai-s-revenue-run-rate...</span>
+                        </a>
+                        <a href="https://finance.yahoo.com/news/openai-cfo-says-annualized-revenue-173519097.html" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Yahoo Finance] OpenAI CFO 證實 2025 底 >$200 億</p>
+                            <span class="text-slate-500 hover:underline break-all">finance.yahoo.com/news/openai-cfo-says-annualized-revenue...</span>
+                        </a>
+                        <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2026" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[NVIDIA] FY2026 Q2 財報（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">nvidianews.nvidia.com/.../second-quarter-fiscal-2026</span>
+                        </a>
+                        <a href="https://epoch.ai/publications/openai-stargate-where-the-us-sites-stand" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Epoch AI] Stargate 站點追蹤：規劃 vs 上線</p>
+                            <span class="text-slate-500 hover:underline break-all">epoch.ai/publications/openai-stargate-where-the-us-sites-stand</span>
+                        </a>
+                        <a href="https://openai.com/index/five-new-stargate-sites/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[OpenAI] 五個新 Stargate 站點公告（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">openai.com/index/five-new-stargate-sites</span>
+                        </a>
+                        <a href="https://group.softbank/en/news/press/20250924" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[SoftBank] Stargate 合作新聞稿（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">group.softbank/en/news/press/20250924</span>
+                        </a>
+                        <a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Stanford] Canaries in the Coal Mine 就業研究（一手）</p>
+                            <span class="text-slate-500 hover:underline break-all">digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine...</span>
+                        </a>
+                        <a href="https://www.axios.com/2026/07/30/openai-cuts-prices-gpt-terra-luna5" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[Axios] OpenAI 降價報導</p>
+                            <span class="text-slate-500 hover:underline break-all">axios.com/2026/07/30/openai-cuts-prices-gpt-terra-luna5</span>
+                        </a>
+                        <a href="https://techcrunch.com/2025/09/23/openai-is-building-five-new-stargate-data-centers-with-oracle-and-softbank/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[TechCrunch] Stargate 五站點報導</p>
+                            <span class="text-slate-500 hover:underline break-all">techcrunch.com/2025/09/23/openai-is-building-five-new-stargate...</span>
+                        </a>
+                        <a href="https://www.techrepublic.com/article/news-ai-coding-agents-microsoft-pull-requests/" target="_blank" rel="noopener" class="block p-3 bg-slate-800/50 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors">
+                            <p class="font-semibold text-violet-300 mb-1">[TechRepublic] 微軟 coding agent 研究報導</p>
+                            <span class="text-slate-500 hover:underline break-all">techrepublic.com/article/news-ai-coding-agents-microsoft...</span>
+                        </a>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-8 border-t border-slate-800 mt-20 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 AI 產業研究 · 全球 AI 進展研究報告（2026 年 8 月節點）</p>
+            <p class="text-slate-600">本報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為廠商自報、媒體報導或機構預測、且為 2026/08/19 之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    if (window.pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (current && link.getAttribute('href').includes(current)) link.classList.add('active');
+                });
+            });
+
+            // CHART 1: coding agent adoption
+            new Chart(document.getElementById('adoptionChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Claude Code', 'GitHub Copilot', 'Cursor'],
+                    datasets: [{
+                        label: '全球採用率 (%)',
+                        data: [39, 21, 12],
+                        backgroundColor: ['#7c3aed', '#94a3b8', '#c4b5fd'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + '%' } } },
+                    scales: {
+                        y: { beginAtZero: true, max: 50, grid: { color: '#f1f5f9' }, title: { display: true, text: '採用率 (%)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 2: Stargate planned vs online
+            new Chart(document.getElementById('stargateChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['實際上線（2026/04）', 'Abilene 目標（2026 Q4）', '規劃容量（2029 前）'],
+                    datasets: [{
+                        label: 'GW',
+                        data: [0.3, 1.2, 9],
+                        backgroundColor: ['#f59e0b', '#34d399', '#7c3aed'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.x + ' GW' } } },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'GW（電力容量）' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // CHART 3: revenue run rates
+            new Chart(document.getElementById('revenueChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['2025/12', '2026/08（報導）'],
+                    datasets: [
+                        { label: 'OpenAI', data: [21.4, 40], backgroundColor: '#94a3b8', borderRadius: 6 },
+                        { label: 'Anthropic', data: [null, 65], backgroundColor: '#7c3aed', borderRadius: 6 }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: 'top' }, tooltip: { callbacks: { label: c => c.dataset.label + ': $' + c.parsed.y + 'B' } } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '年化營收（十億美元）' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
