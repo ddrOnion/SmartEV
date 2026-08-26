@@ -2,7 +2,7 @@
 
 > 適用對象：Claude Code（或任何接手此工作流的人）。
 > 目標：在本站以固定模板產出「深度研究報告」，掛上對應系列索引，驗證後推送部署。
-> 最後更新：2026-08-19
+> 最後更新：2026-08-26
 
 ---
 
@@ -83,22 +83,46 @@ npm run build
 git add public/<dir>/
 git commit -m "feat(<series>): add <topic> report, set as LATEST
 
-Co-Authored-By: Claude <model> <noreply@anthropic.com>"
+Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 ```
 
 **Push 憑證注意**：Windows 憑證管理員可能持有 `chris-ch-yang`（無 ddrOnion/SmartEV 推送權，會 403）。解法：
 
 ```bash
+# 清空環境變數中可能殘留的 token，以便 gh CLI 使用 keyring
+$env:GH_TOKEN=''
+$env:GITHUB_TOKEN=''
+
+# 切換到有寫權限的 ddrOnion 身分
 gh auth switch -u ddrOnion
-git -c credential.helper= -c "credential.helper=!gh auth git-credential" push origin main
-gh auth switch -u chris-ch-yang
+
+# 推送時明確使用 gh 的 credential helper
+git -c credential.helper= -c "credential.helper=!gh auth git-credential" push origin <branch-name>
 ```
+
+**GitHub Enterprise Managed User (EMU) 限制**：
+- 目前 `chris-ch-yang_hhgroup` 帳戶為 EMU，無法透過 GitHub API（GraphQL/REST）直接建立 PR。
+- 作法：推送到 feature branch 後，用 `gh pr create --web` 開啟瀏覽器 PR 建立頁面，由人工手動提交。
+- 代替方案：若需自動化，推送到分支後請直接通知或在 GitHub Web UI 手動開啟 PR，待稍後管理員合併至 `main`。
 
 推送到 `main` 後 Render 自動 build 部署。
 
 ## 6. 完成回報格式
 
-回報使用者時固定包含：commit hash、新報告連結與章節摘要、內容把關說明（驗證統計、排除了哪些被反駁數字、標註了哪些缺口）、驗證結果、索引現況。
+回報使用者時固定包含：
+- commit hash（與關聯 branch）
+- 新報告連結與章節摘要
+- 內容把關說明（驗證統計、排除了哪些被反駁數字、標註了哪些缺口）
+- 驗證結果（build 成功、連結檢查、圖表繪製）
+- 索引現況（報告數、LATEST 狀態）
+- PR 狀態（已推送 feature branch / PR 已開啟 / awaiting merge 等）
+
+## 7. PR 與部署流程
+
+1. **feature branch 推送成功後**：通知使用者分支名稱與來源。
+2. **若可用 API 建立 PR**：自動建立 PR 至 `main` 並通知連結。
+3. **若遇 EMU 限制**：用 `gh pr create --web` 開啟瀏覽器流程，告知使用者手動提交；或直接指示使用者透過 GitHub Web UI 建立 PR。
+4. **PR 合併後**：Render 自動檢測 `main` 變更並部署。
 
 ## 附：常用檢查清單
 
@@ -109,3 +133,4 @@ gh auth switch -u chris-ch-yang
 - [ ] 索引 LATEST 降級、報告數與日期更新
 - [ ] build 後 dist 檔案齊、連結全 200、圖表繪製、console 乾淨
 - [ ] push 成功（必要時走 ddrOnion 憑證流程）
+- [ ] PR 已建立或已推送待審核（記錄 PR 連結或 feature branch 名稱）
