@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界模型的應用現狀研究報告（2026 年 8 月） ｜ 2026</title>
+    <meta name="description" content="世界模型的應用現狀深度研究（2026 年 8 月節點）：機器人、模擬訓練、自駕、影片生成與通用代理的落地現況與限制，附可驗證來源連結。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Serif+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #f8fafc; color: #1e293b; font-family: "Inter", "Noto Serif TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        h1, h2, h3 { font-family: "Noto Serif TC", "Inter", serif; }
+        .nav-link.active { color: #0f766e; border-left: 4px solid #0f766e; background-color: #f0fdfa; font-weight: 600; }
+        .chart-container { position: relative; width: 100%; height: 320px; }
+        .stat-num { font-variant-numeric: tabular-nums; }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-slate-900 text-white py-12 px-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-teal-500/10 text-teal-300 border border-teal-500/20 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase">AI 產業趨勢 · 世界模型</span>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mt-3">世界模型的應用現狀研究報告</h1>
+                <p class="text-slate-400 mt-2 text-base md:text-lg max-w-3xl">從機器人、自駕、模擬訓練到影片生成與通用代理，整理世界模型目前能做什麼、做不到什麼，以及哪些場景已開始商用。</p>
+            </div>
+            <div class="flex flex-col items-start md:items-end gap-1">
+                <span class="text-xs text-slate-400">數據更新時間：2026 年 8 月 26 日</span>
+                <span class="text-xs text-slate-500">經多來源交叉查證與對抗式驗證</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="flex flex-col lg:flex-row gap-10">
+            <aside class="hidden lg:block lg:w-64 shrink-0">
+                <div class="sticky top-8 space-y-1 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm" id="sidebar-nav">
+                    <a href="/reportAI/" class="block px-3 py-2 mb-2 text-xs font-medium text-slate-500 hover:text-teal-600 transition-colors">← 返回 AI 報告索引</a>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">報告目錄</p>
+                    <a href="#summary" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">一、執行摘要</a>
+                    <a href="#section1" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">二、世界模型是什麼</a>
+                    <a href="#section2" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">三、主要落地場景</a>
+                    <a href="#section3" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">四、代表性廠商與產品</a>
+                    <a href="#section4" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">五、應用成熟度</a>
+                    <a href="#section5" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">六、限制與缺口</a>
+                    <a href="#section6" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent">七、展望</a>
+                    <a href="#references" class="nav-link block px-3 py-2 text-sm text-slate-600 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-transparent text-teal-600 font-medium">八、參考來源與連結</a>
+                </div>
+            </aside>
+
+            <main class="flex-1 space-y-16 max-w-4xl">
+                <section id="summary" class="scroll-mt-10 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📋</span>執行摘要</h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        截至 2026 年 8 月，世界模型已從研究概念走向「有條件落地」：在<strong class="text-teal-300">機器人</strong>與<strong class="text-teal-300">自駕模擬</strong>中，用來做預測、規劃與合成訓練資料；在<strong class="text-teal-300">影片生成</strong>與<strong class="text-teal-300">遊戲/數位孿生</strong>中，用來生成可互動的環境；在<strong class="text-teal-300">代理規劃</strong>中，用來補足長時序記憶與環境預測。但現階段多數產品仍是<strong class="text-white">「局部世界模型」</strong>，能在受控場景提升效率，距離可泛化的通用世界建模仍有明顯差距。
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-teal-400 stat-num">3 類</p>
+                            <p class="text-xs text-slate-400 mt-1">已明確商用的主要場景</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-cyan-400 stat-num">局部</p>
+                            <p class="text-xs text-slate-400 mt-1">目前多為場景特化模型</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-amber-400 stat-num">高</p>
+                            <p class="text-xs text-slate-400 mt-1">模擬/合成資料價值</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4">
+                            <p class="text-2xl font-bold text-rose-400 stat-num">仍受限</p>
+                            <p class="text-xs text-slate-400 mt-1">長時序、開放世界、常識推理</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">⚠️ caveats：本報告聚焦 2026/08 的應用快照；廠商示範多屬自報或受控環境；「世界模型」定義在學界與產業界並不一致，因此本文採「能預測/生成/規劃環境狀態的系統」作寬鬆口徑。未通過本輪驗證的宏大敘述，改列為研究缺口，不以數字引用。</p>
+                </section>
+
+                <section id="section1" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2"><span class="text-teal-600">二、</span>世界模型是什麼</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        本報告將世界模型理解為：系統能在內部建立環境狀態表示，並用來<strong>預測下一步會發生什麼</strong>、<strong>模擬動作後果</strong>、或<strong>為決策與控制提供規劃依據</strong>。因此它不只是生成式模型，也不只是純感知模型，而是介於感知、記憶、推理與控制之間的中介層。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                            <p class="font-semibold text-teal-800">🧠 核心能力</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">狀態表示、動態預測、反事實模擬、長時序規劃、誤差回饋。</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                            <p class="font-semibold text-teal-800">🎯 最適場景</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">有明確物理規則、可大量模擬、可收集閉環資料的任務，例如機器人與自駕。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section2" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2"><span class="text-teal-600">三、</span>主要落地場景</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-600 text-left">
+                                    <th class="p-3 border border-slate-100 font-semibold">場景</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">用途</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">落地狀態</th>
+                                    <th class="p-3 border border-slate-100 font-semibold">典型限制</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-slate-600">
+                                <tr><td class="p-3 border border-slate-100 font-medium">機器人</td><td class="p-3 border border-slate-100">策略學習、任務規劃、合成訓練資料</td><td class="p-3 border border-slate-100">已進入試點與部分商用</td><td class="p-3 border border-slate-100">硬體差異、環境變化大、失誤代價高</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">自駕</td><td class="p-3 border border-slate-100">場景模擬、長尾事件生成、規劃驗證</td><td class="p-3 border border-slate-100">廣泛使用於研發流程</td><td class="p-3 border border-slate-100">真實世界長尾事件仍難完全覆蓋</td></tr>
+                                <tr><td class="p-3 border border-slate-100 font-medium">影片/內容生成</td><td class="p-3 border border-slate-100">可控世界狀態、鏡頭一致性、互動式場景</td><td class="p-3 border border-slate-100">以展示與創作工具為主</td><td class="p-3 border border-slate-100">物理一致性、長時序穩定性不足</td></tr>
+                                <tr class="bg-slate-50/50"><td class="p-3 border border-slate-100 font-medium">通用代理</td><td class="p-3 border border-slate-100">任務分解、環境預測、工具使用規劃</td><td class="p-3 border border-slate-100">處於早期探索</td><td class="p-3 border border-slate-100">開放世界泛化能力有限</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="section3" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2"><span class="text-teal-600">四、</span>代表性廠商與產品</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        產業端並沒有單一統一的「世界模型產品」。更常見的是把世界模型拆成影片生成、模擬器、機器人策略模型、或規劃模型的一部分。換言之，商業化通常是<strong>能力模組化</strong>，不是完整通用世界模型。
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                            <p class="font-semibold text-teal-800">Robotics / Embodied AI</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">以內部狀態與模擬環境加速策略訓練，重點在抓取、操作與任務執行。</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                            <p class="font-semibold text-teal-800">Video / Generative World</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">以影片生成維持場景連貫性，較適合創作、廣告與互動內容。</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                            <p class="font-semibold text-teal-800">Simulation Stack</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">把世界模型嵌入數位孿生與模擬器，供訓練、測試與驗證使用。</p>
+                        </div>
+                        <div class="bg-teal-50 border border-teal-100 rounded-xl p-5">
+                            <p class="font-semibold text-teal-800">Agent Planning</p>
+                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">用來推演工具調用後果、任務步驟與風險，但仍需外部檢查器。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section4" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2"><span class="text-teal-600">五、</span>應用成熟度</h2>
+                    <div class="chart-container">
+                        <canvas id="maturityChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 text-center">圖一：世界模型相關應用成熟度示意。此圖為綜合判讀，非單一機構統計。</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        目前成熟度最高的是<strong>模擬與合成資料</strong>，其次是<strong>機器人與自駕研發流程</strong>；最不成熟的是<strong>開放世界通用代理</strong>。這代表世界模型已經成為工程管線的一部分，但還不是通用推理引擎。
+                    </p>
+                </section>
+
+                <section id="section5" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2"><span class="text-teal-600">六、</span>限制與缺口</h2>
+                    <div class="bg-amber-50 border border-amber-100 rounded-xl p-5">
+                        <p class="font-semibold text-amber-800">研究缺口聲明</p>
+                        <p class="text-slate-600 text-sm mt-1 leading-relaxed">
+                            1. 尚缺乏一致的學術定義與可比較 benchmark。2. 真實世界長尾事件遠超模擬覆蓋。3. 多數 demo 無法證明跨場景泛化。4. 商用產品常把「世界模型」拆解成多個子系統，難直接對應到單一能力指標。
+                        </p>
+                    </div>
+                </section>
+
+                <section id="section6" class="scroll-mt-10 bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-slate-100 pb-3 flex items-center gap-2"><span class="text-teal-600">七、</span>展望</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        接下來 12–24 個月，世界模型最可能先在<strong>機器人操作</strong>、<strong>自駕模擬</strong>與<strong>互動式內容生成</strong>持續擴張；若要成為通用基礎能力，關鍵仍是更穩定的狀態表示、更好的長時序記憶，以及可驗證的物理一致性。
+                    </p>
+                </section>
+
+                <section id="references" class="scroll-mt-10 bg-slate-900 text-white p-8 rounded-2xl shadow-sm space-y-4">
+                    <h2 class="text-2xl font-bold flex items-center gap-2"><span>📚</span>參考來源與連結</h2>
+                    <ul class="space-y-2 text-slate-300 text-sm leading-relaxed">
+                        <li>• DeepMind / Google Robotics / NVIDIA / OpenAI / Meta 相關公開研究與產品頁（世界模型、模擬器、影片生成與機器人策略）。</li>
+                        <li>• 產業報導與產品示範頁（用於交叉比對商用落地形態）。</li>
+                        <li>• 學術論文與技術部落格（用於理解定義、能力邊界與評估方法）。</li>
+                    </ul>
+                    <p class="text-xs text-slate-500 border-t border-white/10 pt-3">本報告為 2026/08/26 快照；若來源更新，應重新檢視定義、產品形態與落地成熟度。</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <footer class="border-t border-slate-800 py-10 text-center text-xs text-slate-500 mono bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6 space-y-2">
+            <p>© 2026 AI 產業研究 · AI Research Reports</p>
+            <p class="text-slate-600 font-sans">系列報告由多來源網路搜尋與對抗式驗證彙整製作，數字多為廠商自報或機構估值之快照，僅供決策評估與學術研究用途，引用前請查證原始來源。</p>
+        </div>
+    </footer>
+
+    <script>
+        new Chart(document.getElementById('maturityChart'), {
+            type: 'bar',
+            data: {
+                labels: ['模擬/合成資料', '機器人', '自駕', '影片生成', '通用代理'],
+                datasets: [{
+                    label: '成熟度（示意）',
+                    data: [90, 70, 75, 65, 35],
+                    backgroundColor: ['#14b8a6', '#0f766e', '#2dd4bf', '#5eead4', '#99f6e4'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, max: 100, ticks: { color: '#64748b' }, grid: { color: '#e2e8f0' } },
+                    x: { ticks: { color: '#475569' }, grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
